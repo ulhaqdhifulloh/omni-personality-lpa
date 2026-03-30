@@ -110,20 +110,15 @@ div[data-testid="stMetric"] div[data-testid="stMetricValue"] {
 # ==========================================================
 # CONSTANTS
 # ==========================================================
-VRIN_THRESHOLD = 7
-CD_THRESHOLD = 7
+VRIN_THRESHOLD = 70  # T-Score threshold
+CD_THRESHOLD = 70    # T-Score threshold
 
-SCALE_COLS = [
-    'ScAestheticism','ScAmbition','ScAnxiety','ScAssertiveness',
-    'ScConventionality','ScDepression','ScDutifulness','ScEnergy',
-    'ScExcitement','ScExhibitionism','ScFlexibility','ScHostility',
-    'ScImpulsiveness','ScIntellect','ScIrritability','ScModesty',
-    'ScMoodiness','ScOrderliness','ScSelfIndulgence','ScSelfReliance',
-    'ScSincerity','ScSociability','ScTolerance','ScTrustfulness','ScWarmth',
-    'ScParanoid','ScSchizoid','ScSchizotypal','ScAntisocial',
-    'ScBorderline','ScHistrionic','ScNarcissistic','ScAvoidant',
-    'ScDependent','ScObsessiveCompulsive'
-]
+# Load skala dari artifact (hasil feature selection)
+try:
+    SCALE_COLS = joblib.load('artifacts/scale_columns.pkl')
+except FileNotFoundError:
+    st.error("⚠️ File artifacts/scale_columns.pkl tidak ditemukan. Harap jalankan model dulu.")
+    SCALE_COLS = []
 
 DEMOG_COLS = ['Student_ID', 'Gender', 'Fakultas', 'Program_Studi', 'Angkatan']
 
@@ -265,14 +260,14 @@ def run_pipeline(df_input, model, scaler, prof_map):
             df_work[col] = df_work[col].clip(20.0, 90.0)
     steps_log.append(f"Out-of-range: {n_clipped} nilai di-clip")
 
-    # 5. VRIN/CD filtering
+    # 5. VRIN/CD filtering (T-Score based)
     n_before_valid = len(df_work)
     df_clean = df_work[
-        (df_work['VRIN_Score'] <= VRIN_THRESHOLD) &
-        (df_work['CD_Score'] <= CD_THRESHOLD)
+        (df_work['Val_VRIN'] < VRIN_THRESHOLD) &
+        (df_work['Val_CD'] < CD_THRESHOLD)
     ].copy().reset_index(drop=True)
     n_removed_valid = n_before_valid - len(df_clean)
-    steps_log.append(f"VRIN/CD filtering: {n_removed_valid} baris dihapus")
+    steps_log.append(f"VRIN/CD filtering (T≥{VRIN_THRESHOLD}): {n_removed_valid} baris dihapus")
 
     total_removed = n_start - len(df_clean)
     steps_log.append(f"TOTAL: {n_start} → {len(df_clean)} ({total_removed} baris dihapus)")
@@ -335,7 +330,7 @@ with st.sidebar:
         st.success("✅ Model Loaded")
         st.caption(f"**Profil (k):** {model.n_components}  \n"
                    f"**Covariance:** Full  \n"
-                   f"**VRIN Threshold:** >{VRIN_THRESHOLD}")
+                   f"**VRIN/CD Threshold:** T≥{VRIN_THRESHOLD}")
     else:
         st.warning("⚠️ Model belum tersedia.\n\nJalankan notebook terlebih dahulu.")
 
@@ -362,9 +357,9 @@ if page == "🏠 Beranda":
     steps = [
         ("1", "Business\nUnderstanding", "Identifikasi kebutuhan dan tujuan analisis"),
         ("2", "Data\nUnderstanding", "Eksplorasi data Omni Test, cek kualitas"),
-        ("3", "Data\nPreparation", "Cleaning VRIN/CD, standardisasi Z-Score"),
+        ("3", "Data\nPreparation", "Cleaning VRIN/CD, seleksi fitur, Z-Score"),
         ("4", "Modeling", "GMM/LPA dengan k=2-5, estimasi parameter"),
-        ("5", "Evaluation", "BIC, Entropy, AvePP, interpretasi profil"),
+        ("5", "Evaluation", "BIC, Entropy, BLRT, interpretasi profil"),
         ("6", "Deployment", "Dashboard interaktif + rekomendasi")
     ]
     for col, (num, title, desc) in zip(cols, steps):
@@ -430,7 +425,7 @@ elif page == "📊 Prediksi Batch":
         "📁 Upload CSV Omni Test",
         type=['csv'],
         help="Kolom wajib: Student_ID, Gender, Fakultas, Program_Studi, "
-             "Angkatan, VRIN_Score, CD_Score, dan 35 kolom Sc*"
+             "Angkatan, Val_VRIN, Val_CD, dan 42 kolom Sc_*"
     )
 
     # Option to use default data
@@ -583,11 +578,11 @@ elif page == "🔍 Prediksi Individual":
 
         v1, v2 = st.columns(2)
         with v1:
-            inp_vrin = st.number_input("VRIN Score", 0, 10, 2)
+            inp_vrin = st.number_input("Val_VRIN (T-Score)", 20.0, 90.0, 45.0, 0.5)
         with v2:
-            inp_cd = st.number_input("CD Score", 0, 10, 3)
+            inp_cd = st.number_input("Val_CD (T-Score)", 20.0, 90.0, 45.0, 0.5)
 
-        st.subheader("📏 Skor 35 Skala Kepribadian")
+        st.subheader("📏 Skor 42 Skala Kepribadian")
         st.caption("Masukkan skor T (rentang 20-90) untuk setiap skala.")
 
         scale_values = {}
@@ -598,7 +593,7 @@ elif page == "🔍 Prediksi Individual":
                 idx = row_start + j
                 if idx < len(SCALE_COLS):
                     scale_name = SCALE_COLS[idx]
-                    label = scale_name.replace('Sc', '')
+                    label = scale_name.replace('Sc_', '')
                     with col:
                         scale_values[scale_name] = st.number_input(
                             label, 20.0, 90.0, 50.0, 0.5, key=f"sc_{idx}"
@@ -610,7 +605,7 @@ elif page == "🔍 Prediksi Individual":
         # Validate VRIN/CD
         if inp_vrin > VRIN_THRESHOLD or inp_cd > CD_THRESHOLD:
             st.error(
-                f"⚠️ Skor VRIN ({inp_vrin}) atau CD ({inp_cd}) melebihi threshold ({VRIN_THRESHOLD}). "
+                f"⚠️ Skor Val_VRIN ({inp_vrin}) atau Val_CD ({inp_cd}) melebihi threshold (T≥{VRIN_THRESHOLD}). "
                 f"Respons dianggap tidak valid (careless responding). "
                 f"Data ini akan di-filter pada tahap cleaning."
             )
@@ -818,7 +813,7 @@ elif page == "💡 Rekomendasi Intervensi":
             'deskripsi': 'Profil ini belum memiliki deskripsi spesifik.',
             'rekomendasi': ['Evaluasi lebih lanjut oleh tim konseling.']
         })
-        
+
         count = 0
         pct = 0
         if has_data:
