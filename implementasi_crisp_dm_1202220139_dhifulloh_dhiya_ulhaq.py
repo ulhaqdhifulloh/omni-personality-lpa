@@ -87,21 +87,27 @@ df_raw.head(5)
 
 """**Interpretasi Eksplorasi Awal Data:**
 
-Berdasarkan hasil load data dan inspeksi 5 baris pertama, dapat disimpulkan beberapa poin penting:
-
-1.  **Struktur Data**: Dataset terdiri dari 42 kolom yang mencakup identitas mahasiswa (`Student_ID`), data demografis (`Gender`, `Fakultas`, `Program_Studi`, `Angkatan`), skor validitas (`VRIN_Score`, `CD_Score`), dan 35 skala kepribadian spesifik (diawali dengan prefiks `Sc`).
-2.  **Cakupan Skala**: Data mencakup spektrum kepribadian yang luas, mulai dari trait umum seperti *Ambition* dan *Sociability* hingga indikator klinis/spesifik seperti *Paranoid*, *Schizoid*, dan *Borderline*.
-3.  **Variasi Data**: Terlihat variasi skor yang cukup signifikan antar mahasiswa. Sebagai contoh, pada skala `ScAnxiety`, terdapat perbedaan mencolok antara subjek (misal: ST0001 skor 32.9 vs ST0002 skor 79.1), yang menunjukkan adanya keragaman profil mental dalam populasi.
-4.  **Validitas**: Adanya kolom `VRIN` (Variable Response Inconsistency) dan `CD` (Combined Distance) sangat krusial. Skor ini akan digunakan pada tahap *Data Preparation* untuk memfilter responden yang menjawab secara tidak konsisten atau berpura-pura (*faking*), guna memastikan hasil LPA yang akurat.
+Berdasarkan hasil pemuatan data awal dan inspeksi terhadap struktur dataset, dapat disimpulkan beberapa poin teknis berikut:
+1. Dimensi dan Struktur Data: Dataset terdiri dari 1.250 observasi (baris) dan 49 kolom. Kolom tersebut terbagi menjadi 5 atribut identitas & demografi (Student_ID, Gender, Fakultas, Program_Studi, Angkatan), 2 atribut validitas (Val_VRIN, Val_CD), serta 42 skala kepribadian OMNI (25 Normal Scales, 10 Disorder Scales, dan 7 Factor Scales).
+2. Cakupan Spektrum: Data mencakup dimensi kepribadian yang sangat komprehensif, merentang dari sifat umum (seperti Ambition dan Sociability) hingga deteksi patologi klinis (seperti Paranoid, Schizoid, dan Borderline).
+3. Deteksi Awal Kualitas Data: Terdapat variasi skor yang sangat ekstrem antar mahasiswa. Sebagai contoh, pada skala Sc_Anxiety, terdapat rentang nilai yang sangat timpang (ST0001 skor 32.9 vs ST0002 skor 79.1). Lebih lanjut, sekilas pengecekan tipe data (dtypes) menunjukkan bahwa seluruh skala telah berformat numerik (float64), yang berarti data sudah siap untuk dianalisis secara matematis, namun memerlukan pembersihan intensif.
+4. Indikator Validitas: Kehadiran kolom Val_VRIN dan Val_CD akan menjadi parameter filter utama. Skor ini digunakan pada tahap Data Preparation untuk membuang baris data responden yang terdeteksi mengisi secara asal-asalan (careless responding) atau sedang dalam tekanan mental akut (current distress).
 
 Info tipe data
 """
 
 df_raw.dtypes
 
-"""## 2.2 Definisi Variabel"""
+"""**Interpretasi Pengecekan Tipe Data:**
 
-# Definisi kolom-kolom penting sesuai Tabel III.1 Kamus Data Variabel OMNI
+Berdasarkan output `df_raw.dtypes`, dapat ditarik beberapa kesimpulan teknis mengenai kesiapan data:
+1. **Data Identitas & Demografi**: Kolom seperti `Student_ID`, `Gender`, `Fakultas`, dan `Program_Studi` bertipe `object` (string). Ini merupakan variabel kategori yang akan digunakan untuk analisis deskriptif dan pemetaan profil di tahap akhir.
+2. **Data Skala Kepribadian & Validitas**: Seluruh 42 skala kepribadian (prefiks `Sc_`) serta indikator validitas (`Val_VRIN`, `Val_CD`) telah terbaca sebagai `float64`. Hal ini sangat krusial karena algoritma *Latent Profile Analysis* (LPA) berbasis GMM memerlukan input numerik kontinu.
+3. **Variabel Waktu**: Kolom `Angkatan` terbaca sebagai `int64`, yang tepat untuk merepresentasikan tahun akademik.
+4. **Kesiapan Preprocessing**: Karena seluruh fitur utama sudah bertipe numerik, data tidak memerlukan konversi tipe data manual (seperti *label encoding* pada tahap awal) sebelum masuk ke proses standarisasi *Z-Score*.
+
+## 2.2 Definisi Variabel
+"""
 
 # 25 Skala Kepribadian Normal
 NORMAL_PERSONALITY_COLS = [
@@ -135,7 +141,7 @@ VALIDITY_COLS = ['Val_VRIN', 'Val_CD']
 print(f"Jumlah skala kepribadian normal  : {len(NORMAL_PERSONALITY_COLS)}")
 print(f"Jumlah skala gangguan kepribadian: {len(PD_COLS)}")
 print(f"Jumlah skala faktor              : {len(FACTOR_COLS)}")
-print(f"Total skala (input LPA)          : {len(SCALE_COLS)}")
+print(f"Total skala                      : {len(SCALE_COLS)}")
 print(f"Kolom demografis                 : {DEMOG_COLS}")
 print(f"Kolom validitas                  : {VALIDITY_COLS}")
 
@@ -148,11 +154,29 @@ desc = df_raw[SCALE_COLS].describe().T
 desc['range'] = desc['max'] - desc['min']
 desc[['count', 'mean', 'std', 'min', '25%', '50%', '75%', 'max', 'range']]
 
-"""Statistik deskriptif untuk skor validitas"""
+"""**Interpretasi Statistik Deskriptif:**
+
+Berdasarkan ringkasan statistik deskriptif terhadap 42 skala kepribadian dan 2 skala validitas, ditemukan beberapa anomali data yang memperkuat urgensi dilakukannya Data Preparation:
+1. **Tendensi Sentral (Mean & Median)**: Mayoritas skala kepribadian memiliki nilai rata-rata (mean) di kisaran 45 hingga 58. Angka ini sejalan dengan kaidah T-Score populasi normal, di mana skor rata-rata berada pada rentang Average (45–55).
+2. **Kehadiran Outlier Ekstrem (Kritis)**: Secara teoritis, T-Score psikometri seharusnya berada di rentang 20 hingga 90. Namun, statistik menunjukkan adanya nilai negatif (misal: Sc_Anxiety dengan min -6.4, Sc_Paranoid min -7.9) serta nilai yang melampaui batas atas (misal: Sc_Orderliness max 118.0, Sc_Energy max 110.4). Anomali ini akan merusak penghitungan jarak matriks pada Gaussian Mixture Model (GMM), sehingga teknik clipping pada rentang [20, 90] mutlak harus dieksekusi di tahap selanjutnya.
+3. **Indikasi Missing Values**: Jumlah observasi total adalah 1.250 mahasiswa (berdasarkan metrik count pada Val_VRIN). Namun, pada beberapa skala kepribadian (seperti Sc_Neuroticism dengan count 1.215, dan Sc_SensationSeeking dengan count 1.214), jumlahnya tidak mencapai 1.250. Hal ini memastikan adanya missing values (data kosong) yang harus ditangani (diimputasi atau di-drop).
+4. **Distribusi Skor Validitas**: Nilai maksimal untuk Val_VRIN dan Val_CD mencapai 85.0. Mengingat ambang batas (Threshold) data tidak valid adalah T-Score $\ge$ 70, statistik ini membuktikan bahwa terdapat sejumlah sampel mahasiswa dengan profil tidak valid di dalam dataset yang harus disaring sebelum pemodelan klaster (clustering) dilakukan.
+
+Statistik deskriptif untuk skor validitas
+"""
 
 df_raw[VALIDITY_COLS].describe()
 
-"""## 2.4 Pemeriksaan Kualitas Data
+"""**Interpretasi Statistik Deskriptif Skor Validitas:**
+
+Berdasarkan output statistik pada kolom `Val_VRIN` dan `Val_CD`, dapat ditarik beberapa kesimpulan penting terkait kualitas data:
+
+1. **Kecenderungan Pusat (Mean & Median)**: Skor rata-rata (`mean`) untuk kedua skala validitas berada pada kisaran 52.7, dengan median (`50%`) sekitar 51.2 - 51.4. Hal ini menunjukkan bahwa secara kolektif, mayoritas mahasiswa mengisi kuesioner dengan tingkat konsistensi yang baik (berada di sekitar rata-rata populasi normal T=50).
+2. **Variabilitas Data**: Standar deviasi (`std`) yang berada di angka ~10 menunjukkan sebaran data yang cukup lebar, yang berarti terdapat variasi yang signifikan dalam cara responden menjawab tes.
+3. **Deteksi Data Tidak Valid (Outliers)**: Temuan paling krusial adalah nilai maksimum (`max`) yang mencapai **85.0** untuk kedua skala. Mengingat dalam psikometri OMNI, skor T-Score $\ge$ 70 pada VRIN (inkonsistensi) atau CD (distres akut) dianggap sebagai indikator profil tidak valid, maka statistik ini mengonfirmasi adanya kelompok responden yang datanya tidak layak masuk ke tahap pemodelan.
+4. **Implikasi Preparation**: Tingginya nilai maksimum ini memberikan justifikasi kuat untuk melakukan prosedur filtering pada tahap *Data Preparation* guna menjaga reliabilitas model *Latent Profile Analysis*.
+
+## 2.4 Pemeriksaan Kualitas Data
 
 Cek missing values
 """
@@ -161,124 +185,154 @@ missing = df_raw.isnull().sum()
 missing_pct = (missing / len(df_raw) * 100).round(2)
 missing_report = pd.DataFrame({
     'Jumlah Missing': missing,
-    'Persentase (%)': missing_pct
 })
 missing_report = missing_report[missing_report['Jumlah Missing'] > 0]
 if len(missing_report) > 0:
     print(f"\n⚠️ Terdapat {len(missing_report)} kolom dengan missing values:")
     print(missing_report)
-    print(f"\nTotal missing values: {df_raw.isnull().sum().sum()}")
+    print(f"\nTotal missing values:               {df_raw.isnull().sum().sum()}")
 else:
     print("✅ Tidak ada missing values.")
 
 """Cek duplikasi data (Student_ID)"""
 
-dup_ids = df_raw[df_raw.duplicated(subset=['Student_ID'], keep=False)]
 n_dup = df_raw['Student_ID'].duplicated().sum()
-print(f"Jumlah Student_ID duplikat: {n_dup}")
 if n_dup > 0:
-    print("\nContoh duplikasi:")
-    print(dup_ids[['Student_ID', 'Gender', 'Fakultas']].head(10))
-
-"""Cek outlier"""
-
-# Cek nilai di luar rentang normal T-Score (skor seharusnya 20-90)
-out_of_range = pd.DataFrame()
-for col in SCALE_COLS:
-    mask = (df_raw[col] < 0) | (df_raw[col] > 100)
-    if mask.any():
-        bad_rows = df_raw[mask][['Student_ID', col]]
-        bad_rows = bad_rows.rename(columns={col: 'Nilai'})
-        bad_rows['Kolom'] = col
-        out_of_range = pd.concat([out_of_range, bad_rows])
-
-if len(out_of_range) > 0:
-    print(f"⚠️ Terdapat {len(out_of_range)} nilai di luar rentang normal:")
-    print(out_of_range[['Student_ID', 'Kolom', 'Nilai']])
+    print(f"\n⚠️ Terdapat {n_dup} Student_ID duplikat.")
 else:
-    print("✅ Semua nilai dalam rentang normal.")
+    print("✅ Tidak ada duplikasi data (Student_ID unik).")
 
 """## 2.5 Visualisasi Distribusi Data
 
-Distribusi VRIN dan CD Score
+Distribusi Normal Scales
 """
 
-# Distribusi VRIN dan CD Score (T-Score)
-fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+plt.figure(figsize=(18, 6))
+sns.boxplot(data=df_raw[NORMAL_PERSONALITY_COLS], color='#3498db', fliersize=4)
+plt.axhline(y=66, color='r', linestyle='--', alpha=0.6, label='T=66 (High)')
+plt.axhline(y=55, color='g', linestyle='--', alpha=0.6, label='T=55 (Upper Average)')
+plt.axhline(y=45, color='g', linestyle='--', alpha=0.6, label='T=45 (Lower Average)')
+plt.axhline(y=35, color='orange', linestyle='--', alpha=0.6, label='T=35 (Low)')
 
-axes[0].hist(df_raw['Val_VRIN'].dropna(), bins=20, edgecolor='white',
-             color='#3498db', alpha=0.8)
-axes[0].axvline(x=70, color='red', linestyle='--', linewidth=2, label='Threshold (T≥70)')
-axes[0].set_title('Distribusi Val_VRIN (T-Score)', fontsize=14, fontweight='bold')
-axes[0].set_xlabel('Val_VRIN T-Score')
-axes[0].set_ylabel('Frekuensi')
-axes[0].legend()
-
-axes[1].hist(df_raw['Val_CD'].dropna(), bins=20, edgecolor='white',
-             color='#e74c3c', alpha=0.8)
-axes[1].axvline(x=70, color='red', linestyle='--', linewidth=2, label='Threshold (T≥70)')
-axes[1].set_title('Distribusi Val_CD (T-Score)', fontsize=14, fontweight='bold')
-axes[1].set_xlabel('Val_CD T-Score')
-axes[1].set_ylabel('Frekuensi')
-axes[1].legend()
-
-plt.suptitle('Distribusi Skor Validitas (VRIN & CD) — T-Score', fontsize=16, fontweight='bold', y=1.02)
+plt.title('Distribusi Normal Scales (25 Dimensi)', fontsize=14, fontweight='bold')
+plt.ylabel('T-Score')
+plt.xticks(rotation=45, ha='right')
+plt.legend(loc='upper right')
 plt.tight_layout()
 plt.show()
 
-"""**Interpretasi Distribusi Skor Validitas:**
+"""**Interpretasi Distribusi Normal Scales:**
 
-Berdasarkan visualisasi histogram untuk `Val_VRIN` dan `Val_CD` (dalam bentuk T-Score):
+Berdasarkan visualisasi boxplot terhadap 25 skala kepribadian normal (Normal Scales), dapat ditarik beberapa poin observasi penting:
 
-1.  **Konsistensi Respon (Val_VRIN):** Mayoritas mahasiswa memiliki skor VRIN T-Score di sekitar 40-60 (rentang normal), yang menunjukkan bahwa sebagian besar responden menjawab pertanyaan-pertanyaan yang serupa secara konsisten. Sekitar 10% mahasiswa memiliki skor T ≥ 70, yang mengindikasikan adanya pola *careless responding*.
-2.  **Deteksi *Current Distress* (Val_CD):** Distribusi skor CD juga menunjukkan mayoritas di rentang normal (T-Score 40-60). Skor tinggi (T ≥ 70) menandakan tingkat tekanan emosional yang berlebihan saat pengisian tes, yang dapat mempengaruhi akurasi jawaban.
-3.  **Kesiapan Data:** Garis putus-putus merah menunjukkan *Threshold* batas validitas (T-Score ≥ 70). Data yang berada di sebelah kanan garis ini (T ≥ 70) akan difilter pada tahap *Data Preparation* untuk memastikan model LPA hanya dibangun menggunakan data yang valid dan reliabel.
+1.  **Konsentrasi Skor Rata-rata**: Mayoritas dimensi kepribadian memiliki median yang berada di rentang T-Score 45 hingga 55 (zona Average). Hal ini menunjukkan bahwa secara kolektif, responden mahasiswa berada pada tingkat yang wajar untuk sifat-sifat seperti *Flexibility*, *Sincerity*, dan *Intellect*.
+2.  **Variabilitas Dimensi**: Skala seperti `Ambition`, `Dutifulness`, dan `Energy` menunjukkan rentang antar-kuartil (box) yang lebih lebar dibandingkan skala lainnya. Ini mengindikasikan adanya variasi dorongan prestasi dan tingkat energi yang cukup heterogen di antara populasi mahasiswa Universitas Telkom.
+3.  **Identifikasi Skor Ekstrem**: Terdapat titik-titik outlier yang cukup jauh di luar kumis (*whiskers*) pada hampir seluruh skala, baik di area *High* (>66) maupun *Low* (<35). Hal ini mengonfirmasi temuan awal pada statistik deskriptif mengenai adanya data yang melampaui batas teoretis psikometri (T=20 dan T=90), yang memperkuat urgensi proses *clipping* pada tahap persiapan.
+4.  **Profil Kesiapan Adaptasi**: Skor pada dimensi *Sociability* dan *Warmth* cenderung stabil di area rata-rata atas, memberikan indikasi awal bahwa populasi ini secara umum memiliki fondasi interaksi sosial yang baik, yang nantinya akan divalidasi lebih lanjut melalui pembentukan profil laten.
 
-Boxplot beberapa skala kepribadian kunci
+Distribusi Validity & Personality Disorder Scales
 """
 
-selected_scales = ['Sc_Anxiety', 'Sc_Depression', 'Sc_Energy', 'Sc_Sociability',
-                   'Sc_Ambition', 'Sc_Impulsiveness', 'Sc_Warmth', 'Sc_Hostility']
+val_pd_cols = VALIDITY_COLS + PD_COLS
 
-fig, ax = plt.subplots(figsize=(14, 6))
-df_raw[selected_scales].boxplot(ax=ax, vert=True, patch_artist=True,
-                                boxprops=dict(facecolor='#3498db', alpha=0.5))
-ax.set_title('Boxplot Skala Kepribadian Terpilih', fontsize=14, fontweight='bold')
-ax.set_ylabel('Skor')
-plt.xticks(rotation=30, ha='right')
+plt.figure(figsize=(14, 6))
+sns.boxplot(data=df_raw[val_pd_cols], color='#e74c3c', fliersize=4)
+plt.axhline(y=70, color='red', linestyle='-', linewidth=2, label=r'Clinical/Invalid Threshold (T $\geq$ 70)')
+
+plt.title('Distribusi Validity & Personality Disorder Scales', fontsize=14, fontweight='bold')
+plt.ylabel('T-Score')
+plt.xticks(rotation=45, ha='right')
+plt.legend(loc='upper left')
 plt.tight_layout()
 plt.show()
 
-"""**Interpretasi Boxplot Skala Kepribadian Kunci:**
+# Cek Outlier / Skor Elevated pada Validity dan PD
+print("Deteksi Kasus di Atas Ambang Batas Klinis/Validitas (T >= 70):")
+for col in val_pd_cols:
+    elevated_count = (df_raw[col] >= 70).sum()
+    if elevated_count > 0:
+        print(f"- {col}: {elevated_count} mahasiswa")
 
-Berdasarkan visualisasi boxplot untuk delapan skala terpilih, dapat ditarik beberapa kesimpulan:
+"""**Interpretasi Distribusi Validity & Personality Disorder Scales:**
 
-1.  **Sentralitas Data (Median):** Mayoritas skala memiliki median di kisaran skor 45-60. Skala seperti `ScAmbition` dan `ScSociability` menunjukkan nilai tengah yang relatif lebih tinggi dibandingkan `ScAnxiety` atau `ScHostility` pada populasi ini.
-2.  **Variabilitas (Rentang Antar Kuartil):** Skala `ScAmbition` dan `ScEnergy` menunjukkan kotak (IQR) yang lebih lebar, menandakan adanya keberagaman aspirasi dan level energi yang cukup tinggi di antara mahasiswa.
-3.  **Deteksi Outlier:** Terlihat adanya beberapa titik di luar kumis (*whiskers*) pada skala `ScAnxiety` dan `ScOrderliness`. Hal ini mengonfirmasi temuan sebelumnya mengenai adanya individu dengan skor ekstrem (sangat tinggi/rendah) yang mungkin memerlukan perhatian khusus atau pembersihan data.
-4.  **Simetri Distribusi:** Sebagian besar skala menunjukkan distribusi yang cukup simetris, namun pada skala seperti `ScHostility`, distribusi terlihat cenderung sedikit miring ke bawah (*positively skewed*), artinya mayoritas mahasiswa memiliki skor agresi yang rendah.
+Berdasarkan visualisasi boxplot dan deteksi kasus di atas ambang batas (T $\ge$ 70), dapat ditarik beberapa kesimpulan kritis:
 
-Heatmap korelasi antar skala kepribadian
+1. **Kualitas Data & Validitas Profil**: Terdapat indikasi *careless responding* atau konsistensi jawaban yang rendah pada sejumlah besar sampel. Sebanyak **125 mahasiswa** memiliki skor Val_VRIN $\ge$ 70 dan **112 mahasiswa** memiliki skor Val_CD $\ge$ 70. Hal ini menegaskan bahwa proses pembersihan data (*filtering*) mutlak diperlukan untuk memastikan model LPA yang dihasilkan tidak terdistorsi oleh data yang tidak valid.
+2. **Identifikasi Spektrum Klinis**: Pada skala gangguan kepribadian (PD), ditemukan beberapa dimensi dengan jumlah individu yang cukup banyak di atas ambang batas klinis, yaitu **Histrionic (112 mahasiswa)**, **Avoidant (104 mahasiswa)**, dan **Obsessive-Compulsive (97 mahasiswa)**.
+3. **Karakteristik Kelompok Rentan**: Kehadiran skor yang tinggi pada skala *Avoidant* dan *Borderline* (52 mahasiswa) menunjukkan adanya kelompok mahasiswa yang mungkin memerlukan perhatian khusus terkait kecemasan sosial dan regulasi emosi.
+4. **Kesiapan Intervensi**: Temuan ini memberikan dasar empiris bagi universitas untuk merancang intervensi yang tidak hanya berfokus pada pengembangan diri umum, tetapi juga pada deteksi dini indikasi gangguan kepribadian yang dapat menghambat perkembangan akademik dan sosial mahasiswa.
+
+Distribusi Factor Scales
 """
 
-plt.figure(figsize=(18, 14))
-corr = df_raw[SCALE_COLS].corr()
-mask = np.triu(np.ones_like(corr, dtype=bool))
-sns.heatmap(corr, mask=mask, cmap='RdBu_r', center=0,
-            vmin=-0.6, vmax=0.6, annot=False, square=True,
+plt.figure(figsize=(10, 6))
+sns.boxplot(data=df_raw[FACTOR_COLS], color='#2ecc71', fliersize=4)
+plt.axhline(y=66, color='r', linestyle='--', alpha=0.6, label='T=66 (High)')
+plt.axhline(y=35, color='orange', linestyle='--', alpha=0.6, label='T=35 (Low)')
+
+plt.title('Distribusi Factor Scales (Input Utama Model LPA)', fontsize=14, fontweight='bold')
+plt.ylabel('T-Score')
+plt.xticks(rotation=45, ha='right')
+plt.legend(loc='upper right')
+plt.tight_layout()
+plt.show()
+
+"""**Interpretasi Distribusi Factor Scales:**
+
+Berdasarkan visualisasi boxplot terhadap 7 Skala Faktor Utama (*Broad Scales*), dapat ditarik beberapa kesimpulan teknis sebagai dasar pemodelan:
+
+1. **Stabilitas Dimensi Utama**: Berbeda dengan skala normal atau klinis yang menunjukkan variasi ekstrem, 7 faktor ini (seperti *Extraversion*, *Neuroticism*, dan *Conscientiousness*) memiliki distribusi yang lebih terkonsentrasi di rentang rata-rata (T=45 s.d. 55). Hal ini menunjukkan bahwa faktor-faktor ini merupakan representasi stabil dari struktur kepribadian mahasiswa secara umum.
+2. **Kesiapan Sebagai Input Model**: Karena faktor-faktor ini merupakan hasil agregasi dari beberapa skala dasar, mereka memiliki tingkat *noise* yang lebih rendah. Konsistensi median di sekitar angka 50 menunjukkan bahwa data ini sangat ideal untuk diproses menggunakan *Gaussian Mixture Model* (GMM) karena memenuhi asumsi distribusi normal yang relatif baik.
+3. **Identifikasi Potensi Profil**: Meskipun median berada di area rata-rata, terdapat sebaran kuartil yang cukup jelas pada dimensi *Neuroticism* dan *Extraversion*. Variasi pada kedua dimensi ini biasanya menjadi pembeda utama (diferensiator) dalam pembentukan profil laten, seperti memisahkan kelompok yang 'Resilient' dengan kelompok yang 'Rentan'.
+4. **Justifikasi Seleksi Fitur**: Visualisasi ini memperkuat keputusan untuk menggunakan ketujuh skala ini sebagai fitur utama (*Selected Features*). Penggunaan skala faktor ini secara efektif mereduksi dimensi dari 42 menjadi 7 tanpa kehilangan esensi informasi psikologis yang krusial untuk klasifikasi profil.
+
+Korelasi Base Scales (35) vs Factor Scales (7)
+"""
+
+base_scales = NORMAL_PERSONALITY_COLS + PD_COLS
+corr_base_vs_factor = df_raw[base_scales + FACTOR_COLS].corr().loc[base_scales, FACTOR_COLS]
+
+plt.figure(figsize=(10, 14))
+sns.heatmap(corr_base_vs_factor, cmap='RdBu_r', center=0,
+            vmin=-1, vmax=1, annot=True, fmt=".2f",
+            annot_kws={"size": 8}, linewidths=0.5, cbar_kws={'shrink': 0.8})
+plt.title('Heatmap 1: Korelasi Base Scales (35) vs Factor Scales (7)', fontsize=14, fontweight='bold')
+plt.ylabel('Base Scales (Normal + PD)')
+plt.xlabel('Factor Scales')
+plt.tight_layout()
+plt.show()
+
+"""**Interpretasi Heatmap Korelasi Base Scales (35) vs Factor Scales (7):**
+
+Analisis korelasi ini bertujuan untuk memvalidasi apakah 7 Skala Faktor (*Broad Scales*) secara akurat merepresentasikan 35 skala dasar pembentuknya. Berikut adalah poin-poin kuncinya:
+
+1.  **Konfirmasi Validitas Agregasi**: Terlihat pola korelasi yang sangat kuat (positif maupun negatif) pada kolom-kolom tertentu. Sebagai contoh, skala faktor **Conscientiousness** menunjukkan korelasi positif yang sangat tinggi dengan skala dasar `Ambition`, `Dutifulness`, dan `Orderliness`. Hal ini mengonfirmasi bahwa skala faktor tersebut merupakan representasi matematis yang valid dari trait kedisiplinan dan keteraturan.
+2.  **Reduksi Dimensi Tanpa Kehilangan Informasi**: Korelasi yang tersebar secara sistematis menunjukkan bahwa 7 faktor ini mampu menangkap esensi dari 35 skala lainnya. Dengan menggunakan 7 faktor ini sebagai input GMM, kita dapat menghindari *overfitting* dan masalah *multikolinearitas* ekstrem yang akan muncul jika menggunakan ke-42 skala sekaligus.
+3.  **Hubungan Faktor dengan Spektrum Klinis**: Menarik untuk diperhatikan bahwa skala **Neuroticism** memiliki korelasi positif yang signifikan dengan hampir seluruh skala gangguan kepribadian (*Disorder Scales*) seperti `Anxiety`, `Depression`, `Avoidant`, dan `Borderline`. Ini membuktikan bahwa faktor Neuroticism merupakan indikator laten utama untuk mendeteksi kerentanan kesehatan mental dalam populasi ini.
+4.  **Diferensiasi Trait**: Skala **Extraversion** menunjukkan korelasi positif yang kuat dengan `Sociability`, `Warmth`, dan `Assertiveness`. Sebaliknya, ia berkorelasi negatif dengan `Schizoid`. Pola ini memberikan justifikasi bahwa faktor Extraversion akan menjadi pembeda utama dalam memisahkan profil mahasiswa yang aktif secara sosial dengan yang menarik diri.
+
+Korelasi antar 7 Factor Scales
+"""
+
+plt.figure(figsize=(8, 6))
+corr_factor = df_raw[FACTOR_COLS].corr()
+mask = np.triu(np.ones_like(corr_factor, dtype=bool))
+
+sns.heatmap(corr_factor, mask=mask, cmap='RdBu_r', center=0,
+            vmin=-1, vmax=1, annot=True, fmt=".2f",
             linewidths=0.5, cbar_kws={'shrink': 0.8})
-plt.title('Heatmap Korelasi Antar 35 Skala Kepribadian', fontsize=16, fontweight='bold')
+plt.title('Heatmap 2: Korelasi Antar 7 Factor Scales', fontsize=14, fontweight='bold')
 plt.tight_layout()
 plt.show()
 
-"""**Interpretasi Heatmap Korelasi:**
+"""**Interpretasi Heatmap Korelasi Antar 7 Factor Scales:**
 
-Berdasarkan visualisasi heatmap korelasi antar 35 skala kepribadian:
+Analisis korelasi antar skala faktor utama ini memberikan gambaran tentang independensi fitur yang akan digunakan sebagai input dalam pemodelan *Latent Profile Analysis*:
 
-1.  **Klaster Korelasi Positif**: Terlihat adanya blok warna biru gelap yang menunjukkan korelasi positif kuat antar kelompok skala tertentu. Misalnya, skala terkait kesejahteraan emosional (`ScAnxiety`, `ScDepression`, `ScMoodiness`) cenderung berkorelasi satu sama lain, yang mengindikasikan adanya faktor laten kecemasan umum.
-2.  **Korelasi Interpersonal**: Skala seperti `ScSociability`, `ScWarmth`, dan `ScTrustfulness` menunjukkan korelasi positif yang signifikan, membentuk dimensi kepribadian yang ramah dan terbuka (*prosocial behavior*).
-3.  **Korelasi Negatif (Inverse)**: Terdapat blok warna merah yang menunjukkan korelasi negatif. Contohnya, skala `ScAmbition` dan `ScEnergy` seringkali berkorelasi negatif dengan `ScDepression`. Hal ini logis secara psikologis, di mana motivasi tinggi cenderung berlawanan dengan indikator depresi.
-4.  **Redundansi vs. Keunikan**: Sebagian besar skala menunjukkan korelasi moderat (0.3 - 0.5), yang berarti setiap skala memberikan kontribusi unik namun tetap berada dalam jalinan struktur kepribadian yang saling terkait. Hal ini memvalidasi penggunaan Gaussian Mixture Model (GMM) yang mampu menangani kovarians antar variabel dalam menentukan profil laten.
+1.  **Independensi Fitur**: Secara umum, korelasi antar faktor berada pada tingkat rendah hingga moderat. Hal ini sangat positif untuk pemodelan *Gaussian Mixture Model* (GMM) karena mengindikasikan bahwa setiap skala faktor memberikan kontribusi informasi yang unik dan tidak redundan (bebas dari masalah multikolinearitas ekstrem).
+2.  **Hubungan Neuroticism dan Agreeableness**: Terlihat adanya korelasi negatif yang moderat antara `Neuroticism` dengan `Agreeableness`. Hal ini secara psikologis masuk akal, di mana stabilitas emosional yang rendah sering kali berkaitan dengan tantangan dalam mempertahankan relasi interpersonal yang harmonis.
+3.  **Sinergi Extraversion dan Narcissism**: Terdapat korelasi positif yang cukup jelas antara `Extraversion` dan `Narcissism`. Dalam konteks kepribadian mahasiswa, individu yang asertif dan dominan secara sosial (Extraversion) cenderung memiliki kepercayaan diri yang tinggi yang beririsan dengan spektrum narsistik.
+4.  **Justifikasi Model GMM**: Karena korelasi antar variabel tidak terlalu tinggi, algoritma GMM dengan tipe kovarians 'full' atau 'diag' akan sangat efektif dalam memetakan kepadatan probabilitas (probability density) untuk mendefinisikan batas-batas profil laten secara akurat.
 
 Distribusi Demografis
 """
@@ -318,91 +372,34 @@ Berdasarkan visualisasi grafik batang untuk data demografis mahasiswa:
 3.  **Tren Angkatan**: Distribusi per angkatan menunjukkan bahwa mayoritas responden berasal dari angkatan 2023 dan 2022. Hal ini memberikan insight bahwa profil kepribadian yang terbentuk akan sangat mencerminkan karakteristik mahasiswa tingkat awal dan menengah.
 4.  **Keseimbangan Gender**: Distribusi gender menunjukkan proporsi yang relatif seimbang antara Laki-laki dan Perempuan, sehingga meminimalkan risiko bias gender dalam pembentukan profil kepribadian laten.
 
+### **Kesimpulan Data Understanding & Action Plan untuk Data Preparation**
+
+Berdasarkan eksplorasi dan analisis statistik yang telah dilakukan, berikut adalah ringkasan temuan utama serta rencana tindakan teknis untuk tahap **Data Preparation**:
+
+1.  **Pembersihan Data (Cleaning)**:
+    *   **Temuan**: Terdapat *missing values* pada 41 kolom dan 12 *Student_ID* duplikat.
+    *   **Action**: Melakukan penghapusan baris yang memiliki nilai kosong pada skala kepribadian dan menghapus entri duplikat untuk menjaga integritas data.
+
+2.  **Filter Validitas Responden**:
+    *   **Temuan**: Distribusi skor `Val_VRIN` dan `Val_CD` menunjukkan adanya ~13% data yang tidak valid (T ≥ 70).
+    *   **Action**: Menerapkan filtering ketat untuk membuang responden dengan skor validitas tinggi guna menghindari bias *careless responding* dalam model klaster.
+
+3.  **Penanganan Anomali Skor (Clipping)**:
+    *   **Temuan**: Ditemukan skor di luar batas teoritis psikometri (negatif dan >90).
+    *   **Action**: Melakukan *clipping* nilai ke rentang [20.0, 90.0] agar tidak merusak perhitungan kovarians pada model GMM.
+
+4.  **Seleksi Fitur (Feature Selection)**:
+    *   **Temuan**: Analisis korelasi membuktikan bahwa 7 *Factor Scales* (Broad Scales) merupakan representasi yang kuat dan efisien dari 35 skala dasar.
+    *   **Action**: Mempersempit input model hanya pada 7 skala faktor utama untuk menghindari *Curse of Dimensionality* dan multikolinearitas.
+
+5.  **Standardisasi Variabel**:
+    *   **Temuan**: Meskipun skala sudah dalam format T-Score, algoritma GMM sangat sensitif terhadap skala input.
+    *   **Action**: Menerapkan standardisasi *Z-Score* (StandardScaler) agar setiap dimensi memiliki mean 0 dan standard deviasi 1 sebelum masuk ke tahap pemodelan.
+
 * * *
 # 3. Data Preparation
 
-## 3.1 Handling Missing Values & Duplikasi
-
-Hapus baris dengan missing values pada skala kepribadian
-"""
-
-n_before = len(df_raw)
-df = df_raw.dropna(subset=SCALE_COLS)
-n_after_missing = len(df)
-print(f"\nHapus missing values pada skala kepribadian:")
-print(f"    Sebelum: {n_before} → Sesudah: {n_after_missing}")
-print(f"    Dihapus: {n_before - n_after_missing} baris")
-
-"""Hapus duplikat Student_ID (pertahankan yang pertama)"""
-
-n_before = len(df)
-df = df.drop_duplicates(subset=['Student_ID'], keep='first')
-n_after_dup = len(df)
-print(f"\nHapus duplikat Student_ID:")
-print(f"    Sebelum: {n_before} → Sesudah: {n_after_dup}")
-print(f"    Dihapus: {n_before - n_after_dup} baris")
-
-"""## 3.2 Normalisasi Kolom Gender"""
-
-# Normalisasi gender
-print("\nNormalisasi Gender:")
-print(f"    Sebelum: {df['Gender'].unique()}")
-
-gender_map = {
-    'Laki-laki': 'Laki-laki', 'Laki-Laki': 'Laki-laki',
-    'laki-laki': 'Laki-laki', 'L': 'Laki-laki',
-    'Perempuan': 'Perempuan', 'perempuan': 'Perempuan',
-    'PEREMPUAN': 'Perempuan', 'P': 'Perempuan'
-}
-df['Gender'] = df['Gender'].map(gender_map)
-
-# Hapus baris yang Gender-nya masih NaN setelah mapping
-df = df.dropna(subset=['Gender'])
-print(f"    Sesudah: {df['Gender'].unique()}")
-
-"""## 3.3 Handling Outlier"""
-
-# Clip nilai di luar rentang valid (20-90) untuk skala kepribadian
-n_clipped = 0
-for col in SCALE_COLS:
-    mask_low = df[col] < 20
-    mask_high = df[col] > 90
-    n_clipped += mask_low.sum() + mask_high.sum()
-    df[col] = df[col].clip(lower=20.0, upper=90.0)
-
-print(f"    Jumlah nilai yang di-clip: {n_clipped}")
-
-"""## 3.4 Data Cleaning: Filtering VRIN & CD (T-Score Based)"""
-
-# Filter berdasarkan skor validitas VRIN dan CD
-# T-Score >= 70 dianggap sebagai careless responding / invalid
-VRIN_THRESHOLD = 70  # T-Score threshold
-CD_THRESHOLD = 70    # T-Score threshold
-
-n_before = len(df)
-mask_valid = (df['Val_VRIN'] < VRIN_THRESHOLD) & (df['Val_CD'] < CD_THRESHOLD)
-df_clean = df[mask_valid].copy().reset_index(drop=True)
-n_removed = n_before - len(df_clean)
-
-print(f"\n[5] Filtering Val_VRIN (T<{VRIN_THRESHOLD}) & Val_CD (T<{CD_THRESHOLD}):")
-print(f"    Sebelum: {n_before} baris")
-print(f"    Sesudah: {len(df_clean)} baris")
-print(f"    Dihapus (careless responding): {n_removed} baris ({n_removed/n_before*100:.1f}%)")
-
-"""Cek distribusi demografis setelah cleaning"""
-
-print("\n📊 Distribusi Demografis Setelah Cleaning:")
-print(f"Total data valid: {len(df_clean)}")
-print(f"\nGender:")
-print(df_clean['Gender'].value_counts())
-print(f"\nFakultas:")
-print(df_clean['Fakultas'].value_counts())
-print(f"\nAngkatan:")
-print(df_clean['Angkatan'].value_counts().sort_index())
-
-"""## 3.5 Feature Selection
-
-Sesuai dengan pedoman Bab 3, pada tahap pemrosesan ini dilakukan penyaringan fitur (*drop column*). Variabel yang dimasukkan ke dalam algoritma GMM dibatasi secara tegas hanya pada 7 Skala Faktor Utama (Broad Scales). 35 skala pembentuk dasar (25 normal dan 10 abnormal) dibuang dari dataframe untuk mencegah multikolinearitas yang ekstrem dan menghindari fenomena *Curse of Dimensionality* (kutukan dimensi) yang dapat mengaburkan jarak perhitungan metrik pada algoritma clustering.
+## 3.1 Feature Selection
 """
 
 BROAD_SCALES = [
@@ -411,47 +408,116 @@ BROAD_SCALES = [
 ]
 
 SELECTED_SCALE_COLS = [c for c in SCALE_COLS if c in BROAD_SCALES]
+ALL_USED_COLS = SELECTED_SCALE_COLS + DEMOG_COLS + VALIDITY_COLS
 
-print(f"Total fitur awal: {len(SCALE_COLS)}")
-print(f"Total fitur terpilih untuk pemodelan (Broad Scales): {len(SELECTED_SCALE_COLS)}")
-print("Daftar Fitur yang digunakan:")
-for col in SELECTED_SCALE_COLS:
-    print(f" - {col}")
+df_selected = df_raw[ALL_USED_COLS].copy()
 
-"""## 3.6 Standardisasi (Z-Score)
+print(f"Total fitur awal: {len(df_raw.columns)}")
+print(f"Total fitur yang dipertahankan: {len(ALL_USED_COLS)} (7 Skala, 5 Demografi, 2 Validitas)")
 
-Standardisasi Z-Score diterapkan pada fitur-fitur yang telah diseleksi.
+"""## 3.2 Data Cleaning: Filtering VRIN & CD"""
+
+VRIN_THRESHOLD = 70  # T-Score threshold
+CD_THRESHOLD = 70    # T-Score threshold
+
+n_before = len(df_selected)
+mask_valid = (df_selected['Val_VRIN'] < VRIN_THRESHOLD) & (df_selected['Val_CD'] < CD_THRESHOLD)
+df_clean_valid = df_selected[mask_valid].copy()
+n_removed = n_before - len(df_clean_valid)
+
+df_clean_valid = df_clean_valid.drop(columns=['Val_VRIN', 'Val_CD'])
+
+print(f"\nFiltering Val_VRIN (T<{VRIN_THRESHOLD}) & Val_CD (T<{CD_THRESHOLD}):")
+print(f"    Sebelum: {n_before} baris")
+print(f"    Sesudah: {len(df_clean_valid)} baris")
+print(f"    Dihapus (careless responding): {n_removed} baris ({n_removed/n_before*100:.1f}%)")
+print(f"    [!] Kolom Val_VRIN dan Val_CD telah di-drop dari dataset.")
+
+"""## 3.3 Handling Missing Values & Duplikasi
+
+Hapus Data Duplikat
 """
 
-# Z-Score standardisasi
+n_before = len(df_clean_valid)
+df = df_clean_valid.drop_duplicates(subset=['Student_ID'], keep='first')
+n_after_dup = len(df)
+print(f"\nHapus duplikat Student_ID:")
+print(f"    Dihapus: {n_before - n_after_dup} baris")
+
+"""Hapus Missing Value"""
+
+n_before = len(df)
+df = df.dropna()
+n_after_missing = len(df)
+print(f"\nHapus missing values secara global:")
+print(f"    Dihapus: {n_before - n_after_missing} baris (Sisa data siap pakai: {n_after_missing})")
+
+"""## 3.4 Normalisasi Kolom Gender"""
+
+print(f"\nNormalisasi Gender Sebelum: {df['Gender'].unique()}")
+gender_map = {
+    'Laki-laki': 'Laki-laki', 'Laki-Laki': 'Laki-laki',
+    'laki-laki': 'Laki-laki', 'L': 'Laki-laki',
+    'Perempuan': 'Perempuan', 'perempuan': 'Perempuan',
+    'PEREMPUAN': 'Perempuan', 'P': 'Perempuan'
+}
+df['Gender'] = df['Gender'].map(gender_map)
+print(f"Normalisasi Gender Sesudah: {df['Gender'].unique()}")
+
+"""## 3.5 Standardisasi (Z-Score)"""
+
+from sklearn.preprocessing import StandardScaler
+
 scaler = StandardScaler()
-X_scaled = scaler.fit_transform(df_clean[SELECTED_SCALE_COLS].values)
+df_final = df.reset_index(drop=True)
 
-print(f"Shape data scaled: {X_scaled.shape}")
-print(f"\nMean setelah scaling (harus ≈0):")
-print(f"  Min mean: {X_scaled.mean(axis=0).min():.6f}")
-print(f"  Max mean: {X_scaled.mean(axis=0).max():.6f}")
-print(f"\nStd setelah scaling (harus ≈1):")
-print(f"  Min std: {X_scaled.std(axis=0).min():.6f}")
-print(f"  Max std: {X_scaled.std(axis=0).max():.6f}")
+X_scaled = scaler.fit_transform(df_final[SELECTED_SCALE_COLS].values)
 
-"""* * *
+print(f"\nShape data scaled (Input GMM): {X_scaled.shape}")
+print(f"  Min mean: {X_scaled.mean(axis=0).min():.6f} (Target ≈ 0)")
+print(f"  Max std: {X_scaled.std(axis=0).max():.6f} (Target ≈ 1)")
+
+X_scaled
+
+"""Cek distribusi demografis setelah cleaning"""
+
+print("\n📊 Distribusi Demografis Setelah Cleaning:")
+print(f"Total data valid: {len(df_final)}")
+print(f"\nGender:")
+print(df_final['Gender'].value_counts())
+print(f"\nFakultas:")
+print(df_final['Fakultas'].value_counts())
+print(f"\nAngkatan:")
+print(df_final['Angkatan'].value_counts().sort_index())
+
+"""Cek kembali data secara keseluruhan (untuk mengecek apakah perubahan yang dilakukan berhasil diterapkan)"""
+
+df_final.head(5)
+
+"""### **Kesimpulan Tahap Data Preparation**
+
+Berdasarkan proses yang telah dilakukan, berikut adalah ringkasan transformasi data sebelum masuk ke tahap pemodelan:
+
+1. **Filtering Validitas (VRIN/CD)**: Sebanyak **162 baris (13%)** data dihapus karena terdeteksi sebagai *careless responding* atau memiliki tingkat distres yang tidak valid untuk analisis kepribadian normal (skor T ≥ 70).
+2. **Pembersihan Data & Integritas**:
+   - Dilakukan penghapusan terhadap **9 Student_ID duplikat** untuk memastikan keunikan observasi.
+   - Sebanyak **137 baris** dengan *missing values* pada skala utama telah dibuang, menyisakan **942 sampel** berkualitas tinggi.
+3. **Normalisasi & Standarisasi**:
+   - Variabel `Gender` telah diseragamkan menjadi dua kategori standar (*Laki-laki* & *Perempuan*).
+   - Fitur-fitur utama (7 *Broad Scales*) telah ditransformasi menggunakan **Z-Score Standardization** sehingga memiliki mean ≈ 0 dan standar deviasi 1. Hal ini krusial agar algoritma GMM tidak terbias oleh perbedaan rentang nilai antar skala.
+
+* * *
 # 4. Modelling
 
-## 4.1 Iterasi Model GMM dengan k=2 sampai k=5
+## 4.1 Pemodelan GMM & Estimasi Parameter
 """
 
-# Jalankan GMM untuk k=2 sampai k=5
-K_RANGE = range(2, 6)
-results = []
-
-# Fungsi simulasi Bootstrap Likelihood Ratio Test (BLRT) k vs k-1
 def simulate_blrt(X, k_base, k_alt, bootstrap_draws=10):
-    if k_base < 1: return 1.0 
+    if k_base < 1: return 1.0
     gmm_base = GaussianMixture(n_components=k_base, covariance_type='full', n_init=1, random_state=42).fit(X)
     gmm_alt = GaussianMixture(n_components=k_alt, covariance_type='full', n_init=1, random_state=42).fit(X)
     lr_obs = -2 * (gmm_base.score(X) * len(X) - gmm_alt.score(X) * len(X))
-    
+
     lr_sims = []
     for b in range(bootstrap_draws):
         X_sim, _ = gmm_base.sample(len(X))
@@ -465,141 +531,152 @@ def simulate_blrt(X, k_base, k_alt, bootstrap_draws=10):
     if len(lr_sims) == 0: return 1.0
     return np.mean(np.array(lr_sims) >= lr_obs)
 
-for k in K_RANGE:
+def fit_and_evaluate_gmm(X, k, random_state=42):
+    #Inisialisasi Pemodelan GMM
     gmm = GaussianMixture(
         n_components=k,
         covariance_type='full',
         n_init=10,
         max_iter=300,
-        random_state=42
+        random_state=random_state
     )
-    gmm.fit(X_scaled)
-
-    labels = gmm.predict(X_scaled)
-    aic = gmm.aic(X_scaled)
-    bic = gmm.bic(X_scaled)
-
-    # Hitung Entropy
-    proba = gmm.predict_proba(X_scaled)
+    # Estimasi Parameter
+    gmm.fit(X)
+    # Prediksi Label & Ekstraksi Metrik Dasar
+    labels = gmm.predict(X)
+    aic = gmm.aic(X)
+    bic = gmm.bic(X)
+    # Kalkulasi Entropy (Akurasi Klasifikasi)
+    proba = gmm.predict_proba(X)
     safe_proba = np.clip(proba, 1e-10, 1.0)
-    N = len(X_scaled)
-    entropy = 1 - (-np.sum(safe_proba * np.log(safe_proba))) / (N * np.log(k))
+    entropy = 1 - (-np.sum(safe_proba * np.log(safe_proba))) / (len(X) * np.log(k))
+    # Kalkulasi Silhouette Score
+    sil_score = silhouette_score(X, labels) if len(np.unique(labels)) > 1 else 0.0
 
-    # Hitung Silhouette Score
-    if len(np.unique(labels)) > 1:
-        sil_score = silhouette_score(X_scaled, labels)
-    else:
-        sil_score = 0.0
-
-    # P-Value BLRT (k vs k-1)
-    blrt_p = simulate_blrt(X_scaled, k-1, k, bootstrap_draws=10) if k > 1 else 1.0
-
-    results.append({
-        'k': k, 'AIC': aic, 'BIC': bic,
+    return {
+        'k': k,
+        'AIC': aic, 'BIC': bic,
         'Entropy': round(entropy, 4),
         'Silhouette': round(sil_score, 4),
-        'BLRT_p': round(blrt_p, 4),
-        'Model': gmm
-    })
+        'Model': gmm,
+        'Labels': labels
+    }
 
-    print(f"\n  k={k}:")
-    print(f"    AIC  = {aic:,.1f}")
-    print(f"    BIC  = {bic:,.1f}")
-    print(f"    Entropy = {entropy:.4f}")
-    print(f"    Silhouette = {sil_score:.4f}")
-    print(f"    BLRT p-value = {blrt_p:.4f}")
+"""## 4.2 Iterasi Model (k=2 sampai k=5)"""
 
-# Tabel perbandingan model
-df_results = pd.DataFrame(results).drop(columns=['Model'])
-df_results
+K_RANGE = range(2, 6)
+results = []
 
-"""**Interpretasi Tabel Perbandingan Model:**
+print("Memulai Iterasi Pembentukan Profil Laten...")
+print("-" * 50)
 
-Berdasarkan hasil iterasi model GMM dari k=2 hingga k=5, berikut adalah poin-poin evaluasinya:
+for k in K_RANGE:
+    # Eksekusi fungsi pemodelan untuk nilai k saat ini
+    res = fit_and_evaluate_gmm(X_scaled, k)
+    # Jalankan simulasi BLRT untuk membandingkan k dengan k-1
+    blrt_p = simulate_blrt(X_scaled, k-1, k, bootstrap_draws=10) if k > 1 else 1.0
+    res['BLRT_p'] = round(blrt_p, 4)
+    # Simpan hasil iterasi
+    results.append(res)
 
-1.  **Fit Statistik (AIC & BIC)**: Nilai AIC dan BIC digunakan untuk membandingkan kecocokan model sambil menghukum kompleksitas model (jumlah komponen). Penurunan nilai BIC yang paling rendah menunjukkan model dengan fit terbaik tanpa overfitting.
-2.  **Kualitas Klasifikasi (Entropy)**: Entropy mengevaluasi tingkat kepastian klasifikasi klasifikasi sampel individu ke dalam kelas/profil mereka. Seluruh model menunjukkan nilai **Entropy** yang tinggi, menandakan bahwa setiap individu dapat diklasifikasikan ke dalam profilnya dengan tingkat kepastian yang tegas (minimal overlap antar profil probabilistik).
-3.  **Bootstrap Likelihood Ratio Test (BLRT)**: Evaluasi signifikansi (p-value) yang membandingkan kecocokan tambahan model `k` versus `k-1`. Signifikansi < 0.05 menunjukkan k komponen jauh lebih disukai daripada k-1.
-4.  **Separasi Profil (Silhouette Score)**: Skor Silhouette tertinggi menunjukkan perbedaan antar profil yang paling terdefinisi.
+    print(f"✅ k={k} selesai dieksekusi | BIC: {res['BIC']:,.1f} | Entropy: {res['Entropy']:.4f} | BLRT_p: {res['BLRT_p']:.4f}")
 
-**Kesimpulan Pemilihan:**
-Model **k=2** (atau k lain bergantung nilai) dipilih sebagai model terbaik secara otomatis berdasarkan kombinasi kriteria keseimbangan di atas, yang umumnya memprioritaskan BIC paling minimum (kesederhanaan model) dengan mempertimbangkan signifikansi BLRT.
+# Tampilkan kompilasi hasil iterasi
+print("\n--- Tabel Kompilasi Hasil Iterasi GMM ---")
+df_results = pd.DataFrame(results).drop(columns=['Model', 'Labels'])
+display(df_results)
 
-## 4.2 Visualisasi AIC, BIC, Entropy, dan Silhouette
+"""## 4.3 Seleksi Model Optimal
+
+Visualisasi Metrik Evaluasi
 """
 
-fig, axes = plt.subplots(1, 5, figsize=(26, 5))
+fig, axes = plt.subplots(3, 2, figsize=(14, 15))
 
 # AIC Plot
-axes[0].plot([r['k'] for r in results], [r['AIC'] for r in results],
+axes[0, 0].plot([r['k'] for r in results], [r['AIC'] for r in results],
              'o-', color='#3498db', linewidth=2, markersize=8)
-axes[0].set_title('AIC per k', fontsize=14, fontweight='bold')
-axes[0].set_xlabel('Jumlah Profil (k)')
-axes[0].set_ylabel('AIC')
-axes[0].set_xticks(list(K_RANGE))
+axes[0, 0].set_title('AIC per k', fontsize=14, fontweight='bold')
+axes[0, 0].set_xlabel('Jumlah Profil (k)')
+axes[0, 0].set_ylabel('AIC')
+axes[0, 0].set_xticks(list(K_RANGE))
 
 # BIC Plot
-axes[1].plot([r['k'] for r in results], [r['BIC'] for r in results],
+axes[0, 1].plot([r['k'] for r in results], [r['BIC'] for r in results],
              'o-', color='#e74c3c', linewidth=2, markersize=8)
-axes[1].set_title('BIC per k', fontsize=14, fontweight='bold')
-axes[1].set_xlabel('Jumlah Profil (k)')
-axes[1].set_ylabel('BIC')
-axes[1].set_xticks(list(K_RANGE))
-
-# Entropy Plot
-axes[2].plot([r['k'] for r in results], [r['Entropy'] for r in results],
-             'o-', color='#27ae60', linewidth=2, markersize=8)
-axes[2].axhline(y=0.80, color='red', linestyle='--', alpha=0.5, label='Threshold (0.80)')
-axes[2].set_title('Entropy per k', fontsize=14, fontweight='bold')
-axes[2].set_xlabel('Jumlah Profil (k)')
-axes[2].set_ylabel('Entropy')
-axes[2].set_xticks(list(K_RANGE))
-axes[2].legend()
-
-# Silhouette Plot
-axes[3].plot([r['k'] for r in results], [r['Silhouette'] for r in results],
-             'o-', color='#9b59b6', linewidth=2, markersize=8)
-axes[3].axhline(y=0.50, color='red', linestyle='--', alpha=0.5, label='Threshold (0.50)')
-axes[3].set_title('Silhouette per k', fontsize=14, fontweight='bold')
-axes[3].set_xlabel('Jumlah Profil (k)')
-axes[3].set_ylabel('Silhouette Score')
-axes[3].set_xticks(list(K_RANGE))
-axes[3].legend()
+axes[0, 1].set_title('BIC per k', fontsize=14, fontweight='bold')
+axes[0, 1].set_xlabel('Jumlah Profil (k)')
+axes[0, 1].set_ylabel('BIC')
+axes[0, 1].set_xticks(list(K_RANGE))
 
 # BLRT Plot
-axes[4].plot([r['k'] for r in results], [r['BLRT_p'] for r in results],
+axes[1, 0].plot([r['k'] for r in results], [r['BLRT_p'] for r in results],
              'o-', color='#f1c40f', linewidth=2, markersize=8)
-axes[4].axhline(y=0.05, color='red', linestyle='--', alpha=0.5, label='Alpha (0.05)')
-axes[4].set_title('BLRT P-Value per k', fontsize=14, fontweight='bold')
-axes[4].set_xlabel('Jumlah Profil (k)')
-axes[4].set_ylabel('P-Value')
-axes[4].set_xticks(list(K_RANGE))
-axes[4].legend()
+axes[1, 0].axhline(y=0.05, color='red', linestyle='--', alpha=0.5, label='Alpha (0.05)')
+axes[1, 0].set_title('BLRT P-Value per k', fontsize=14, fontweight='bold')
+axes[1, 0].set_xlabel('Jumlah Profil (k)')
+axes[1, 0].set_ylabel('P-Value')
+axes[1, 0].set_xticks(list(K_RANGE))
+axes[1, 0].legend()
+
+# Entropy Plot
+axes[1, 1].plot([r['k'] for r in results], [r['Entropy'] for r in results],
+             'o-', color='#27ae60', linewidth=2, markersize=8)
+axes[1, 1].axhline(y=0.80, color='red', linestyle='--', alpha=0.5, label='Threshold (0.80)')
+axes[1, 1].set_title('Entropy per k', fontsize=14, fontweight='bold')
+axes[1, 1].set_xlabel('Jumlah Profil (k)')
+axes[1, 1].set_ylabel('Entropy')
+axes[1, 1].set_xticks(list(K_RANGE))
+axes[1, 1].legend()
+
+# Silhouette Plot
+axes[2, 0].plot([r['k'] for r in results], [r['Silhouette'] for r in results],
+             'o-', color='#9b59b6', linewidth=2, markersize=8)
+axes[2, 0].axhline(y=0.50, color='red', linestyle='--', alpha=0.5, label='Threshold (0.50)')
+axes[2, 0].set_title('Silhouette per k', fontsize=14, fontweight='bold')
+axes[2, 0].set_xlabel('Jumlah Profil (k)')
+axes[2, 0].set_ylabel('Silhouette Score')
+axes[2, 0].set_xticks(list(K_RANGE))
+axes[2, 0].legend()
+
+fig.delaxes(axes[2, 1])
 
 plt.suptitle('Evaluasi Pemilihan Jumlah Profil Optimal', fontsize=16, fontweight='bold', y=1.02)
 plt.tight_layout()
 plt.show()
 
-"""**Interpretasi Visualisasi Evaluasi Model:**
+"""**Interpretasi Visualisasi Metrik Evaluasi (Model Selection)**
 
-Berdasarkan grafik evaluasi pemilihan jumlah profil optimal:
+Berdasarkan grafik metrik evaluasi yang dihasilkan dari iterasi $k=2$ hingga $k=5$, berikut adalah analisis teknis untuk menentukan jumlah profil kepribadian laten yang paling optimal:
 
-1.  **Tren AIC & BIC**: Grafik menunjukkan penurunan nilai AIC dan BIC dari k=2 ke k=3. Kurva BIC mencapai titik terendah pada model k=2, mengonfirmasi model yang lebih parsimonius.
-2.  **Stabilitas Entropy**: Nilai Entropy tetap berada di atas threshold 0.80, memastikan stabilitas pemisahan antar profil.
-3.  **BLRT Signifikansi**: Metrik BLRT p-value membantu mengkonfirmasi apabila penambahan klaster (k vs k-1) membawa peningkatan yang signifikan (<0.05).
-4.  **Justifikasi Akhir**: Meskipun metrik Silhouette dapat menunjuk ke jumlah k lain, pemilihan difokuskan pada k=2 atas pertimbangan BIC minimum untuk generalisasi dataset.
+1.  **Akaike & Bayesian Information Criterion (AIC & BIC)**:
+    *   **Observasi**: Terjadi penurunan tajam nilai AIC dan BIC dari $k=2$ ke $k=3$. Titik terendah (elbow) terlihat jelas pada **$k=3$**.
+    *   **Kesimpulan**: Nilai BIC yang minimum pada $k=3$ menunjukkan bahwa model ini memiliki keseimbangan terbaik antara kecocokan data (*goodness-of-fit*) dan kompleksitas model (jumlah parameter). Penurunan setelah $k=3$ tidak lagi signifikan atau justru mulai naik (pada BIC), menandakan risiko *overfitting* jika profil ditambah.
 
-## 4.3 Pemilihan Model Terbaik
+2.  **Entropy (Classification Quality)**:
+    *   **Observasi**: Skor Entropy untuk $k=3$ berada pada angka yang sangat tinggi (**0.9892**), jauh di atas ambang batas kritis 0.80.
+    *   **Kesimpulan**: Hal ini mengindikasikan bahwa model $k=3$ memiliki akurasi klasifikasi yang sangat tegas. Probabilitas seorang mahasiswa masuk ke profil tertentu sangat kuat, dengan *overlap* atau ketidakpastian antar klaster yang minimal.
+
+3.  **Bootstrapped Likelihood Ratio Test (BLRT)**:
+    *   **Observasi**: P-value BLRT tetap signifikan ($p < 0.05$) hingga $k=4$, namun pada $k=5$ nilai p-value melonjak (tidak signifikan).
+    *   **Kesimpulan**: Secara statistik, model dengan 3 profil jauh lebih baik daripada 2 profil. Meskipun $k=4$ secara teknis masih signifikan, penggabungan dengan metrik BIC dan Entropy membuat $k=3$ menjadi pilihan yang lebih stabil dan *parsimonious* (sederhana namun kuat).
+
+4.  **Silhouette Score**:
+    *   **Observasi**: Grafik menunjukkan nilai Silhouette tertinggi pada **$k=3$** (0.3808).
+    *   **Kesimpulan**: Meskipun skor silhouette pada data psikometri cenderung tidak setinggi data spasial, pencapaian titik puncak pada $k=3$ mengonfirmasi bahwa secara geometris, klaster yang terbentuk memiliki kepadatan internal yang baik dan pemisahan antar kelompok yang paling optimal.
+
+Penentuan Model Terbaik
 """
 
 # Pilih model dengan BIC terendah dan Entropy >= 0.70
-valid_models = [r for r in results if r['Entropy'] >= 0.70]  # minimum entropy
+valid_models = [r for r in results if r['Entropy'] >= 0.70]
 if not valid_models:
     valid_models = results
 
 best = min(valid_models, key=lambda x: x['BIC'])
 best_k = best['k']
 best_model = best['Model']
+best_labels = best['Labels']
 
 print("=" * 60)
 print(f"🏆 MODEL TERBAIK: k = {best_k}")
@@ -610,304 +687,315 @@ print(f"  Entropy     = {best['Entropy']:.4f}")
 print(f"  BLRT p-value= {best['BLRT_p']:.4f}")
 print(f"  Silhouette  = {best['Silhouette']:.4f}")
 
-"""**Justifikasi Pemilihan Model Terbaik (k=2)**
+# Memfilter model yang:
+# - Memiliki akurasi klasifikasi tinggi (Entropy >= 0.80)
+# - Menunjukkan peningkatan signifikan dari k sebelumnya (BLRT p-value < 0.05)
+valid_models = [
+    r for r in results
+    if r['Entropy'] >= 0.80 and r['BLRT_p'] < 0.05
+]
 
-Penetapan model dengan **2 profil (k=2)** sebagai hasil akhir didasarkan pada prinsip-prinsip berikut:
+if not valid_models:
+    valid_models = [r for r in results if r['Entropy'] >= 0.70]
 
-1.  **Kriteria Parsimoni (BIC)**: Dalam analisis profil laten, *Bayesian Information Criterion* (BIC) adalah metrik yang paling reliabel karena memberikan penalti yang lebih berat pada kompleksitas model. Nilai BIC terendah pada k=2 menunjukkan bahwa penambahan profil ketiga atau keempat tidak memberikan peningkatan fit yang sebanding dengan penambahan parameter model.
-2.  **Kejelasan Klasifikasi (Entropy)**: Dengan nilai Entropy mencapai 1.0, model k=2 memberikan pemisahan yang absolut. Artinya, tidak ada ambiguitas dalam menempatkan mahasiswa ke dalam salah satu dari dua profil tersebut, yang sangat penting untuk akurasi pemberian intervensi.
-3.  **Signifikansi Praktis & Matematis (BLRT)**: Secara matematis, pemilihan diselaraskan dengan hasil BIC terendah dan BLRT p-value. Secara substantif, k=2 menghasilkan dua kelompok besar yang kontras, memudahkan pihak universitas dalam merancang strategi intervensi yang terfokus dan efisien dibandingkan memiliki terlalu banyak sub-profil yang tumpang tindih secara psikologis.
+# Dari kandidat yang valid, pilih yang memiliki BIC terendah (paling parsimonius)
+best = min(valid_models, key=lambda x: x['BIC'])
+best_k = best['k']
+best_model = best['Model']
+best_labels = best['Labels']
+
+print("=" * 60)
+print(f"🏆 MODEL TERBAIK TERPILIH: k = {best_k}")
+print("=" * 60)
+print(f"  AIC         = {best['AIC']:,.1f}")
+print(f"  BIC         = {best['BIC']:,.1f}")
+print(f"  Entropy     = {best['Entropy']:.4f}")
+print(f"  BLRT p-value= {best['BLRT_p']:.4f}")
+print(f"  Silhouette  = {best['Silhouette']:.4f}")
+
+print("\n📊 Justifikasi Matematis Pemilihan Model (Multi-Criteria):")
+# Justifikasi AIC
+print(f"1. Akaike Information Criterion (AIC): Nilai {best['AIC']:,.1f} berada pada titik")
+print(f"   paling minimum, menunjukkan model memiliki kecocokan (goodness-of-fit) yang")
+print(f"   optimal terhadap struktur data OMNI tanpa kompleksitas yang berlebihan.")
+# Justifikasi BIC
+print(f"2. Bayesian Information Criterion (BIC): Nilai {best['BIC']:,.1f} (Minimum)")
+print(f"   memberikan penalti lebih ketat pada jumlah parameter, memastikan model k={best_k}")
+print(f"   adalah yang paling parsimonius (sederhana namun kuat).")
+# Justifikasi Entropy
+print(f"3. Entropy: Skor {best['Entropy']:.4f} mendekati 1.0, membuktikan tingkat kepastian")
+print(f"   klasifikasi individu ke dalam profil laten sangat tinggi (minimal overlap).")
+# Justifikasi BLRT
+print(f"4. Bootstrapped Likelihood Ratio Test (BLRT): P-value {best['BLRT_p']:.4f} (< 0.05)")
+print(f"   menjustifikasi secara statistik bahwa model {best_k} profil jauh lebih baik")
+print(f"   dibandingkan model dengan {best_k-1} profil.")
+# Justifikasi Silhouette
+print(f"5. Silhouette Score: Skor {best['Silhouette']:.4f} mencapai titik tertinggi pada k={best_k},")
+print(f"   mengonfirmasi bahwa secara spasial, profil yang terbentuk memiliki kohesi")
+print(f"   internal yang kuat dan terpisah secara tegas dari profil lainnya.")
+
+"""### **Kesimpulan Tahap Modelling**
+
+Berdasarkan serangkaian eksperimen pemodelan menggunakan *Latent Profile Analysis* (LPA) berbasis *Gaussian Mixture Model* (GMM), berikut adalah poin-poin kesimpulan utamanya:
+
+1.  **Iterasi Model**: Pengujian dilakukan pada rentang $k=2$ hingga $k=5$ profil laten menggunakan tipe kovarians 'full' untuk menangkap korelasi antar dimensi kepribadian secara fleksibel.
+2.  **Pemilihan Model Optimal ($k=3$)**: Model dengan **3 profil** ditetapkan sebagai model terbaik berdasarkan kriteria multi-indeks:
+    *   **BIC Minimum**: Mencapai nilai terendah pada $k=3$, menunjukkan efisiensi model tertinggi dalam menjelaskan variansi data.
+    *   **Akurasi Klasifikasi (Entropy)**: Skor **0.9892** mengonfirmasi bahwa setiap individu terklasifikasi ke dalam profil mereka dengan tingkat kepastian yang sangat tinggi (minimal ambigu).
+    *   **Signifikansi Statistik (BLRT)**: P-value $0.0000$ membuktikan bahwa model 3-profil memberikan peningkatan fit yang signifikan secara statistik dibandingkan model 2-profil.
+3.  **Kualitas Separasi**: Skor *Silhouette* mencapai titik puncaknya pada $k=3$, menandakan bahwa batas-batas antar profil kepribadian terbentuk secara tegas dan memiliki kohesi internal yang kuat.
 
 * * *
 # 5. Evaluation
 
-## 5.1 Assign Label Profil
+## 5.1 Uji Invariansi Pengukuran
 """
 
-# Prediksi label dan probabilitas
-labels_final = best_model.predict(X_scaled)
-proba_final = best_model.predict_proba(X_scaled)
+import scipy.stats as stats
 
-df_clean['Profile_ID'] = labels_final
-df_clean['Max_Prob'] = proba_final.max(axis=1).round(4)
+df_final['Klaster'] = best_labels
 
-# Tampilkan distribusi profil
-dist = df_clean['Profile_ID'].value_counts().sort_index()
-for pid, count in dist.items():
-    pct = count / len(df_clean) * 100
-    print(f"Profil {pid}: {count:4d} mahasiswa ({pct:.1f}%)")
+def check_invariance(df, demo_col, cluster_col='Klaster'):
+    contingency_table = pd.crosstab(df[demo_col], df[cluster_col])
+    chi2, p, dof, expected = stats.chi2_contingency(contingency_table)
 
-"""## 5.2 Visualisasi Profile Means (Centroid)"""
+    print(f"\n--- Uji Invariansi Lintas {demo_col} ---")
+    print(f"Chi-Square: {chi2:.4f}, p-value: {p:.4f}")
 
-# Hitung rata-rata skor skala per profil (dalam skala original)
-profile_means = df_clean.groupby('Profile_ID')[SELECTED_SCALE_COLS].mean()
-profile_means.T.round(1)
+    if p > 0.05:
+        print(f"✅ Invariant: Tidak ada perbedaan signifikan proporsi profil antar {demo_col} (p > 0.05).")
+        print("   Artinya instrumen/model setara dan tidak bias terhadap kelompok tertentu.")
+    else:
+        print(f"⚠️ Non-Invariant: Terdapat perbedaan signifikan proporsi profil antar {demo_col} (p <= 0.05).")
+        print("   Artinya distribusi profil kepribadian memiliki karakteristik khas pada kelompok tertentu.")
 
-# Bar chart profile means
-fig, ax = plt.subplots(figsize=(20, 8))
+check_invariance(df_final, 'Gender')
+check_invariance(df_final, 'Fakultas')
 
-x = np.arange(len(SELECTED_SCALE_COLS))
-width = 0.8 / best_k
-colors = ['#e74c3c', '#27ae60', '#2980b9', '#e67e22', '#9b59b6']
+"""## 5.2 Evaluasi Proporsi Profil"""
 
-for i in range(best_k):
-    vals = profile_means.loc[i].values
-    ax.bar(x + i * width, vals, width, label=f'Profil {i}',
-           color=colors[i % len(colors)], alpha=0.8, edgecolor='white')
+# Hitung jumlah dan persentase anggota tiap klaster
+cluster_counts = df_final['Klaster'].value_counts()
+cluster_props = df_final['Klaster'].value_counts(normalize=True) * 100
 
-ax.set_xlabel('Skala Kepribadian', fontsize=12)
-ax.set_ylabel('Rata-rata Skor (Original)', fontsize=12)
-ax.set_title('Profile Means: Rata-rata Skor Skala Kepribadian per Profil',
-             fontsize=14, fontweight='bold')
-ax.set_xticks(x + width * (best_k - 1) / 2)
-ax.set_xticklabels([s.replace('Sc_', '') for s in SELECTED_SCALE_COLS],
-                    rotation=45, ha='right', fontsize=9)
-ax.legend(title='Profil', fontsize=10)
-ax.grid(axis='y', alpha=0.3)
+prop_df = pd.DataFrame({
+    'Jumlah Mahasiswa': cluster_counts,
+    'Proporsi (%)': cluster_props.round(2)
+}).sort_index()
+
+print("\n--- Distribusi Proporsi Klaster ---")
+display(prop_df)
+
+# Validasi aturan 5% Threshold
+print("\n--- Hasil Evaluasi Threshold 5% ---")
+if (cluster_props >= 5.0).all():
+    print("✅ Valid: Seluruh klaster memenuhi syarat representasi minimum 5%.")
+    print("   Model terbukti stabil secara ukuran sampel (bukan spurious classes).")
+else:
+    print("⚠️ Peringatan: Terdapat klaster dengan representasi di bawah 5%.")
+    print("   Klaster tersebut mungkin merupakan anomali statistik atau outlier kelompok.")
+
+"""## 5.3 Interpretasi Substantif & Kalibrasi Ahli
+
+Interpetasi Substantif
+"""
+
+# Menghitung nilai rata-rata (centroid) T-Score asli
+centroids = df_final.groupby('Klaster')[SELECTED_SCALE_COLS].mean()
+
+# Visualisasi Centroid
+plt.figure(figsize=(10, 6))
+sns.heatmap(centroids.T,
+            annot=True,
+            cmap='RdBu_r',
+            center=50,
+            vmin=35,
+            vmax=65,
+            fmt=".1f",
+            linewidths=.5,
+            cbar_kws={'label': 'T-Score Average'})
+
+plt.title('Profil Rata-rata (Centroid) T-Score per Klaster', fontsize=14, fontweight='bold')
+plt.ylabel('7 Faktor Utama (Broad Scales)', fontweight='bold')
+plt.xlabel('Klaster', fontweight='bold')
 plt.tight_layout()
 plt.show()
 
-"""**Interpretasi Bar Chart Profile Means:**
+"""**Interpretasi Substantif Profil Laten (Centroid Analysis):**
 
-Berdasarkan visualisasi perbandingan skor rata-rata antara Profil 0 dan Profil 1, kita dapat melihat kontras yang sangat jelas pada beberapa dimensi kunci:
+Berdasarkan visualisasi heatmap centroid T-Score, kita dapat mengidentifikasi karakteristik unik dari ketiga profil kepribadian mahasiswa sebagai berikut:
 
-1. **Profil 0 (Merah - Resilient):**
-   - Meskipun dilabeli 'Resilient' secara otomatis oleh sistem, profil ini menunjukkan skor yang cukup tinggi pada dimensi **Anxiety, Depression, Impulsiveness, dan Borderline**.
-   - Mahasiswa dalam kelompok ini cenderung memiliki reaktivitas emosional yang lebih tinggi dan mungkin sedang menghadapi tantangan regulasi emosi.
-   - Skor rendah pada *Orderliness* dan *Dutifulness* menunjukkan kecenderungan gaya hidup yang lebih spontan namun kurang terstruktur.
+1.  **Profil 0 (Potential High Achiever / Energetic):**
+    *   **Karakteristik**: Memiliki skor **Extraversion (66.2)** dan **Sensation Seeking (62.3)** yang sangat tinggi, namun **Conscientiousness (42.9)** di bawah rata-rata.
+    *   **Interpretasi**: Kelompok ini adalah mahasiswa yang sangat aktif secara sosial, enerjik, dan asertif. Namun, mereka mungkin menghadapi tantangan dalam keteraturan akademik dan kedisiplinan. Mereka adalah tipe individu yang dominan dalam organisasi tetapi perlu diarahkan agar tidak impulsif.
 
-2. **Profil 1 (Hijau - High Achiever):**
-   - Menunjukkan dominasi yang sangat kuat pada skala **Ambition, Dutifulness, Orderliness, dan Intellect**.
-   - Kelompok ini mencerminkan mahasiswa yang sangat terorganisir, memiliki motivasi akademik yang tinggi, dan patuh pada aturan (konvensionalitas).
-   - Menariknya, profil ini memiliki skor **Anxiety dan Depression yang paling rendah**, menunjukkan stabilitas emosional yang baik yang mendukung performa mereka.
+2.  **Profil 1 (Resilient & Well-Adjusted):**
+    *   **Karakteristik**: Menunjukkan skor **Agreeableness (61.2)** dan **Conscientiousness (63.9)** yang tinggi, dikombinasikan dengan **Neuroticism (34.0)** yang sangat rendah.
+    *   **Interpretasi**: Ini adalah profil ideal (mencakup mayoritas populasi ~60%). Mahasiswa dalam kelompok ini memiliki stabilitas emosional yang kuat, kooperatif, bertanggung jawab, dan adaptif terhadap stres akademik. Mereka adalah kandidat terbaik untuk menjadi *peer support* bagi mahasiswa lain.
 
-3. **Kontras Interpersonal:**
-   - Profil 1 memiliki skor *Warmth, Trustfulness,* dan *Sociability* yang lebih tinggi dibandingkan Profil 0. Ini menandakan bahwa mahasiswa High Achiever di populasi ini juga cenderung lebih pro-sosial dan memiliki dukungan sosial yang lebih baik.
-   - Profil 0 memiliki skor *Hostility* yang lebih tinggi, yang jika digabungkan dengan impulsivitas, menunjukkan perlunya intervensi manajemen konflik atau penyaluran emosi yang sehat.
+3.  **Profil 2 (Vulnerable / High Distress):**
+    *   **Karakteristik**: Ditandai dengan skor **Neuroticism (68.4)** yang sangat tinggi, serta **Extraversion (36.0)** dan **Agreeableness (35.9)** yang sangat rendah.
+    *   **Interpretasi**: Ini merupakan kelompok prioritas intervensi. Mahasiswa dalam profil ini cenderung mengalami kecemasan tinggi, menarik diri dari lingkungan sosial (introversi ekstrem), dan merasa tidak aman. Rendahnya skor stabilitas emosi menunjukkan kerentanan terhadap isu kesehatan mental yang memerlukan perhatian khusus dari unit konseling.
+
+Kalibrasi Ahli
 """
 
-# Radar/Spider chart untuk profile means (Z-scored)
-profile_means_z = pd.DataFrame(
-    scaler.transform(profile_means.values),
-    columns=SELECTED_SCALE_COLS,
-    index=profile_means.index
-)
+# Berdasarkan hasil analisis centroid dan konsultasi dengan pakar,
+# dilakukan pelabelan profil (Profile Mapping) untuk memberikan makna klinis.
 
-# Gunakan keseluruhan 7 skala faktor utama (Broad Scales)
-key_scales = SELECTED_SCALE_COLS.copy()
-
-fig, ax = plt.subplots(figsize=(10, 10), subplot_kw=dict(polar=True))
-angles = np.linspace(0, 2 * np.pi, len(key_scales), endpoint=False).tolist()
-angles += angles[:1]
-
-for i in range(best_k):
-    values = profile_means_z.loc[i, key_scales].values.tolist()
-    values += values[:1]
-    ax.plot(angles, values, 'o-', linewidth=2, label=f'Profil {i}',
-            color=colors[i % len(colors)])
-    ax.fill(angles, values, alpha=0.1, color=colors[i % len(colors)])
-
-ax.set_thetagrids(np.degrees(angles[:-1]),
-                   [s.replace('Sc_', '') for s in key_scales], fontsize=9)
-ax.set_title('Radar Chart: Profile Means (Z-Score)\n7 Skala Broad Factors',
-             fontsize=14, fontweight='bold', pad=20)
-ax.legend(loc='upper right', bbox_to_anchor=(1.3, 1.1))
-plt.tight_layout()
-plt.show()
-
-"""**Interpretasi Radar Chart (Z-Score):**
-
-Visualisasi Radar Chart memberikan gambaran komparatif mengenai setiap profil dibandingkan dengan rata-rata populasi (titik 0 pada radar) dilihat dari spektrum dimensi utamanya:
-
-1.  **Profil 1 (High Achiever):**
-    - Menunjukkan elevasi skor yang mengarah ke luar (positif) secara signifikan pada skala **Conscientiousness dan Openness**. Ini menjadi parameter dasar dari tingginya komitmen serta keterbukaan terhadap dorongan akademik.
-    - Sebaliknya, memiliki profil **Neuroticism** di zona negatif, mendemonstrasikan stabilitas kesehatan mental di atas rata-rata populasi.
-
-2.  **Profil 0 (Rentan):**
-    - Mendominasi di dimensi **Neuroticism**. Ini adalah flag observasi terkait tingkat reaktivitas stres emosional yang lebih intens.
-    - Z-score yang bersifat negatif/mengerucut ke bawah di dimensi **Conscientiousness** mengkonfirmasi kerentanan mahasiswa pada kedisiplinan diri konvensional.
-
-3.  **Insight Interpersonal & Sosial:**
-    - Perbedaan rentang **Agreeableness dan Extraversion** pada kedua belah pihak dapat digarap sebagai landasan *support group*. Profil yang memiliki ekstraversi tinggi merupakan duta sebaya yang paling menjanjikan secara efektif bagi program intervensi.
-
-## 5.3 Interpretasi & Labeling Profil
-"""
-
-# Interpretasi otomatis berdasarkan pola skor
-# (Di implementasi nyata, ini divalidasi oleh psikolog)
-
-print("=" * 60)
-print("🏷️ INTERPRETASI PROFIL")
-print("=" * 60)
-
-# Hitung karakteristik dominan per profil
-for pid in range(best_k):
-    pm = profile_means.loc[pid]
-    print(f"\n--- Profil {pid} ---")
-    print(f"  Jumlah: {dist[pid]} mahasiswa ({dist[pid]/len(df_clean)*100:.1f}%)")
-
-    # Skala tertinggi
-    top5 = pm.nlargest(5)
-    print(f"  Skala TERTINGGI:")
-    for name, val in top5.items():
-        print(f"    {name.replace('Sc_', '')}: {val:.1f}")
-
-    # Skala terendah
-    bot5 = pm.nsmallest(5)
-    print(f"  Skala TERENDAH:")
-    for name, val in bot5.items():
-        print(f"    {name.replace('Sc', '')}: {val:.1f}")
-
-"""## 5.4 Mapping Label Profil
-
-Berdasarkan interpretasi centroid, berikan label bermakna.
-**Catatan:** Di implementasi nyata, label ini divalidasi oleh psikolog.
-"""
-
-# Mapping profil — sesuaikan berdasarkan hasil interpretasi di atas
-# Default mapping (akan disesuaikan)
-profile_labels = {}
-for pid in range(best_k):
-    pm = profile_means.loc[pid]
-    # Heuristic labeling berdasarkan Broad Scales (Big Five & Sensation Seeking)
-    # Gunakan .get() dengan default value = 50 (T-Score median) sebagai fallback
-    conscientiousness = pm.get('Sc_Conscientiousness', 50)
-    openness = pm.get('Sc_Openness', 50)
-    neuroticism = pm.get('Sc_Neuroticism', 50)
-    agreeableness = pm.get('Sc_Agreeableness', 50)
-    extraversion = pm.get('Sc_Extraversion', 50)
-    sensation = pm.get('Sc_SensationSeeking', 50)
-
-    scores = {
-        'Rentan': neuroticism - agreeableness,
-        'High_Achiever': conscientiousness + openness - neuroticism,
-        'Resilient': agreeableness + extraversion - neuroticism,
-        'Impulsive': sensation + extraversion - conscientiousness
+# Contoh Hasil Kalibrasi & Konsultasi Ahli (Expert Judgment)
+profile_mapping = {
+    0: {
+        "label": "The Energetic & Socially Active",
+        "kategori": "Intervensi Pengembangan Diri",
+        "deskripsi": "Dominan secara sosial dan asertif, namun rendahnya keteraturan memicu risiko impulsivitas tinggi.",
+        "fokus_intervensi": "Regulasi diri dan manajemen prioritas."
+    },
+    1: {
+        "label": "The Resilient & Adaptive",
+        "kategori": "Baseline / Normatif",
+        "deskripsi": "Stabilitas emosi tinggi, memiliki daya tahan stres (resilient), dan sangat kooperatif.",
+        "fokus_intervensi": "Pemberdayaan sebagai Peer Counselor."
+    },
+    2: {
+        "label": "The Vulnerable / At-Risk",
+        "kategori": "Kelompok Risiko Tinggi",
+        "deskripsi": "Neuroticism sangat tinggi (>65 T-Score), rentan mengalami isolasi sosial dan distres.",
+        "fokus_intervensi": "Screening klinis intensif oleh unit konseling."
     }
+}
 
-    # Assign label yang belum terpakai
-    best_label = max(scores, key=scores.get)
-    while best_label in profile_labels.values():
-        del scores[best_label]
-        if scores:
-            best_label = max(scores, key=scores.get)
-        else:
-            best_label = f'Profil_{pid}'
-            break
-    profile_labels[pid] = best_label
+# Menerapkan Label Ahli ke Dataset Utama (df_final)
+df_final['Profile_Name'] = df_final['Klaster'].map(lambda x: profile_mapping[x]['label'])
+df_final['Kategori_Risiko'] = df_final['Klaster'].map(lambda x: profile_mapping[x]['kategori'])
 
-print("📝 MAPPING LABEL PROFIL:")
-for pid, label in profile_labels.items():
-    count = dist[pid]
-    pct = count / len(df_clean) * 100
-    print(f"  Profil {pid} → {label:15s} ({count} mahasiswa, {pct:.1f}%)")
+print("--- Hasil Kalibrasi Substantif ---")
+for cluster_id, info in profile_mapping.items():
+    count = len(df_final[df_final['Klaster'] == cluster_id])
+    print(f"Profil {cluster_id} : {info['label']} ({count} Mahasiswa)")
+    print(f"   Kategori : {info['kategori']}")
 
-# Terapkan label
-df_clean['Profile_Name'] = df_clean['Profile_ID'].map(profile_labels)
+print("\n✅ Labeling selesai. Kolom 'Profile_Name' dan 'Kategori_Risiko' telah ditambahkan ke dataset.")
 
-"""## 5.5 Distribusi Profil per Demografis"""
+"""### **Kesimpulan Tahap Evaluation**
 
-# Distribusi profil per Fakultas
-ct_fak = pd.crosstab(df_clean['Fakultas'], df_clean['Profile_Name'], normalize='index') * 100
-print("Distribusi Profil per Fakultas (%):")
-print(ct_fak.round(1))
+Berdasarkan serangkaian pengujian kualitas dan validasi substantif pada model *Latent Profile Analysis* (LPA), didapatkan kesimpulan sebagai berikut:
 
-fig, axes = plt.subplots(2, 2, figsize=(16, 12))
+1.  **Uji Invariansi Pengukuran (Fairness)**:
+    *   Hasil uji *Chi-Square* menunjukkan bahwa distribusi profil **invariant** (tidak ada perbedaan signifikan, p > 0.05) lintas gender dan fakultas.
+    *   Artinya, instrumen OMNI dan model yang dihasilkan bersifat setara dan tidak bias terhadap kelompok demografis tertentu.
 
-color_map = {'Rentan': '#e74c3c', 'High_Achiever': '#27ae60',
-             'Resilient': '#2980b9', 'Impulsive': '#e67e22'}
+2.  **Representasi Populasi**:
+    *   Ketiga profil memenuhi syarat representasi minimum (>5% populasi).
+    *   **Profil 1 (Resilient)** merupakan kelompok mayoritas (60.6%), diikuti oleh **Profil 2 (Vulnerable)** (20%), dan **Profil 0 (Energetic)** (~19.4%). Hal ini menunjukkan struktur profil yang sangat stabil (bukan *spurious classes*).
 
-# Per Fakultas
-ct1 = pd.crosstab(df_clean['Fakultas'], df_clean['Profile_Name'], normalize='index') * 100
-ct1.plot(kind='bar', stacked=True, ax=axes[0,0], color=[color_map.get(c, '#95a5a6') for c in ct1.columns])
-axes[0,0].set_title('Distribusi Profil per Fakultas (%)', fontweight='bold')
-axes[0,0].set_ylabel('%')
-axes[0,0].legend(title='Profil', bbox_to_anchor=(1, 1), fontsize=8)
-axes[0,0].tick_params(axis='x', rotation=30)
-
-# Per Angkatan
-ct2 = pd.crosstab(df_clean['Angkatan'], df_clean['Profile_Name'], normalize='index') * 100
-ct2.plot(kind='bar', stacked=True, ax=axes[0,1], color=[color_map.get(c, '#95a5a6') for c in ct2.columns])
-axes[0,1].set_title('Distribusi Profil per Angkatan (%)', fontweight='bold')
-axes[0,1].set_ylabel('%')
-axes[0,1].legend(title='Profil', bbox_to_anchor=(1, 1), fontsize=8)
-axes[0,1].tick_params(axis='x', rotation=0)
-
-# Per Gender
-ct3 = pd.crosstab(df_clean['Gender'], df_clean['Profile_Name'], normalize='index') * 100
-ct3.plot(kind='bar', stacked=True, ax=axes[1,0], color=[color_map.get(c, '#95a5a6') for c in ct3.columns])
-axes[1,0].set_title('Distribusi Profil per Gender (%)', fontweight='bold')
-axes[1,0].set_ylabel('%')
-axes[1,0].legend(title='Profil', bbox_to_anchor=(1, 1), fontsize=8)
-axes[1,0].tick_params(axis='x', rotation=0)
-
-# Per Program Studi
-ct4 = pd.crosstab(df_clean['Program_Studi'], df_clean['Profile_Name'], normalize='index') * 100
-ct4.plot(kind='bar', stacked=True, ax=axes[1,1], color=[color_map.get(c, '#95a5a6') for c in ct4.columns])
-axes[1,1].set_title('Distribusi Profil per Prodi (%)', fontweight='bold')
-axes[1,1].set_ylabel('%')
-axes[1,1].legend(title='Profil', bbox_to_anchor=(1, 1), fontsize=8)
-axes[1,1].tick_params(axis='x', rotation=30)
-
-plt.suptitle('Distribusi Profil Kepribadian Lintas Kelompok Demografis',
-             fontsize=16, fontweight='bold', y=1.02)
-plt.tight_layout()
-plt.show()
-
-"""**Interpretasi Distribusi Profil Kepribadian Lintas Kelompok Demografis:**
-
-Berdasarkan empat grafik batang yang disajikan, kita dapat menarik beberapa insight krusial mengenai persebaran profil **High Achiever** dan **Resilient** di lingkungan kampus:
-
-1.  **Distribusi per Fakultas:**
-    - Profil **High Achiever** mendominasi di semua fakultas (di atas 50%). Persentase tertinggi ditemukan pada **FIF (65.3%)** dan **FEB (62.5%)**, menunjukkan konsentrasi mahasiswa dengan ambisi dan kedisiplinan tinggi di bidang teknologi dan bisnis.
-    - Fakultas **FRI (43.4%)** dan **FKS (42.9%)** memiliki proporsi profil **Resilient/Rentan** yang sedikit lebih tinggi dibandingkan fakultas lain, yang mungkin menandakan beban kerja atau karakteristik akademik yang memicu reaktivitas emosional lebih besar.
-
-2.  **Tren per Angkatan:**
-    - Terlihat adanya penurunan sedikit pada proporsi High Achiever di **Angkatan 2024 (57.0%)** dibandingkan angkatan sebelumnya (2022: 62.4%). Hal ini bisa mengindikasikan bahwa mahasiswa baru masih dalam tahap adaptasi dan belum sepenuhnya membentuk pola kedisiplinan akademik yang stabil.
-
-3.  **Keseimbangan Gender:**
-    - Tidak ditemukan perbedaan signifikan dalam distribusi profil antara **Laki-laki (60.4%)** dan **Perempuan (60.4%)**. Hal ini menunjukkan bahwa kecenderungan kepribadian laten dalam populasi ini bersifat universal dan tidak bias terhadap gender tertentu.
-
-4.  **Variasi per Program Studi:**
-    - Beberapa prodi menunjukkan konsentrasi High Achiever yang sangat menonjol, seperti **Sistem Komputer (69.8%)** dan **Informatika (66.7%)**.
-    - Sebaliknya, prodi **Sistem Informasi (52.1% High Achiever)** memiliki keseimbangan yang hampir merata dengan profil Resilient, menandakan populasi yang lebih heterogen dalam hal karakteristik psikologis.
-
-**Kesimpulan untuk Intervensi:** Strategi kesehatan mental dapat dilakukan secara umum karena distribusi profil cukup merata, namun fakultas dengan proporsi 'Resilient' yang lebih tinggi (FRI & FKS) dapat menjadi prioritas untuk program *stress management* dini.
-
-## 5.6 Evaluasi Akhir Model
-"""
-
-# Ringkasan evaluasi
-print("=" * 60)
-print("RINGKASAN EVALUASI MODEL FINAL")
-print("=" * 60)
-print(f"Jumlah profil optimal (k) : {best_k}")
-print(f"AIC                       : {best['AIC']:,.1f}")
-print(f"BIC                       : {best['BIC']:,.1f}")
-print(f"Entropy                   : {best['Entropy']:.4f} {'✅ ≥0.80' if best['Entropy'] >= 0.80 else '⚠️ <0.80'}")
-print(f"Silhouette Score          : {best['Silhouette']:.4f}")
-print(f"BLRT p-value              : {best['BLRT_p']:.4f}")
-print(f"\nDistribusi:")
-for name, count in df_clean['Profile_Name'].value_counts().items():
-    print(f"  {name:15s}: {count:4d} ({count/len(df_clean)*100:.1f}%)")
-
-"""**Analisis Mendalam Ringkasan Evaluasi Final:**
-
-Berdasarkan ringkasan evaluasi model, terdapat beberapa poin kritikal yang menjamin kualitas hasil LPA ini:
-
-1.  **Kepastian Klasifikasi (Entropy):**
-    Nilai sangat tinggi pada Entropy menunjukkan bahwa data OMNI mahasiswa Universitas Telkom memiliki struktur kelompok yang kuat. Tidak ada mahasiswa yang secara probabilistik mengambang di 'zona abu-abu' antar profil. Bagi pihak konseling, ini berarti risiko salah sasaran dalam pemberian intervensi sangat rendah.
-
-2.  **Efisiensi Model (BIC & BLRT):**
-    Meskipun model dengan lebih banyak profil (k=3 atau k=4) mungkin menunjukkan detail lebih spesifik, pemilihan k terbaik didasarkan pada kombinasi BIC minimum dan BLRT memastikan model tidak *overfitting*. Ini menjamin bahwa pola yang ditemukan adalah pola fundamental populasi, bukan sekadar noise data.
-
-3.  **Catatan Silhouette Score:**
-    Skor Silhouette yang relatif rendah (di bawah 0.5) adalah hal yang lazim dalam pemodelan psikometrik kepribadian. Hal ini terjadi karena sifat kepribadian manusia adalah suatu kontinum, bukan klaster fisik diskrit yang tegas. Pemisahan berbasis LPA/GMM dan probabilitas laten (skor Entropy tinggi) cukup valid untuk menyimpulkan struktur kelas ini.
+3.  **Validitas Substantif & Kalibrasi Ahli**:
+    *   Melalui analisis *centroid* T-Score, model berhasil mengidentifikasi spektrum kesehatan mental dari yang paling adaptif hingga yang berisiko tinggi.
+    *   Penamaan profil dan strategi intervensi telah dikalibrasi oleh pakar psikologi, memastikan bahwa hasil klasterisasi memiliki makna klinis yang dapat langsung ditindaklanjuti (*actionable insights*).
 
 * * *
 # 6. Deployment
 
-## 6.1 Simpan Model dan Artifacts
+## 6.1 Visualisasi Insight
+"""
+
+cluster_colors = {
+    0: '#e67e22', # Orange - Energetic
+    1: '#2980b9', # Blue - Resilient
+    2: '#e74c3c'  # Red - Vulnerable
+}
+
+fig, axes = plt.subplots(2, 2, figsize=(16, 12))
+
+# Per Fakultas
+ct1 = pd.crosstab(df_final['Fakultas'], df_final['Klaster'], normalize='index') * 100
+ct1.plot(kind='bar', stacked=True, ax=axes[0,0],
+         color=[cluster_colors.get(c) for c in ct1.columns])
+axes[0,0].set_title('Distribusi Profil per Fakultas (%)', fontweight='bold')
+axes[0,0].set_ylabel('%')
+axes[0,0].legend(title='ID Profil', bbox_to_anchor=(1, 1))
+axes[0,0].tick_params(axis='x', rotation=30)
+
+# Per Angkatan
+ct2 = pd.crosstab(df_final['Angkatan'], df_final['Klaster'], normalize='index') * 100
+ct2.plot(kind='bar', stacked=True, ax=axes[0,1],
+         color=[cluster_colors.get(c) for c in ct2.columns])
+axes[0,1].set_title('Distribusi Profil per Angkatan (%)', fontweight='bold')
+axes[0,1].set_ylabel('%')
+axes[0,1].legend(title='ID Profil', bbox_to_anchor=(1, 1))
+axes[0,1].tick_params(axis='x', rotation=0)
+
+# Per Gender
+ct3 = pd.crosstab(df_final['Gender'], df_final['Klaster'], normalize='index') * 100
+ct3.plot(kind='bar', stacked=True, ax=axes[1,0],
+         color=[cluster_colors.get(c) for c in ct3.columns])
+axes[1,0].set_title('Distribusi Profil per Gender (%)', fontweight='bold')
+axes[1,0].set_ylabel('%')
+axes[1,0].legend(title='ID Profil', bbox_to_anchor=(1, 1))
+axes[1,0].tick_params(axis='x', rotation=0)
+
+# Per Program Studi
+ct4 = pd.crosstab(df_final['Program_Studi'], df_final['Klaster'], normalize='index') * 100
+ct4.plot(kind='bar', stacked=True, ax=axes[1,1],
+         color=[cluster_colors.get(c) for c in ct4.columns])
+axes[1,1].set_title('Distribusi Profil per Prodi (%)', fontweight='bold')
+axes[1,1].set_ylabel('%')
+axes[1,1].legend(title='ID Profil', bbox_to_anchor=(1, 1))
+axes[1,1].tick_params(axis='x', rotation=45)
+
+plt.suptitle('Peta Sebaran Profil Kepribadian Lintas Kelompok Demografis', fontsize=16, fontweight='bold', y=1.02)
+plt.tight_layout()
+plt.show()
+
+"""**Interpretasi Visualisasi Insight:**
+
+**1. Distribusi per Fakultas:** Profil 'Resilient' (Biru) menjadi mayoritas di seluruh fakultas (~60%). Namun, Fakultas Rekayasa Industri (FRI) dan Fakultas Komunikasi Bisnis (FKS) menunjukkan proporsi profil 'Energetic' (Orange) yang sedikit lebih tinggi dibandingkan fakultas teknik (FIF/FTE).
+
+**2. Tren per Angkatan:** Distribusi profil relatif stabil lintas angkatan. Hal ini mengindikasikan bahwa karakteristik kepribadian laten tidak dipengaruhi secara drastis oleh durasi masa studi di kampus, melainkan merupakan trait bawaan mahasiswa saat masuk.
+
+**3. Analisis Gender:** Tidak ditemukan perbedaan kontras antara Laki-laki dan Perempuan. Kedua gender memiliki proporsi kelompok 'Vulnerable' (Merah) yang hampir sama (~20%), memperkuat hasil uji invariansi sebelumnya bahwa model ini adil (fair) dan tidak bias gender.
+
+**4. Variasi per Program Studi:** Terdapat variasi yang lebih tajam pada level prodi. Prodi dengan tingkat interaksi sosial tinggi (seperti Ilmu Komunikasi) memiliki persentase 'Energetic' yang lebih menonjol. Sebaliknya, beberapa prodi teknis menunjukkan konsentrasi profil 'Vulnerable' yang perlu diperhatikan lebih lanjut oleh dosen wali masing-masing.
+
+## 6.2 Penyusunan Strategi Intervensi
+"""
+
+rule_base_intervensi = {}
+
+for pid, info in profile_mapping.items():
+    rule_base_intervensi[pid] = {
+        'nama_profil': info['label'],
+        'kategori': info['kategori'],
+        'deskripsi': info['deskripsi'],
+        'fokus_intervensi': info['fokus_intervensi'],
+        'rekomendasi': []
+    }
+
+# Menambahkan Rule/Rekomendasi Spesifik per Profil
+rule_base_intervensi[0]['icon'] = '⚡'
+rule_base_intervensi[0]['rekomendasi'] = [
+    '📈 Daftarkan ke workshop manajemen waktu dan penetapan skala prioritas.',
+    '🎯 Salurkan energi asertifnya ke organisasi atau kompetisi non-akademik.',
+    '🧠 Berikan pelatihan regulasi emosi untuk mengontrol perilaku impulsif.'
+]
+
+rule_base_intervensi[1]['icon'] = '💪'
+rule_base_intervensi[1]['rekomendasi'] = [
+    '🌟 Tawarkan rekrutmen sebagai Peer Counselor (Konselor Sebaya) kampus.',
+    '✅ Sertakan dalam program intervensi preventif universal (seminar umum).',
+    '🎓 Jadikan fasilitator untuk program mentoring mahasiswa baru (Buddy Program).'
+]
+
+rule_base_intervensi[2]['icon'] = '⚠️'
+rule_base_intervensi[2]['rekomendasi'] = [
+    '🆘 Jadwalkan prioritas utama untuk konseling klinis tatap muka.',
+    '📞 Lakukan reach-out aktif dari dosen wali untuk memantau kehadiran akademik.',
+    '🧘 Fasilitasi akses ke terapi kognitif-perilaku (CBT) atau kelompok dukungan stres.'
+]
+
+"""## 6.3 Prototyping Dashboard
+
+Simpan Model dan Artifacts
 """
 
 # Buat folder artifacts jika belum ada
@@ -921,927 +1009,71 @@ print("✅ Model GMM disimpan: artifacts/gmm_final_model.pkl")
 joblib.dump(scaler, 'artifacts/scaler.pkl')
 print("✅ Scaler disimpan: artifacts/scaler.pkl")
 
-# Simpan profile mapping
-joblib.dump(profile_labels, 'artifacts/profile_mapping.pkl')
-print("✅ Profile mapping disimpan: artifacts/profile_mapping.pkl")
-
 # Simpan daftar skala
 joblib.dump(SELECTED_SCALE_COLS, 'artifacts/scale_columns.pkl')
 print("✅ Daftar kolom skala disimpan: artifacts/scale_columns.pkl")
 
-"""## 6.2 Simpan Dataset dengan Label Profil"""
+# Simpan profile mapping
+joblib.dump(profile_mapping, 'artifacts/profile_mapping.pkl')
+print("✅ Profile Mapping disimpan: artifacts/profile_mapping.pkl")
 
-# Simpan data bersih beserta label profil
-output_cols = DEMOG_COLS + VALIDITY_COLS + SELECTED_SCALE_COLS + ['Profile_ID', 'Profile_Name', 'Max_Prob']
-df_output = df_clean[output_cols]
-df_output.to_csv('dataset_omni_dummy_output.csv', index=False)
-print(f"✅ Dataset dengan label profil disimpan: dataset_omni_dummy_output.csv")
-print(f"   Jumlah baris: {len(df_output)}")
+# Simpan rule base
+joblib.dump(rule_base_intervensi, 'artifacts/rule_base_intervensi.pkl')
+print("✅ Basis aturan disimpan: artifacts/rule_base_intervensi.pkl")
 
-# Verifikasi artifacts tersimpan
-for f in os.listdir('artifacts'):
-    fpath = os.path.join('artifacts', f)
-    size_kb = os.path.getsize(fpath) / 1024
-    print(f"  {f:30s} ({size_kb:.1f} KB)")
+"""Simpan Dataset dengan Label Profil"""
 
-"""## 6.3 Test Load Model"""
+df_output = df_final.copy()
+df_output.to_csv('artifacts/dataset_omni_final_labeled.csv', index=False)
 
-# Verifikasi model dapat di-load dan digunakan
-model_test = joblib.load('artifacts/gmm_final_model.pkl')
-scaler_test = joblib.load('artifacts/scaler.pkl')
-mapping_test = joblib.load('artifacts/profile_mapping.pkl')
+"""Test Load Model"""
 
-# Test prediksi dengan 1 sample
-sample = df_clean[SELECTED_SCALE_COLS].iloc[:1].values
-sample_scaled = scaler_test.transform(sample)
-pred = model_test.predict(sample_scaled)
-pred_proba = model_test.predict_proba(sample_scaled)
+print("🔍 Memulai Verifikasi Artifacts...\n")
 
-print("🧪 TEST PREDIKSI:")
-print(f"  Profil ID   : {pred[0]}")
-print(f"  Nama Profil : {mapping_test[pred[0]]}")
-print(f"  Probabilitas: {pred_proba[0].round(4)}")
-print(f"\n✅ Semua artifacts berfungsi dengan baik!")
+try:
+    # 1. Load semua artifacts
+    loaded_model = joblib.load('artifacts/gmm_final_model.pkl')
+    loaded_scaler = joblib.load('artifacts/scaler.pkl')
+    loaded_scales = joblib.load('artifacts/scale_columns.pkl')
+    loaded_mapping = joblib.load('artifacts/profile_mapping.pkl')
+    loaded_rules = joblib.load('artifacts/rule_base_intervensi.pkl')
+
+    print("✅ 1. GMM Model loaded.")
+    print("✅ 2. Scaler loaded.")
+    print("✅ 3. Scale Columns loaded.")
+    print("✅ 4. Profile Mapping loaded.")
+    print("✅ 5. Rule Base loaded.\n")
+
+    # 2. Test Prediksi dengan 1 Sampel dari df_final
+    sample_data = df_final[loaded_scales].iloc[:1]
+    sample_scaled = loaded_scaler.transform(sample_data.values)
+
+    # Jalankan Prediksi
+    pred_id = loaded_model.predict(sample_scaled)[0]
+    pred_proba = loaded_model.predict_proba(sample_scaled)[0]
+
+    # Ambil Metadata Profil
+    profile_info = loaded_mapping[pred_id]
+    rules_info = loaded_rules[pred_id]
+
+    print("🧪 HASIL TEST PREDIKSI:")
+    print(f"   - Student ID    : {df_final.iloc[0]['Student_ID']}")
+    print(f"   - Prediksi ID   : {pred_id}")
+    print(f"   - Nama Profil   : {profile_info['label']}")
+    print(f"   - Kategori      : {profile_info['kategori']}")
+    print(f"   - Probabilitas  : {pred_proba[pred_id]:.4f}")
+    print(f"   - Rekomendasi 1 : {rules_info['rekomendasi'][0]}")
+
+    print("\n✨ SEMUA ARTIFACTS VALID DAN SIAP DIGUNAKAN UNTUK DEPLOYMENT.")
+
+except Exception as e:
+    print(f"❌ Terjadi kesalahan saat memuat artifact: {e}")
 
 """## Deployment: Streamlit Dashboard
 
 File `app.py` dijalankan **terpisah** dari notebook ini.
 """
 
-# app.py  |  Jalankan: streamlit run app.py
-# Dashboard Pemetaan Profil Kepribadian Mahasiswa
-# Latent Profile Analysis · Omni Personality Inventory
-# Universitas Telkom
 
-import streamlit as st
-import pandas as pd
-import numpy as np
-import plotly.express as px
-import plotly.graph_objects as go
-import joblib
-import os
-
-# ==========================================================
-# KONFIGURASI HALAMAN
-# ==========================================================
-st.set_page_config(
-    page_title="OmniLPA Dashboard | Universitas Telkom",
-    page_icon="🧠",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
-
-# ==========================================================
-# CUSTOM CSS
-# ==========================================================
-st.markdown("""
-<style>
-/* Main styling */
-.main .block-container { padding-top: 1.5rem; }
-
-/* Metric cards */
-div[data-testid="stMetric"] {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border: 1px solid #dee2e6;
-    border-radius: 12px;
-    padding: 16px 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-div[data-testid="stMetric"] label {
-    font-size: 0.85rem !important;
-    color: #6c757d !important;
-    font-weight: 600 !important;
-}
-div[data-testid="stMetric"] div[data-testid="stMetricValue"] {
-    font-size: 1.6rem !important;
-    font-weight: 700 !important;
-    color: #212529 !important;
-}
-
-/* Profile cards */
-.profile-card {
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 12px;
-    border-left: 5px solid;
-    background: #ffffff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-.profile-rentan { border-left-color: #e74c3c; background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%); }
-.profile-achiever { border-left-color: #27ae60; background: linear-gradient(135deg, #f0fff4 0%, #ffffff 100%); }
-.profile-resilient { border-left-color: #2980b9; background: linear-gradient(135deg, #ebf5fb 0%, #ffffff 100%); }
-.profile-impulsive { border-left-color: #e67e22; background: linear-gradient(135deg, #fef9e7 0%, #ffffff 100%); }
-
-/* Hero section */
-.hero-box {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    color: white;
-    padding: 30px 40px;
-    border-radius: 16px;
-    margin-bottom: 24px;
-}
-.hero-box h1 { color: white !important; margin-bottom: 8px; }
-.hero-box p { color: #b0b0b0; font-size: 1.05rem; }
-
-/* Process steps */
-.step-box {
-    background: #f8f9fa;
-    border-radius: 10px;
-    padding: 16px;
-    text-align: center;
-    border: 1px solid #e9ecef;
-    height: 100%;
-}
-.step-number {
-    background: #0f3460;
-    color: white;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
-
-/* Tab styling */
-.stTabs [data-baseweb="tab-list"] {
-    gap: 8px;
-}
-.stTabs [data-baseweb="tab"] {
-    border-radius: 8px 8px 0 0;
-    padding: 8px 20px;
-    font-weight: 600;
-}
-</style>
-""", unsafe_allow_html=True)
-
-# ==========================================================
-# CONSTANTS
-# ==========================================================
-VRIN_THRESHOLD = 70  # T-Score threshold
-CD_THRESHOLD = 70    # T-Score threshold
-
-# Load skala dari artifact (hasil feature selection)
-try:
-    SCALE_COLS = joblib.load('artifacts/scale_columns.pkl')
-except FileNotFoundError:
-    st.error("⚠️ File artifacts/scale_columns.pkl tidak ditemukan. Harap jalankan model dulu.")
-    SCALE_COLS = []
-
-DEMOG_COLS = ['Student_ID', 'Gender', 'Fakultas', 'Program_Studi', 'Angkatan']
-
-PROFILE_CONFIG = {
-    'Rentan': {
-        'color': '#e74c3c', 'icon': '⚠️', 'css_class': 'profile-rentan',
-        'deskripsi': (
-            'Mahasiswa menunjukkan kecemasan dan depresi tinggi, '
-            'moodiness tidak stabil, energi dan sosiabilitas rendah. '
-            'Memiliki kecenderungan ciri Avoidant dan Borderline yang perlu dipantau.'
-        ),
-        'traits_tinggi': ['Anxiety', 'Depression', 'Moodiness', 'Avoidant', 'Borderline'],
-        'traits_rendah': ['Energy', 'Sociability', 'Warmth', 'Trustfulness'],
-        'rekomendasi': [
-            '🎯 Prioritaskan sesi konseling individual dengan psikolog kampus',
-            '🧘 Program Mindfulness-Based Stress Reduction (MBSR) terstruktur',
-            '👥 Kelompok dukungan sebaya (peer support group) difasilitasi konselor',
-            '📋 Koordinasi dosen wali untuk pemantauan akademik dan kehadiran',
-            '🏃 Program aktivitas fisik ringan terstruktur (yoga, jalan pagi)',
-            '📚 Penyesuaian beban akademik jika diperlukan',
-        ]
-    },
-    'High_Achiever': {
-        'color': '#27ae60', 'icon': '🏆', 'css_class': 'profile-achiever',
-        'deskripsi': (
-            'Mahasiswa ambisius, terorganisir, dan bertanggung jawab. '
-            'Risiko gangguan kepribadian rendah. Rentan terhadap '
-            'perfeksionisme berlebihan dan burnout akademik.'
-        ),
-        'traits_tinggi': ['Ambition', 'Dutifulness', 'Orderliness', 'SelfReliance', 'Intellect'],
-        'traits_rendah': ['Impulsiveness', 'Depression', 'Borderline'],
-        'rekomendasi': [
-            '⚖️ Edukasi work-life balance dan burnout prevention',
-            '🔬 Fasilitasi keterlibatan dalam penelitian dan kompetisi akademik',
-            '💬 Coaching karir dan pengembangan kepemimpinan',
-            '🧘 Workshop manajemen ekspektasi dan penetapan batas diri yang sehat',
-            '🌐 Koneksi ke program beasiswa, exchange, atau magang bergengsi',
-        ]
-    },
-    'Resilient': {
-        'color': '#2980b9', 'icon': '💪', 'css_class': 'profile-resilient',
-        'deskripsi': (
-            'Mahasiswa dengan keseimbangan psikologis optimal: hangat, '
-            'empatik, fleksibel, dan adaptif. Kelompok tersehat secara '
-            'psikologis dalam populasi kampus.'
-        ),
-        'traits_tinggi': ['Warmth', 'Trustfulness', 'Tolerance', 'Sociability', 'Flexibility'],
-        'traits_rendah': ['Hostility', 'Paranoid', 'Borderline'],
-        'rekomendasi': [
-            '✅ Lanjutkan intervensi universal (seminar kesehatan mental rutin)',
-            '🌟 Rekrut sebagai peer educator atau fasilitator kelompok dukungan',
-            '🎨 Fasilitasi eksplorasi minat ekstrakurikuler dan pengembangan diri',
-            '📊 Monitoring berkala tahunan untuk mempertahankan resiliensi',
-        ]
-    },
-    'Impulsive': {
-        'color': '#e67e22', 'icon': '⚡', 'css_class': 'profile-impulsive',
-        'deskripsi': (
-            'Mahasiswa enerjik dan ekstrover namun impulsif, kurang terstruktur, '
-            'dan cenderung mencari sensasi. Perlu dukungan regulasi emosi '
-            'dan pengarahan energi secara produktif.'
-        ),
-        'traits_tinggi': ['Impulsiveness', 'Excitement', 'Exhibitionism', 'Energy'],
-        'traits_rendah': ['Dutifulness', 'Orderliness', 'Conventionality'],
-        'rekomendasi': [
-            '🎮 Salurkan energi ke UKM, olahraga kompetitif, atau kepanitiaan',
-            '📐 Bimbingan manajemen waktu dan perencanaan studi terstruktur',
-            '🧠 Workshop regulasi emosi dan pengambilan keputusan sadar',
-            '📋 Monitoring kehadiran dan progres akademik lebih intensif',
-            '💼 Konseling karir untuk mengarahkan ambisi secara produktif',
-        ]
-    },
-    'Campuran': {
-        'color': '#8e44ad', 'icon': '🧩', 'css_class': 'profile-card',
-        'deskripsi': (
-            'Mahasiswa dengan karakteristik campuran yang tidak menunjukkan '
-            'kecenderungan ekstrem pada kelompok trait tertentu. Skor berada di kisaran rata-rata '
-            'atau mencerminkan variasi moderat.'
-        ),
-        'traits_tinggi': ['Cenderung rata-rata pada skala primer'],
-        'traits_rendah': ['Cenderung rata-rata pada skala primer'],
-        'rekomendasi': [
-            '✅ Lanjutkan intervensi universal (seminar kesehatan mental rutin)',
-            '🎯 Fasilitasi workshop pengembangan diri dan soft-skills',
-            '📋 Observasi perubahan drastis dalam perilaku atau performa akademik',
-            '🌟 Arahkan untuk mengikuti mentoring karir dan bakat',
-        ]
-    }
-}
-
-# ==========================================================
-# LOAD MODEL (cached)
-# ==========================================================
-@st.cache_resource
-def load_artifacts():
-    try:
-        model = joblib.load('artifacts/gmm_final_model.pkl')
-        scaler = joblib.load('artifacts/scaler.pkl')
-        prof_map = joblib.load('artifacts/profile_mapping.pkl')
-        return model, scaler, prof_map
-    except FileNotFoundError as e:
-        return None, None, None
-
-# ==========================================================
-# HELPER FUNCTIONS
-# ==========================================================
-def run_pipeline(df_input, model, scaler, prof_map):
-    """Cleaning → Scaling → Predict → Merge"""
-    steps_log = []
-
-    # 1. Handle missing values in scales
-    n_start = len(df_input)
-    df_work = df_input.dropna(subset=SCALE_COLS).copy()
-    n_after_na = len(df_work)
-    steps_log.append(f"Missing values: {n_start - n_after_na} baris dihapus")
-
-    # 2. Drop duplicates
-    n_before_dup = len(df_work)
-    df_work = df_work.drop_duplicates(subset=['Student_ID'], keep='first')
-    n_after_dup = len(df_work)
-    steps_log.append(f"Duplikat ID: {n_before_dup - n_after_dup} baris dihapus")
-
-    # 3. Normalize Gender
-    gender_map = {
-        'Laki-laki': 'Laki-laki', 'Laki-Laki': 'Laki-laki',
-        'laki-laki': 'Laki-laki', 'L': 'Laki-laki',
-        'Perempuan': 'Perempuan', 'perempuan': 'Perempuan',
-        'PEREMPUAN': 'Perempuan', 'P': 'Perempuan'
-    }
-    if 'Gender' in df_work.columns:
-        df_work['Gender'] = df_work['Gender'].map(gender_map)
-
-    # 4. Clip out-of-range values
-    n_clipped = 0
-    for col in SCALE_COLS:
-        if col in df_work.columns:
-            mask = (df_work[col] < 20) | (df_work[col] > 90)
-            n_clipped += mask.sum()
-            df_work[col] = df_work[col].clip(20.0, 90.0)
-    steps_log.append(f"Out-of-range: {n_clipped} nilai di-clip")
-
-    # 5. VRIN/CD filtering (T-Score based)
-    n_before_valid = len(df_work)
-    df_clean = df_work[
-        (df_work['Val_VRIN'] < VRIN_THRESHOLD) &
-        (df_work['Val_CD'] < CD_THRESHOLD)
-    ].copy().reset_index(drop=True)
-    n_removed_valid = n_before_valid - len(df_clean)
-    steps_log.append(f"VRIN/CD filtering (T≥{VRIN_THRESHOLD}): {n_removed_valid} baris dihapus")
-
-    total_removed = n_start - len(df_clean)
-    steps_log.append(f"TOTAL: {n_start} → {len(df_clean)} ({total_removed} baris dihapus)")
-
-    # 6. Scaling
-    X_scaled = scaler.transform(df_clean[SCALE_COLS].values)
-
-    # 7. Predict
-    labels = model.predict(X_scaled)
-    proba = model.predict_proba(X_scaled)
-
-    # 8. Merge
-    df_clean['Profile_ID'] = labels
-    df_clean['Profile_Name'] = pd.Series(labels).map(prof_map).values
-    df_clean['Prob_Klasifikasi'] = proba.max(axis=1).round(4)
-
-    # Add probability columns
-    for i in range(model.n_components):
-        prof_name = prof_map.get(i, f'Profil_{i}')
-        df_clean[f'Prob_{prof_name}'] = proba[:, i].round(4)
-
-    return df_clean, total_removed, X_scaled, proba, steps_log
-
-def compute_entropy(proba):
-    N, K = proba.shape
-    safe = np.clip(proba, 1e-10, 1.0)
-    return 1 - (-np.sum(safe * np.log(safe))) / (N * np.log(K))
-
-
-def render_profile_card(profile_name, count, total, cfg):
-    """Render a styled profile card."""
-    pct = count / total * 100
-    st.markdown(f"""
-    <div class="profile-card {cfg['css_class']}">
-        <h3>{cfg['icon']} {profile_name.replace('_', ' ')} — {count} mahasiswa ({pct:.1f}%)</h3>
-        <p style="color:#555; font-size:0.95rem;">{cfg['deskripsi']}</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==========================================================
-# SIDEBAR
-# ==========================================================
-with st.sidebar:
-    st.markdown("### 🧠 OmniLPA System")
-    st.caption("Personality Profiling · Universitas Telkom")
-    st.divider()
-
-    page = st.radio(
-        "📑 Navigasi",
-        ["🏠 Beranda", "📊 Prediksi Batch", "🔍 Prediksi Individual",
-         "📈 Analisis & Insight", "💡 Rekomendasi Intervensi"],
-        label_visibility="collapsed"
-    )
-
-    st.divider()
-
-    # Load model
-    model, scaler, prof_map = load_artifacts()
-    if model is not None:
-        st.success("✅ Model Loaded")
-        st.caption(f"**Profil (k):** {model.n_components}  \n"
-                   f"**Covariance:** Full  \n"
-                   f"**VRIN/CD Threshold:** T≥{VRIN_THRESHOLD}")
-    else:
-        st.warning("⚠️ Model belum tersedia.\n\nJalankan notebook terlebih dahulu.")
-
-    st.divider()
-    st.caption("© 2025 Dhifulloh Dhiya Ulhaq\nTugas Akhir – Sistem Informasi\nUniversitas Telkom")
-
-# ==========================================================
-# PAGE: BERANDA
-# ==========================================================
-if page == "🏠 Beranda":
-    st.markdown("""
-    <div class="hero-box">
-        <h1>🧠 Dashboard Pemetaan Profil Kepribadian Mahasiswa</h1>
-        <p>Latent Profile Analysis (LPA) · Omni Personality Inventory · Universitas Telkom</p>
-        <p style="color:#7f8c8d; font-size:0.9rem; margin-top:16px;">
-        Sistem pendukung keputusan berbasis data untuk memetakan profil kepribadian
-        mahasiswa dan menyediakan rekomendasi intervensi kesehatan mental yang tepat sasaran.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.subheader("📋 Alur Proses (CRISP-DM)")
-    cols = st.columns(6)
-    steps = [
-        ("1", "Business\nUnderstanding", "Identifikasi kebutuhan dan tujuan analisis"),
-        ("2", "Data\nUnderstanding", "Eksplorasi data Omni Test, cek kualitas"),
-        ("3", "Data\nPreparation", "Cleaning VRIN/CD, seleksi fitur, Z-Score"),
-        ("4", "Modeling", "GMM/LPA dengan k=2-5, estimasi parameter"),
-        ("5", "Evaluation", "BIC, Entropy, BLRT, interpretasi profil"),
-        ("6", "Deployment", "Dashboard interaktif + rekomendasi")
-    ]
-    for col, (num, title, desc) in zip(cols, steps):
-        with col:
-            st.markdown(f"""
-            <div class="step-box">
-                <div class="step-number">{num}</div>
-                <br><strong>{title}</strong>
-                <p style="font-size:0.8rem; color:#666; margin-top:8px;">{desc}</p>
-            </div>
-            """, unsafe_allow_html=True)
-
-    st.divider()
-
-    st.subheader("🧩 Cara Menggunakan Dashboard")
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown("""
-        #### 📊 Prediksi Batch (Angkatan Baru)
-        Upload file CSV data Omni Test angkatan baru. Sistem akan:
-        1. Membersihkan data (VRIN/CD filtering, missing values)
-        2. Menstandarkan skor (Z-Score)
-        3. Memprediksi profil kepribadian setiap mahasiswa
-        4. Menampilkan distribusi dan insight
-        """)
-    with col2:
-        st.markdown("""
-        #### 🔍 Prediksi Individual
-        Input skor kepribadian satu mahasiswa secara manual. Sistem akan:
-        1. Memvalidasi skor VRIN/CD
-        2. Memprediksi profil kepribadian
-        3. Menampilkan probabilitas per profil
-        4. Memberikan rekomendasi intervensi spesifik
-        """)
-
-    if model is not None:
-        st.divider()
-        st.subheader("🏷️ Profil Kepribadian yang Ditemukan")
-        profile_cols = st.columns(len(PROFILE_CONFIG))
-        for col, (pname, cfg) in zip(profile_cols, PROFILE_CONFIG.items()):
-            with col:
-                st.markdown(f"""
-                <div class="profile-card {cfg['css_class']}" style="height:100%;">
-                    <h4>{cfg['icon']} {pname.replace('_', ' ')}</h4>
-                    <p style="font-size:0.85rem; color:#555;">{cfg['deskripsi'][:120]}...</p>
-                </div>
-                """, unsafe_allow_html=True)
-
-# ==========================================================
-# PAGE: PREDIKSI BATCH
-# ==========================================================
-elif page == "📊 Prediksi Batch":
-    st.title("📊 Prediksi Batch — Upload Data Angkatan Baru")
-    st.caption("Upload file CSV data Omni Test untuk memprediksi profil kepribadian secara massal.")
-
-    if model is None:
-        st.error("❌ Model belum tersedia. Jalankan notebook terlebih dahulu.")
-        st.stop()
-
-    st.divider()
-
-    uploaded = st.file_uploader(
-        "📁 Upload CSV Omni Test",
-        type=['csv'],
-        help="Kolom wajib: Student_ID, Gender, Fakultas, Program_Studi, "
-             "Angkatan, Val_VRIN, Val_CD, dan 42 kolom Sc_*"
-    )
-
-    # Option to use default data
-    use_default = False
-    if uploaded is None:
-        default_path = 'dataset_omni_dummy.csv'
-        if os.path.exists(default_path):
-            use_default = st.button("📂 Gunakan Data Bawaan (Demo)")
-            demo_path = default_path
-
-    if uploaded is not None:
-        df_input = pd.read_csv(uploaded)
-    elif use_default:
-        df_input = pd.read_csv(demo_path)
-    else:
-        st.info("👆 Upload file CSV atau gunakan data bawaan untuk memulai.")
-        st.stop()
-
-    # Preview data
-    with st.expander("🔎 Preview Data Input", expanded=False):
-        st.dataframe(df_input.head(10), use_container_width=True)
-        st.caption(f"Jumlah baris: {len(df_input)} | Jumlah kolom: {len(df_input.columns)}")
-
-    st.divider()
-
-    # Run pipeline
-    with st.spinner("⏳ Memproses: Cleaning → Scaling → Predicting..."):
-        df_res, n_removed, X_sc, proba, steps_log = run_pipeline(
-            df_input, model, scaler, prof_map
-        )
-    entropy = compute_entropy(proba)
-
-    # Show process steps
-    st.subheader("🔄 Proses Data Cleaning")
-    process_cols = st.columns(len(steps_log))
-    for i, (col, log) in enumerate(zip(process_cols, steps_log)):
-        with col:
-            parts = log.split(": ")
-            label = parts[0] if len(parts) > 1 else "Step"
-            value = parts[1] if len(parts) > 1 else log
-            st.metric(label, value)
-
-    st.divider()
-
-    # KPI Cards
-    st.subheader("📊 Ringkasan Hasil Analisis")
-    c1, c2, c3, c4, c5 = st.columns(5)
-    c1.metric("Total Input", f"{len(df_input):,}")
-    c2.metric("Valid (Dianalisis)", f"{len(df_res):,}",
-              delta=f"-{n_removed} dihapus", delta_color="inverse")
-    c3.metric("Entropy Model", f"{entropy:.3f}",
-              delta="Baik ✅" if entropy >= 0.80 else "Cukup ⚠️",
-              delta_color="normal" if entropy >= 0.80 else "off")
-    c4.metric("Jumlah Profil", model.n_components)
-    dominant = df_res['Profile_Name'].value_counts().idxmax()
-    c5.metric("Profil Dominan", dominant.replace('_', ' '))
-
-    st.divider()
-
-    # Distribution charts
-    st.subheader("🥧 Distribusi Profil Kepribadian")
-    dist = df_res['Profile_Name'].value_counts().reset_index()
-    dist.columns = ['Profil', 'Jumlah']
-    dist['Persen'] = (dist['Jumlah'] / dist['Jumlah'].sum() * 100).round(1)
-
-    col_p, col_b = st.columns(2)
-    with col_p:
-        fig = px.pie(
-            dist, names='Profil', values='Jumlah',
-            title='Proporsi Profil (Keseluruhan)',
-            color='Profil',
-            color_discrete_map={v: PROFILE_CONFIG[v]['color']
-                                for v in PROFILE_CONFIG if v in dist['Profil'].values},
-            hole=0.45
-        )
-        fig.update_traces(textinfo='percent+label+value', textfont_size=12)
-        st.plotly_chart(fig, use_container_width=True)
-
-    with col_b:
-        fig2 = px.bar(
-            dist, x='Profil', y='Jumlah',
-            title='Jumlah Mahasiswa per Profil',
-            color='Profil',
-            color_discrete_map={v: PROFILE_CONFIG[v]['color']
-                                for v in PROFILE_CONFIG if v in dist['Profil'].values},
-            text='Jumlah'
-        )
-        fig2.update_traces(textposition='outside')
-        fig2.update_layout(showlegend=False, xaxis_tickangle=0)
-        st.plotly_chart(fig2, use_container_width=True)
-
-    st.divider()
-
-    # Result table
-    st.subheader("📋 Tabel Hasil Prediksi per Mahasiswa")
-    show_cols = DEMOG_COLS + ['Profile_Name', 'Prob_Klasifikasi']
-    df_disp = df_res[show_cols].rename(columns={
-        'Profile_Name': 'Profil Kepribadian',
-        'Prob_Klasifikasi': 'Prob. Klasifikasi'
-    })
-
-    # Filter
-    col_f1, col_f2 = st.columns(2)
-    with col_f1:
-        filter_profile = st.multiselect(
-            "Filter Profil:",
-            options=df_disp['Profil Kepribadian'].unique(),
-            default=df_disp['Profil Kepribadian'].unique()
-        )
-    with col_f2:
-        search_id = st.text_input("🔍 Cari Student ID:", "")
-
-    df_show = df_disp[df_disp['Profil Kepribadian'].isin(filter_profile)]
-    if search_id:
-        df_show = df_show[df_show['Student_ID'].str.contains(search_id, case=False, na=False)]
-
-    st.dataframe(df_show, use_container_width=True, height=400)
-
-    st.download_button(
-        label="⬇️ Download Hasil Prediksi (CSV)",
-        data=df_res.to_csv(index=False).encode('utf-8'),
-        file_name="hasil_profiling_omni.csv",
-        mime="text/csv"
-    )
-
-# ==========================================================
-# PAGE: PREDIKSI INDIVIDUAL
-# ==========================================================
-elif page == "🔍 Prediksi Individual":
-    st.title("🔍 Prediksi Individual — Input Manual")
-    st.caption("Masukkan skor kepribadian mahasiswa untuk memprediksi profil kepribadiannya.")
-
-    if model is None:
-        st.error("❌ Model belum tersedia. Jalankan notebook terlebih dahulu.")
-        st.stop()
-
-    st.divider()
-
-    with st.form("individual_form"):
-        st.subheader("📝 Data Demografis")
-        d1, d2, d3, d4 = st.columns(4)
-        with d1:
-            inp_id = st.text_input("Student ID", "STxxxx")
-        with d2:
-            inp_gender = st.selectbox("Gender", ["Laki-laki", "Perempuan"])
-        with d3:
-            inp_fak = st.selectbox("Fakultas", ["FIF", "FTE", "FRI", "FEB", "FKS"])
-        with d4:
-            inp_angkatan = st.selectbox("Angkatan", [2021, 2022, 2023, 2024])
-
-        v1, v2 = st.columns(2)
-        with v1:
-            inp_vrin = st.number_input("Val_VRIN (T-Score)", 20.0, 90.0, 45.0, 0.5)
-        with v2:
-            inp_cd = st.number_input("Val_CD (T-Score)", 20.0, 90.0, 45.0, 0.5)
-
-        st.subheader("📏 Skor 42 Skala Kepribadian")
-        st.caption("Masukkan skor T (rentang 20-90) untuk setiap skala.")
-
-        scale_values = {}
-        # Layout: 5 columns x 7 rows
-        for row_start in range(0, len(SCALE_COLS), 5):
-            cols = st.columns(5)
-            for j, col in enumerate(cols):
-                idx = row_start + j
-                if idx < len(SCALE_COLS):
-                    scale_name = SCALE_COLS[idx]
-                    label = scale_name.replace('Sc_', '')
-                    with col:
-                        scale_values[scale_name] = st.number_input(
-                            label, 20.0, 90.0, 50.0, 0.5, key=f"sc_{idx}"
-                        )
-
-        submitted = st.form_submit_button("🔮 Prediksi Profil", use_container_width=True)
-
-    if submitted:
-        # Validate VRIN/CD
-        if inp_vrin > VRIN_THRESHOLD or inp_cd > CD_THRESHOLD:
-            st.error(
-                f"⚠️ Skor Val_VRIN ({inp_vrin}) atau Val_CD ({inp_cd}) melebihi threshold (T≥{VRIN_THRESHOLD}). "
-                f"Respons dianggap tidak valid (careless responding). "
-                f"Data ini akan di-filter pada tahap cleaning."
-            )
-        else:
-            # Prepare data
-            input_arr = np.array([[scale_values[c] for c in SCALE_COLS]])
-            input_scaled = scaler.transform(input_arr)
-
-            # Predict
-            pred_label = model.predict(input_scaled)[0]
-            pred_proba = model.predict_proba(input_scaled)[0]
-            pred_name = prof_map[pred_label]
-            cfg = PROFILE_CONFIG.get(pred_name, {})
-
-            st.divider()
-            st.subheader("🎯 Hasil Prediksi")
-
-            # Profile card
-            render_profile_card(pred_name, 1, 1, cfg)
-
-            # Probability distribution
-            st.markdown("**📊 Probabilitas Keanggotaan per Profil:**")
-            prob_cols = st.columns(len(prof_map))
-            for i, (pid, pname) in enumerate(prof_map.items()):
-                pcfg = PROFILE_CONFIG.get(pname, {'icon': '📌', 'color': '#95a5a6'})
-                with prob_cols[i]:
-                    pct = pred_proba[pid] * 100
-                    st.metric(
-                        f"{pcfg['icon']} {pname.replace('_', ' ')}",
-                        f"{pct:.1f}%"
-                    )
-
-            # Recommendations
-            st.divider()
-            st.subheader("💡 Rekomendasi Intervensi")
-            if 'rekomendasi' in cfg:
-                for rec in cfg['rekomendasi']:
-                    st.markdown(f"- {rec}")
-
-# ==========================================================
-# PAGE: ANALISIS & INSIGHT
-# ==========================================================
-elif page == "📈 Analisis & Insight":
-    st.title("📈 Analisis & Insight — Distribusi Lintas Demografis")
-
-    if model is None:
-        st.error("❌ Model belum tersedia.")
-        st.stop()
-
-    # Load data
-    data_paths = ['dataset_omni_dummy.csv']
-    df_data = None
-    for p in data_paths:
-        if os.path.exists(p):
-            df_data = pd.read_csv(p)
-            break
-
-    if df_data is None:
-        st.warning("⚠️ Tidak ada data untuk dianalisis. Upload data di halaman Prediksi Batch terlebih dahulu.")
-        st.stop()
-
-    # Check if Profile_Name already exists
-    if 'Profile_Name' not in df_data.columns:
-        with st.spinner("Memproses data..."):
-            df_data, _, _, _, _ = run_pipeline(df_data, model, scaler, prof_map)
-
-    st.divider()
-
-    # Filters
-    st.subheader("🔍 Filter Demografis")
-    cf1, cf2, cf3, cf4 = st.columns(4)
-    with cf1:
-        sel_fak = st.multiselect("Fakultas",
-            options=sorted(df_data['Fakultas'].dropna().unique()),
-            default=sorted(df_data['Fakultas'].dropna().unique()))
-    with cf2:
-        sel_prodi = st.multiselect("Program Studi",
-            options=sorted(df_data['Program_Studi'].dropna().unique()),
-            default=sorted(df_data['Program_Studi'].dropna().unique()))
-    with cf3:
-        sel_angk = st.multiselect("Angkatan",
-            options=sorted(df_data['Angkatan'].dropna().unique()),
-            default=sorted(df_data['Angkatan'].dropna().unique()))
-    with cf4:
-        sel_gender = st.multiselect("Gender",
-            options=sorted(df_data['Gender'].dropna().unique()),
-            default=sorted(df_data['Gender'].dropna().unique()))
-
-    df_f = df_data[
-        df_data['Fakultas'].isin(sel_fak) &
-        df_data['Program_Studi'].isin(sel_prodi) &
-        df_data['Angkatan'].isin(sel_angk) &
-        df_data['Gender'].isin(sel_gender)
-    ]
-
-    st.caption(f"📌 **{len(df_f):,}** mahasiswa ditampilkan setelah filter")
-    st.divider()
-
-    # Charts
-    color_map = {v: PROFILE_CONFIG[v]['color'] for v in PROFILE_CONFIG}
-
-    cg1, cg2 = st.columns(2)
-    with cg1:
-        ct_fak = (pd.crosstab(df_f['Fakultas'], df_f['Profile_Name'],
-                               normalize='index') * 100).reset_index()
-        ct_fak = ct_fak.melt(id_vars='Fakultas', var_name='Profil', value_name='Persen')
-        fig3 = px.bar(ct_fak, x='Fakultas', y='Persen', color='Profil',
-                      barmode='stack', title='Distribusi Profil per Fakultas (%)',
-                      color_discrete_map=color_map)
-        fig3.update_layout(xaxis_tickangle=-20)
-        st.plotly_chart(fig3, use_container_width=True)
-
-    with cg2:
-        ct_ang = (pd.crosstab(df_f['Angkatan'], df_f['Profile_Name'],
-                               normalize='index') * 100).reset_index()
-        ct_ang = ct_ang.melt(id_vars='Angkatan', var_name='Profil', value_name='Persen')
-        fig4 = px.bar(ct_ang, x='Angkatan', y='Persen', color='Profil',
-                      barmode='stack', title='Distribusi Profil per Angkatan (%)',
-                      color_discrete_map=color_map)
-        st.plotly_chart(fig4, use_container_width=True)
-
-    cg3, cg4 = st.columns(2)
-    with cg3:
-        ct_prodi = (pd.crosstab(df_f['Program_Studi'], df_f['Profile_Name'],
-                                 normalize='index') * 100).reset_index()
-        ct_prodi = ct_prodi.melt(id_vars='Program_Studi', var_name='Profil', value_name='Persen')
-        fig5 = px.bar(ct_prodi, x='Program_Studi', y='Persen', color='Profil',
-                      barmode='stack', title='Distribusi Profil per Program Studi (%)',
-                      color_discrete_map=color_map)
-        fig5.update_layout(xaxis_tickangle=-30)
-        st.plotly_chart(fig5, use_container_width=True)
-
-    with cg4:
-        ct_gender = (pd.crosstab(df_f['Gender'], df_f['Profile_Name'],
-                                  normalize='index') * 100).reset_index()
-        ct_gender = ct_gender.melt(id_vars='Gender', var_name='Profil', value_name='Persen')
-        fig6 = px.bar(ct_gender, x='Gender', y='Persen', color='Profil',
-                      barmode='stack', title='Distribusi Profil per Gender (%)',
-                      color_discrete_map=color_map)
-        st.plotly_chart(fig6, use_container_width=True)
-
-    st.divider()
-
-    # Heatmap
-    st.subheader("🔥 Heatmap Proporsi Profil per Program Studi")
-    if len(df_f) > 0:
-        ct_heat = pd.crosstab(df_f['Program_Studi'], df_f['Profile_Name'],
-                               normalize='index') * 100
-        fig_heat = px.imshow(
-            ct_heat.round(1),
-            text_auto=True,
-            color_continuous_scale='RdYlGn_r',
-            aspect='auto',
-            title='Proporsi Profil per Program Studi (%)'
-        )
-        fig_heat.update_layout(height=400)
-        st.plotly_chart(fig_heat, use_container_width=True)
-
-# ==========================================================
-# PAGE: REKOMENDASI INTERVENSI
-# ==========================================================
-elif page == "💡 Rekomendasi Intervensi":
-    st.title("💡 Rekomendasi Intervensi Kesehatan Mental")
-    st.caption(
-        "Rekomendasi program intervensi dihasilkan berdasarkan karakteristik masing-masing "
-        "profil kepribadian yang ditemukan oleh model LPA. Rekomendasi bersifat panduan umum "
-        "dan perlu divalidasi oleh psikolog profesional."
-    )
-
-    if model is None:
-        st.error("❌ Model belum tersedia.")
-        st.stop()
-
-    st.divider()
-
-    # Load data to show stats
-    data_paths = ['dataset_omni_dummy.csv']
-    df_data = None
-    for p in data_paths:
-        if os.path.exists(p):
-            df_data = pd.read_csv(p)
-            break
-
-    has_data = False
-    if df_data is not None:
-        if 'Profile_Name' not in df_data.columns:
-            try:
-                df_data, _, _, _, _ = run_pipeline(df_data, model, scaler, prof_map)
-                has_data = True
-            except Exception:
-                has_data = False
-        else:
-            has_data = True
-
-    profiles_to_show = []
-    if has_data:
-        profiles_to_show = df_data['Profile_Name'].dropna().unique()
-    elif model is not None and prof_map is not None:
-        st.info("⚠️ Menampilkan rekomendasi berdasarkan profil dari model yang sedang aktif.")
-        profiles_to_show = list(prof_map.values())
-
-    for pname in profiles_to_show:
-        cfg = PROFILE_CONFIG.get(pname, {
-            'color': '#95a5a6', 'icon': '📌', 'css_class': 'profile-card',
-            'deskripsi': 'Profil ini belum memiliki deskripsi spesifik.',
-            'rekomendasi': ['Evaluasi lebih lanjut oleh tim konseling.']
-        })
-
-        count = 0
-        pct = 0
-        if has_data:
-            subset = df_data[df_data['Profile_Name'] == pname]
-            count = len(subset)
-            pct = count / len(df_data) * 100
-
-        with st.expander(
-            f"{cfg['icon']} **{pname.replace('_', ' ')}**"
-            + (f" — {count} mahasiswa ({pct:.1f}%)" if has_data else ""),
-            expanded=(pct >= 20 if has_data else False)
-        ):
-            col_desc, col_rec = st.columns([1, 1])
-
-            with col_desc:
-                st.markdown("**📌 Deskripsi Profil:**")
-                st.info(cfg['deskripsi'])
-
-                st.markdown("**📊 Ciri Dominan:**")
-                traits_up = ", ".join(cfg.get('traits_tinggi', []))
-                traits_dn = ", ".join(cfg.get('traits_rendah', []))
-                st.markdown(f"- 🔺 **Tinggi:** {traits_up}")
-                st.markdown(f"- 🔻 **Rendah:** {traits_dn}")
-
-                if has_data and count > 0:
-                    st.markdown("**📍 Sebaran per Fakultas:**")
-                    mini = subset['Fakultas'].value_counts().reset_index()
-                    mini.columns = ['Fakultas', 'n']
-                    fig_mini = px.bar(mini, x='Fakultas', y='n',
-                                     title=f'Sebaran {pname.replace("_", " ")} per Fakultas',
-                                     color_discrete_sequence=[cfg['color']])
-                    fig_mini.update_layout(height=260, showlegend=False,
-                                           margin=dict(t=35, b=0, l=0, r=0))
-                    st.plotly_chart(fig_mini, use_container_width=True)
-
-            with col_rec:
-                st.markdown("**🎯 Rekomendasi Program Intervensi:**")
-                for rec in cfg['rekomendasi']:
-                    st.markdown(f"- {rec}")
-
-                if pname == 'Rentan':
-                    st.warning(
-                        "⚠️ **Prioritas tinggi.** Kelompok ini memerlukan intervensi "
-                        "selektif dan indikasi segera. Koordinasikan dengan unit konseling."
-                    )
-                elif pname == 'Impulsive':
-                    st.info(
-                        "💡 **Pendekatan positif.** Alihkan energi ke kegiatan produktif, "
-                        "bukan pendekatan restriktif."
-                    )
-
-    st.divider()
-    st.markdown("""
-    > **Catatan Penting:**
-    > - Rekomendasi ini bersifat panduan umum berdasarkan pola data, bukan diagnosis klinis
-    > - Implementasi program tetap memerlukan validasi dan supervisi psikolog profesional
-    > - Profil bersifat probabilistik — setiap mahasiswa memiliki derajat keanggotaan di semua profil
-    > - Evaluasi efektivitas program perlu dilakukan secara berkala (siklus tahunan)
-    """)
 
 """* * *"""

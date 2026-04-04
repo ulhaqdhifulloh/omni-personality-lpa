@@ -1,0 +1,943 @@
+Sc_Agreeableness,Sc_Conscientiousness,Sc_Extraversion,Sc_Narcissism,Sc_Neuroticism,Sc_Openness,Sc_SensationSeeking,Student_ID,Gender,Fakultas,Program_Studi,Angkatan,Klaster,Profile_Name,Kategori_Risiko
+58.8,67.8,62.2,47.6,35.5,38.6,44.1,ST0001,Laki-laki,FKS,Ilmu Komunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+30.5,34.1,25.8,60.5,71.7,49.8,48.1,ST0002,Perempuan,FEB,Akuntansi,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+49.4,37.5,73.4,56.2,53.7,44.4,73.2,ST0004,Perempuan,FRI,Sistem Informasi,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+74.5,50.2,50.7,51.4,33.6,66.2,44.8,ST0005,Perempuan,FRI,Teknik Industri,2024,1,The Resilient & Adaptive,Baseline / Normatif
+59.5,34.0,72.8,59.3,55.0,51.2,56.6,ST0006,Laki-laki,FKS,Ilmu Komunikasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+54.5,75.4,60.4,51.0,35.1,61.2,47.5,ST0007,Perempuan,FTE,Teknik Telekomunikasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+81.7,57.4,51.0,42.0,38.2,57.3,51.5,ST0008,Perempuan,FTE,Teknik Telekomunikasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+48.6,37.6,71.2,68.5,43.1,52.9,76.6,ST0009,Laki-laki,FKS,Administrasi Bisnis,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+47.6,76.8,52.9,52.4,29.8,55.5,41.9,ST0010,Laki-laki,FRI,Teknik Industri,2024,1,The Resilient & Adaptive,Baseline / Normatif
+54.2,71.6,48.6,72.3,32.4,49.5,33.1,ST0011,Laki-laki,FRI,Teknik Industri,2021,1,The Resilient & Adaptive,Baseline / Normatif
+52.7,65.8,38.7,60.4,31.6,61.9,36.3,ST0013,Laki-laki,FKS,Administrasi Bisnis,2021,1,The Resilient & Adaptive,Baseline / Normatif
+76.6,47.3,49.4,35.7,42.3,48.3,55.4,ST0014,Laki-laki,FEB,Manajemen,2022,1,The Resilient & Adaptive,Baseline / Normatif
+70.7,46.7,57.9,57.7,29.0,59.7,46.6,ST0015,Laki-laki,FRI,Teknik Logistik,2023,1,The Resilient & Adaptive,Baseline / Normatif
+48.0,70.3,51.8,48.5,44.6,51.3,38.5,ST0016,Laki-laki,FKS,Administrasi Bisnis,2022,1,The Resilient & Adaptive,Baseline / Normatif
+36.0,51.2,30.3,50.7,57.9,48.5,54.4,ST0017,Laki-laki,FKS,Administrasi Bisnis,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+50.1,73.8,58.7,53.8,33.0,44.3,33.0,ST0018,Laki-laki,FEB,Akuntansi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+39.6,71.4,47.2,46.9,35.0,62.2,24.4,ST0019,Perempuan,FRI,Sistem Informasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+80.1,64.2,61.4,56.1,41.1,68.8,39.5,ST0021,Laki-laki,FTE,Teknik Elektro,2022,1,The Resilient & Adaptive,Baseline / Normatif
+65.7,43.4,50.5,59.5,42.2,56.2,33.7,ST0022,Laki-laki,FEB,Manajemen,2023,1,The Resilient & Adaptive,Baseline / Normatif
+58.3,70.2,49.7,47.1,25.8,45.1,40.4,ST0023,Laki-laki,FKS,Administrasi Bisnis,2024,1,The Resilient & Adaptive,Baseline / Normatif
+57.7,66.1,56.2,70.7,33.2,49.3,30.5,ST0025,Perempuan,FTE,Teknik Elektro,2023,1,The Resilient & Adaptive,Baseline / Normatif
+83.0,63.7,65.9,54.0,26.4,71.5,36.6,ST0026,Laki-laki,FEB,Akuntansi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+67.2,74.2,43.1,47.9,31.6,50.2,39.0,ST0028,Perempuan,FTE,Teknik Elektro,2023,1,The Resilient & Adaptive,Baseline / Normatif
+50.9,38.7,72.2,62.8,49.5,55.4,65.9,ST0029,Perempuan,FKS,Ilmu Komunikasi,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+44.1,78.9,62.5,51.8,29.5,53.8,39.9,ST0030,Perempuan,FRI,Teknik Industri,2023,1,The Resilient & Adaptive,Baseline / Normatif
+34.1,48.1,46.4,35.1,73.6,47.7,55.4,ST0031,Perempuan,FIF,Data Sains,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+52.4,80.6,55.0,48.3,21.8,59.9,37.0,ST0033,Perempuan,FEB,Akuntansi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+51.9,47.6,65.5,66.7,42.6,47.6,64.6,ST0035,Perempuan,FKS,Administrasi Bisnis,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+60.1,73.0,49.4,35.4,43.0,54.1,37.0,ST0036,Laki-laki,FKS,Administrasi Bisnis,2022,1,The Resilient & Adaptive,Baseline / Normatif
+29.9,46.7,40.0,47.6,69.6,42.2,52.3,ST0037,Perempuan,FRI,Teknik Industri,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+51.0,79.2,31.0,82.4,30.7,65.6,35.4,ST0038,Perempuan,FEB,Akuntansi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+40.7,40.5,57.3,65.7,63.7,46.7,58.7,ST0039,Perempuan,FIF,Sistem Komputer,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+62.4,38.4,60.3,51.5,43.0,55.1,52.7,ST0040,Perempuan,FRI,Teknik Logistik,2024,1,The Resilient & Adaptive,Baseline / Normatif
+51.7,47.7,77.8,62.2,50.3,50.5,69.9,ST0041,Laki-laki,FRI,Teknik Industri,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+38.8,73.6,49.2,59.1,26.4,48.4,34.6,ST0042,Perempuan,FEB,Manajemen,2023,1,The Resilient & Adaptive,Baseline / Normatif
+37.0,50.2,43.0,44.2,86.5,43.9,49.2,ST0043,Perempuan,FRI,Sistem Informasi,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+47.2,55.9,64.1,58.4,31.2,78.3,40.9,ST0046,Laki-laki,FKS,Ilmu Komunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+48.1,43.7,76.8,60.1,62.3,53.6,69.3,ST0047,Laki-laki,FKS,Ilmu Komunikasi,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+40.5,49.3,31.7,38.1,81.1,50.3,65.8,ST0051,Perempuan,FKS,Administrasi Bisnis,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+60.7,52.5,60.8,41.8,38.2,67.5,47.8,ST0053,Perempuan,FRI,Sistem Informasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+28.9,55.8,45.9,57.2,72.3,52.7,47.0,ST0055,Laki-laki,FRI,Sistem Informasi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+52.9,72.4,54.8,53.4,30.6,53.1,27.6,ST0056,Laki-laki,FIF,Data Sains,2021,1,The Resilient & Adaptive,Baseline / Normatif
+71.4,51.8,49.4,37.0,39.5,47.1,41.9,ST0057,Perempuan,FEB,Manajemen,2024,1,The Resilient & Adaptive,Baseline / Normatif
+77.9,62.9,59.6,35.0,34.8,70.1,42.6,ST0058,Laki-laki,FRI,Sistem Informasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+85.2,53.8,71.8,57.7,34.2,68.5,45.3,ST0059,Perempuan,FEB,Manajemen,2023,1,The Resilient & Adaptive,Baseline / Normatif
+49.8,31.7,34.7,42.4,80.7,51.4,56.5,ST0060,Perempuan,FKS,Administrasi Bisnis,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+47.8,41.7,59.4,57.3,55.8,40.9,82.2,ST0062,Laki-laki,FRI,Teknik Logistik,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+47.0,44.4,67.7,58.8,35.5,46.3,69.4,ST0063,Laki-laki,FKS,Ilmu Komunikasi,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+55.8,76.8,46.8,51.1,51.8,58.3,28.4,ST0065,Laki-laki,FKS,Ilmu Komunikasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+63.9,49.4,58.5,50.5,37.4,64.3,54.4,ST0068,Laki-laki,FEB,Akuntansi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+36.1,50.5,69.2,78.9,47.4,54.2,69.6,ST0070,Laki-laki,FRI,Teknik Logistik,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+48.6,76.6,43.3,57.1,25.3,57.1,36.2,ST0072,Laki-laki,FRI,Teknik Industri,2024,1,The Resilient & Adaptive,Baseline / Normatif
+67.9,52.7,68.1,60.1,38.6,68.1,49.8,ST0073,Perempuan,FEB,Manajemen,2022,1,The Resilient & Adaptive,Baseline / Normatif
+61.7,81.7,45.4,69.9,32.2,44.9,40.9,ST0074,Laki-laki,FRI,Sistem Informasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+49.7,47.1,57.1,75.3,45.4,50.0,59.8,ST0075,Laki-laki,FEB,Manajemen,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+33.7,43.4,70.4,70.6,52.5,54.8,60.6,ST0078,Laki-laki,FKS,Ilmu Komunikasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+45.7,32.3,73.7,68.3,44.4,56.3,70.1,ST0081,Laki-laki,FKS,Ilmu Komunikasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+58.7,49.7,75.1,69.5,51.5,62.1,60.4,ST0083,Perempuan,FTE,Teknik Elektro,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+31.0,44.5,76.3,60.4,53.4,32.2,75.4,ST0084,Laki-laki,FEB,Akuntansi,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+43.4,68.8,48.7,51.9,38.5,51.2,31.2,ST0086,Laki-laki,FIF,Data Sains,2023,1,The Resilient & Adaptive,Baseline / Normatif
+39.9,27.9,70.2,80.6,34.4,35.3,66.0,ST0089,Laki-laki,FIF,Informatika,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+55.6,60.5,56.5,41.7,33.7,68.9,55.1,ST0090,Perempuan,FKS,Administrasi Bisnis,2021,1,The Resilient & Adaptive,Baseline / Normatif
+39.3,46.6,64.1,57.8,44.5,52.0,63.1,ST0091,Perempuan,FEB,Manajemen,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+54.0,52.0,26.4,40.8,73.0,58.8,31.4,ST0092,Perempuan,FIF,Informatika,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+51.0,61.8,42.4,55.5,36.2,58.1,41.9,ST0093,Laki-laki,FRI,Teknik Logistik,2021,1,The Resilient & Adaptive,Baseline / Normatif
+58.3,75.5,40.9,63.4,36.7,52.4,35.4,ST0095,Laki-laki,FIF,Sistem Komputer,2023,1,The Resilient & Adaptive,Baseline / Normatif
+77.3,49.1,55.4,47.8,33.3,59.0,46.3,ST0096,Perempuan,FKS,Administrasi Bisnis,2024,1,The Resilient & Adaptive,Baseline / Normatif
+53.7,61.6,56.5,73.6,38.9,58.0,26.2,ST0097,Laki-laki,FKS,Ilmu Komunikasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+49.2,69.1,50.1,52.5,41.8,65.4,39.2,ST0098,Perempuan,FIF,Data Sains,2023,1,The Resilient & Adaptive,Baseline / Normatif
+51.4,57.6,22.3,59.5,69.3,44.8,35.8,ST0099,Perempuan,FIF,Informatika,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+64.6,60.7,46.0,41.2,44.0,67.5,33.1,ST0100,Perempuan,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+42.0,59.7,46.9,53.1,67.1,45.9,53.6,ST0101,Laki-laki,FEB,Manajemen,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+60.6,64.6,54.0,66.6,36.4,45.4,29.1,ST0103,Perempuan,FTE,Teknik Elektro,2023,1,The Resilient & Adaptive,Baseline / Normatif
+54.0,65.4,53.9,60.0,38.7,54.5,26.5,ST0104,Laki-laki,FEB,Akuntansi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+73.8,57.7,64.3,32.9,35.0,66.9,38.6,ST0105,Perempuan,FRI,Sistem Informasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+57.5,41.4,74.2,53.6,36.5,52.1,58.0,ST0106,Perempuan,FTE,Teknik Elektro,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+59.5,45.9,84.1,63.9,41.5,55.5,60.5,ST0107,Laki-laki,FTE,Teknik Elektro,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+53.8,70.7,53.4,51.0,43.0,51.3,38.4,ST0109,Perempuan,FEB,Manajemen,2021,1,The Resilient & Adaptive,Baseline / Normatif
+55.6,64.6,52.4,49.8,40.1,60.8,33.1,ST0110,Perempuan,FIF,Informatika,2024,1,The Resilient & Adaptive,Baseline / Normatif
+72.3,54.9,59.9,35.8,40.1,60.3,61.9,ST0111,Laki-laki,FTE,Teknik Telekomunikasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+78.6,51.6,68.3,34.5,49.4,52.3,37.3,ST0112,Perempuan,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+47.8,70.1,56.8,43.7,27.1,55.0,37.2,ST0115,Laki-laki,FRI,Teknik Industri,2021,1,The Resilient & Adaptive,Baseline / Normatif
+33.8,45.5,67.3,57.6,46.9,57.3,63.1,ST0116,Perempuan,FIF,Informatika,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+33.4,44.4,40.3,39.7,68.1,71.7,44.8,ST0117,Laki-laki,FTE,Teknik Telekomunikasi,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+64.0,73.9,55.6,58.3,33.5,49.6,41.1,ST0118,Perempuan,FEB,Manajemen,2024,1,The Resilient & Adaptive,Baseline / Normatif
+64.2,51.5,61.9,50.2,46.3,60.6,55.1,ST0119,Laki-laki,FRI,Teknik Logistik,2023,1,The Resilient & Adaptive,Baseline / Normatif
+52.1,43.5,71.9,48.7,55.6,44.1,62.2,ST0120,Laki-laki,FTE,Teknik Telekomunikasi,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+34.6,36.9,41.1,44.8,65.2,58.0,40.2,ST0121,Perempuan,FTE,Teknik Telekomunikasi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+45.5,44.2,69.5,71.3,63.1,54.0,61.9,ST0122,Laki-laki,FRI,Sistem Informasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+47.1,56.9,79.7,52.8,51.5,31.5,58.0,ST0123,Perempuan,FTE,Teknik Telekomunikasi,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+60.1,73.3,44.2,52.7,30.8,51.8,26.8,ST0125,Laki-laki,FEB,Manajemen,2023,1,The Resilient & Adaptive,Baseline / Normatif
+47.0,62.6,58.2,52.2,36.4,60.3,34.6,ST0126,Perempuan,FIF,Data Sains,2022,1,The Resilient & Adaptive,Baseline / Normatif
+46.0,66.8,51.2,55.5,41.8,57.0,30.7,ST0127,Perempuan,FIF,Informatika,2023,1,The Resilient & Adaptive,Baseline / Normatif
+40.3,45.9,53.5,28.3,82.1,64.4,48.7,ST0128,Laki-laki,FIF,Sistem Komputer,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+46.9,39.3,70.6,72.9,50.5,54.0,62.5,ST0130,Perempuan,FEB,Akuntansi,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+49.7,81.8,42.2,55.5,41.5,61.9,33.8,ST0131,Laki-laki,FEB,Manajemen,2022,1,The Resilient & Adaptive,Baseline / Normatif
+37.1,60.8,39.2,48.0,73.9,45.6,53.1,ST0133,Laki-laki,FIF,Informatika,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+55.4,76.4,53.5,49.6,27.8,62.3,43.2,ST0134,Perempuan,FTE,Teknik Elektro,2022,1,The Resilient & Adaptive,Baseline / Normatif
+33.4,43.9,38.2,45.0,62.4,56.8,40.1,ST0135,Perempuan,FEB,Manajemen,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+73.9,47.5,61.8,53.1,35.5,51.6,42.1,ST0137,Laki-laki,FTE,Teknik Telekomunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+48.0,68.1,50.7,54.9,41.1,55.0,33.3,ST0138,Perempuan,FRI,Sistem Informasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+25.1,48.5,44.1,49.4,73.6,52.5,50.8,ST0139,Laki-laki,FEB,Akuntansi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+64.9,53.0,48.4,50.6,34.0,54.2,45.7,ST0141,Laki-laki,FIF,Informatika,2022,1,The Resilient & Adaptive,Baseline / Normatif
+43.8,45.8,53.0,60.2,44.0,50.3,60.0,ST0143,Laki-laki,FEB,Akuntansi,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+52.1,66.9,58.7,49.4,31.5,49.9,38.5,ST0144,Perempuan,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+69.6,72.1,54.0,77.3,42.4,50.0,38.6,ST0145,Laki-laki,FRI,Teknik Logistik,2023,1,The Resilient & Adaptive,Baseline / Normatif
+53.4,73.2,56.8,55.3,35.1,39.7,38.8,ST0146,Perempuan,FTE,Teknik Elektro,2021,1,The Resilient & Adaptive,Baseline / Normatif
+73.2,73.7,57.1,69.2,23.8,60.6,31.0,ST0147,Perempuan,FIF,Sistem Komputer,2022,1,The Resilient & Adaptive,Baseline / Normatif
+50.6,71.2,53.1,69.2,33.3,66.9,32.2,ST0148,Perempuan,FKS,Ilmu Komunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+48.7,63.7,50.2,45.6,28.3,60.8,43.0,ST0149,Perempuan,FIF,Informatika,2021,1,The Resilient & Adaptive,Baseline / Normatif
+51.0,73.9,45.6,52.2,41.1,63.8,40.4,ST0151,Perempuan,FTE,Teknik Telekomunikasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+71.5,42.7,44.4,36.9,30.8,61.8,48.8,ST0152,Laki-laki,FEB,Akuntansi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+59.4,50.2,64.5,62.2,47.3,40.7,47.9,ST0153,Laki-laki,FKS,Ilmu Komunikasi,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+42.2,33.3,39.9,48.4,72.3,42.3,54.0,ST0154,Laki-laki,FTE,Teknik Elektro,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+71.1,37.5,56.3,50.2,44.2,60.6,49.5,ST0155,Laki-laki,FIF,Sistem Komputer,2023,1,The Resilient & Adaptive,Baseline / Normatif
+58.9,47.4,61.3,66.8,54.0,42.3,58.8,ST0157,Laki-laki,FTE,Teknik Elektro,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+31.6,40.0,20.4,37.1,54.6,51.2,46.7,ST0158,Perempuan,FTE,Teknik Elektro,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+80.9,57.6,49.3,41.2,45.9,62.2,39.0,ST0159,Perempuan,FEB,Manajemen,2024,1,The Resilient & Adaptive,Baseline / Normatif
+45.8,40.9,65.0,55.3,51.5,55.0,68.7,ST0160,Laki-laki,FKS,Ilmu Komunikasi,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+60.3,43.4,47.3,42.0,43.6,63.4,44.1,ST0161,Perempuan,FRI,Teknik Industri,2023,1,The Resilient & Adaptive,Baseline / Normatif
+47.3,38.5,58.9,58.0,56.7,53.9,67.4,ST0162,Laki-laki,FRI,Sistem Informasi,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+71.6,55.1,59.3,44.6,28.6,55.4,48.5,ST0163,Laki-laki,FIF,Data Sains,2024,1,The Resilient & Adaptive,Baseline / Normatif
+30.5,50.3,34.1,43.3,71.7,49.3,44.0,ST0164,Perempuan,FRI,Teknik Logistik,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+43.8,27.5,56.6,49.7,48.1,47.5,66.2,ST0165,Perempuan,FIF,Sistem Komputer,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+78.0,52.9,49.6,43.4,57.6,64.4,46.2,ST0167,Perempuan,FRI,Teknik Industri,2023,1,The Resilient & Adaptive,Baseline / Normatif
+58.5,74.4,54.8,65.4,37.0,62.2,31.5,ST0168,Perempuan,FRI,Sistem Informasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+43.9,85.7,57.9,58.8,41.4,62.7,29.3,ST0170,Laki-laki,FIF,Informatika,2024,1,The Resilient & Adaptive,Baseline / Normatif
+70.0,60.3,57.3,43.5,50.9,50.6,41.6,ST0172,Laki-laki,FTE,Teknik Elektro,2022,1,The Resilient & Adaptive,Baseline / Normatif
+45.9,77.5,55.2,44.4,24.0,63.1,34.6,ST0173,Perempuan,FKS,Ilmu Komunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+46.4,36.0,54.7,71.5,42.9,52.3,49.1,ST0174,Perempuan,FTE,Teknik Elektro,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+30.2,40.0,24.0,41.0,76.8,48.4,49.6,ST0176,Laki-laki,FKS,Ilmu Komunikasi,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+48.8,69.4,45.8,60.6,35.3,63.5,26.6,ST0177,Laki-laki,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+39.9,41.5,32.8,35.7,67.2,46.0,40.3,ST0178,Laki-laki,FRI,Teknik Industri,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+79.5,42.7,57.7,45.5,32.9,55.7,45.1,ST0180,Laki-laki,FKS,Administrasi Bisnis,2022,1,The Resilient & Adaptive,Baseline / Normatif
+64.3,72.4,61.0,65.4,39.9,47.3,46.8,ST0181,Laki-laki,FEB,Manajemen,2024,1,The Resilient & Adaptive,Baseline / Normatif
+32.6,43.4,28.5,46.5,68.4,47.0,48.9,ST0182,Perempuan,FTE,Teknik Elektro,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+74.1,77.7,58.3,48.0,39.7,55.2,40.8,ST0183,Perempuan,FTE,Teknik Elektro,2024,1,The Resilient & Adaptive,Baseline / Normatif
+79.9,63.0,56.4,39.5,43.3,54.0,49.5,ST0184,Perempuan,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+46.8,90.0,48.2,64.0,30.6,61.3,32.0,ST0185,Laki-laki,FRI,Sistem Informasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+52.8,87.4,51.5,51.8,35.5,47.1,27.9,ST0186,Perempuan,FRI,Teknik Logistik,2024,1,The Resilient & Adaptive,Baseline / Normatif
+57.2,56.7,54.1,57.7,43.4,63.1,51.5,ST0187,Perempuan,FKS,Administrasi Bisnis,2022,1,The Resilient & Adaptive,Baseline / Normatif
+45.5,47.6,60.9,52.4,59.4,66.1,62.5,ST0188,Perempuan,FRI,Teknik Logistik,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+59.4,63.5,69.0,59.2,41.5,51.6,49.4,ST0189,Perempuan,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+48.7,71.7,57.9,45.3,33.2,63.6,33.5,ST0191,Laki-laki,FKS,Administrasi Bisnis,2021,1,The Resilient & Adaptive,Baseline / Normatif
+69.6,55.7,68.4,55.5,44.1,52.1,34.0,ST0192,Perempuan,FRI,Teknik Industri,2021,1,The Resilient & Adaptive,Baseline / Normatif
+61.1,45.5,50.4,50.2,43.2,53.3,35.7,ST0193,Perempuan,FTE,Teknik Telekomunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+30.9,52.5,26.0,46.3,66.5,62.1,52.7,ST0194,Laki-laki,FKS,Administrasi Bisnis,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+45.6,71.5,47.7,59.8,31.1,57.7,20.8,ST0195,Perempuan,FEB,Akuntansi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+55.5,86.3,54.2,65.8,36.2,61.2,37.7,ST0196,Perempuan,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+69.8,55.1,73.8,40.0,47.5,47.6,54.8,ST0197,Perempuan,FTE,Teknik Elektro,2022,1,The Resilient & Adaptive,Baseline / Normatif
+62.2,79.5,46.3,40.8,47.5,69.4,42.8,ST0198,Perempuan,FEB,Manajemen,2023,1,The Resilient & Adaptive,Baseline / Normatif
+71.1,51.5,59.8,39.6,20.5,63.8,50.4,ST0199,Perempuan,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+70.2,51.8,53.8,47.4,38.9,55.2,36.5,ST0200,Perempuan,FTE,Teknik Elektro,2023,1,The Resilient & Adaptive,Baseline / Normatif
+35.0,56.6,41.2,40.1,75.8,56.2,45.5,ST0201,Laki-laki,FRI,Teknik Industri,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+43.8,51.3,68.6,69.6,44.5,55.8,60.3,ST0202,Laki-laki,FTE,Teknik Telekomunikasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+46.6,42.6,59.5,62.3,51.5,56.7,59.8,ST0203,Laki-laki,FEB,Akuntansi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+49.9,56.0,68.1,71.4,45.2,50.7,65.9,ST0204,Perempuan,FEB,Manajemen,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+47.6,66.5,41.7,72.5,52.2,64.4,23.0,ST0205,Laki-laki,FIF,Sistem Komputer,2021,1,The Resilient & Adaptive,Baseline / Normatif
+66.7,44.6,66.6,42.5,28.5,63.5,55.3,ST0206,Laki-laki,FRI,Sistem Informasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+43.6,32.5,62.9,59.1,54.6,39.4,53.6,ST0207,Laki-laki,FEB,Manajemen,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+36.7,35.4,47.6,32.2,83.0,51.1,49.8,ST0209,Laki-laki,FIF,Sistem Komputer,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+70.6,53.0,64.4,49.6,23.2,57.9,49.0,ST0211,Perempuan,FRI,Teknik Industri,2022,1,The Resilient & Adaptive,Baseline / Normatif
+46.9,34.6,66.2,68.5,48.3,54.1,65.2,ST0212,Perempuan,FEB,Manajemen,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+56.7,69.8,45.1,62.3,40.2,76.5,26.3,ST0213,Perempuan,FKS,Administrasi Bisnis,2024,1,The Resilient & Adaptive,Baseline / Normatif
+75.1,56.7,53.6,51.2,35.3,65.3,49.3,ST0214,Laki-laki,FEB,Akuntansi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+51.4,44.0,72.3,61.4,40.9,48.2,59.7,ST0215,Perempuan,FIF,Informatika,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+63.3,66.0,46.3,67.3,33.3,58.4,30.4,ST0216,Laki-laki,FRI,Sistem Informasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+43.5,47.8,60.4,60.9,54.1,42.7,60.6,ST0218,Perempuan,FKS,Ilmu Komunikasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+47.7,46.2,61.1,71.7,41.1,42.5,75.5,ST0220,Perempuan,FEB,Akuntansi,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+69.3,53.5,57.1,36.8,37.5,63.1,46.9,ST0221,Laki-laki,FRI,Teknik Logistik,2023,1,The Resilient & Adaptive,Baseline / Normatif
+64.5,60.1,48.1,48.3,41.5,67.3,38.1,ST0222,Perempuan,FTE,Teknik Elektro,2023,1,The Resilient & Adaptive,Baseline / Normatif
+72.6,58.1,64.2,43.1,47.4,72.4,47.3,ST0223,Laki-laki,FEB,Manajemen,2023,1,The Resilient & Adaptive,Baseline / Normatif
+68.9,70.7,37.9,56.0,37.3,65.1,38.3,ST0224,Laki-laki,FTE,Teknik Telekomunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+72.0,51.9,63.8,50.7,50.4,57.7,60.2,ST0225,Perempuan,FRI,Teknik Logistik,2023,1,The Resilient & Adaptive,Baseline / Normatif
+53.2,82.3,57.2,61.9,37.8,62.3,27.9,ST0226,Laki-laki,FTE,Teknik Elektro,2023,1,The Resilient & Adaptive,Baseline / Normatif
+48.4,48.0,54.1,70.5,49.6,48.0,46.5,ST0227,Perempuan,FKS,Ilmu Komunikasi,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+43.6,37.8,63.3,67.3,60.3,58.9,78.4,ST0228,Laki-laki,FRI,Sistem Informasi,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+30.6,48.9,29.9,31.8,75.4,59.0,45.5,ST0230,Laki-laki,FEB,Manajemen,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+53.3,73.3,49.1,62.9,30.6,57.5,31.2,ST0231,Laki-laki,FEB,Manajemen,2022,1,The Resilient & Adaptive,Baseline / Normatif
+39.4,51.3,37.7,34.2,77.6,44.4,57.7,ST0233,Laki-laki,FEB,Manajemen,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+51.1,51.3,72.7,55.0,52.4,67.6,62.5,ST0234,Perempuan,FRI,Teknik Industri,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+68.2,71.5,52.4,37.9,46.9,46.4,52.5,ST0235,Perempuan,FEB,Akuntansi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+46.6,48.3,63.0,63.9,61.4,41.5,77.2,ST0236,Laki-laki,FIF,Sistem Komputer,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+36.3,40.9,62.3,51.6,48.6,51.8,66.9,ST0237,Laki-laki,FIF,Informatika,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+56.7,81.5,53.9,61.2,41.1,66.5,35.2,ST0238,Perempuan,FKS,Ilmu Komunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+36.5,36.4,31.9,41.5,72.5,42.5,49.6,ST0240,Perempuan,FTE,Teknik Elektro,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+50.3,78.7,51.2,51.2,36.4,54.1,42.9,ST0242,Perempuan,FRI,Teknik Industri,2023,1,The Resilient & Adaptive,Baseline / Normatif
+41.6,32.5,47.4,46.2,69.7,46.6,44.7,ST0243,Laki-laki,FRI,Sistem Informasi,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+50.5,60.6,63.3,48.0,30.1,62.0,34.5,ST0245,Laki-laki,FEB,Manajemen,2024,1,The Resilient & Adaptive,Baseline / Normatif
+60.4,52.7,54.0,42.3,46.2,62.3,39.3,ST0246,Perempuan,FEB,Akuntansi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+50.1,45.6,70.1,47.9,49.6,51.5,61.6,ST0248,Perempuan,FIF,Informatika,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+54.7,72.9,60.4,44.0,36.0,56.1,40.9,ST0249,Perempuan,FEB,Akuntansi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+50.6,75.3,68.0,66.5,34.0,54.6,33.5,ST0250,Perempuan,FTE,Teknik Telekomunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+55.6,43.7,50.6,43.0,61.4,54.5,54.6,ST0251,Perempuan,FEB,Akuntansi,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+40.4,44.3,49.5,41.2,81.5,48.7,60.4,ST0252,Laki-laki,FKS,Ilmu Komunikasi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+73.6,57.2,61.8,31.8,51.4,57.8,50.1,ST0253,Perempuan,FTE,Teknik Elektro,2022,1,The Resilient & Adaptive,Baseline / Normatif
+31.2,34.8,41.0,47.5,68.3,48.8,39.2,ST0254,Perempuan,FKS,Administrasi Bisnis,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+48.8,45.1,72.5,70.3,52.6,39.6,58.6,ST0255,Perempuan,FIF,Sistem Komputer,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+61.8,43.0,55.8,75.8,54.8,60.6,66.8,ST0256,Laki-laki,FTE,Teknik Telekomunikasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+58.5,71.8,49.3,58.4,35.3,68.3,38.8,ST0257,Laki-laki,FTE,Teknik Elektro,2023,1,The Resilient & Adaptive,Baseline / Normatif
+45.7,37.6,43.5,42.5,62.8,63.9,38.6,ST0258,Perempuan,FEB,Manajemen,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+83.0,62.3,43.1,42.3,35.2,64.4,42.7,ST0259,Laki-laki,FRI,Sistem Informasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+57.0,75.2,46.8,68.0,49.1,42.7,28.6,ST0261,Perempuan,FRI,Teknik Industri,2022,1,The Resilient & Adaptive,Baseline / Normatif
+76.5,49.4,61.3,50.2,28.1,48.6,54.2,ST0262,Laki-laki,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+59.2,45.7,63.1,71.4,53.8,45.3,72.7,ST0263,Perempuan,FEB,Akuntansi,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+50.8,40.5,60.2,62.7,42.2,55.6,69.7,ST0264,Perempuan,FKS,Administrasi Bisnis,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+40.3,49.0,20.0,56.9,68.4,38.5,33.1,ST0266,Laki-laki,FTE,Teknik Telekomunikasi,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+32.0,50.0,69.1,67.5,55.8,45.6,57.9,ST0268,Perempuan,FKS,Ilmu Komunikasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+36.6,39.2,41.8,38.5,65.1,43.6,43.9,ST0272,Laki-laki,FEB,Manajemen,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+60.9,68.9,52.8,50.7,40.7,68.5,32.7,ST0273,Perempuan,FEB,Akuntansi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+42.9,57.5,63.0,66.6,51.4,55.6,79.5,ST0274,Laki-laki,FIF,Data Sains,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+31.4,32.3,68.5,57.3,51.0,39.6,67.7,ST0275,Laki-laki,FIF,Data Sains,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+38.3,38.6,66.8,59.0,46.4,49.6,68.9,ST0276,Perempuan,FRI,Teknik Industri,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+28.5,45.2,32.8,28.8,59.7,53.9,42.8,ST0277,Laki-laki,FEB,Manajemen,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+71.3,64.4,46.2,70.2,48.3,66.5,32.7,ST0279,Perempuan,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+55.7,67.7,41.4,55.0,43.4,57.7,38.4,ST0280,Perempuan,FTE,Teknik Elektro,2023,1,The Resilient & Adaptive,Baseline / Normatif
+53.7,34.3,31.0,40.7,72.2,50.6,51.3,ST0281,Laki-laki,FRI,Teknik Logistik,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+45.8,61.4,48.4,47.6,45.2,64.9,40.4,ST0283,Laki-laki,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+60.8,84.9,51.5,66.5,30.2,53.4,32.8,ST0284,Perempuan,FIF,Sistem Komputer,2023,1,The Resilient & Adaptive,Baseline / Normatif
+74.2,63.6,67.0,52.2,41.6,58.4,43.6,ST0285,Perempuan,FEB,Manajemen,2022,1,The Resilient & Adaptive,Baseline / Normatif
+27.2,22.1,44.5,48.2,73.2,57.6,30.8,ST0288,Laki-laki,FIF,Data Sains,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+40.2,39.7,41.0,40.0,67.1,61.9,45.3,ST0289,Laki-laki,FKS,Ilmu Komunikasi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+48.8,36.6,69.9,66.6,52.0,44.5,49.2,ST0290,Laki-laki,FRI,Teknik Industri,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+80.3,51.0,54.2,49.3,43.6,53.6,52.9,ST0292,Laki-laki,FIF,Informatika,2024,1,The Resilient & Adaptive,Baseline / Normatif
+43.8,62.4,44.3,51.6,35.4,49.2,32.7,ST0294,Perempuan,FEB,Akuntansi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+48.6,56.0,57.6,69.9,50.5,32.1,64.4,ST0296,Perempuan,FRI,Teknik Logistik,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+69.7,52.9,40.3,39.8,22.0,66.1,48.4,ST0298,Perempuan,FTE,Teknik Elektro,2022,1,The Resilient & Adaptive,Baseline / Normatif
+47.7,51.4,68.5,51.4,37.7,50.0,59.0,ST0299,Perempuan,FEB,Akuntansi,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+30.8,51.6,42.3,44.9,65.1,38.1,51.6,ST0300,Laki-laki,FIF,Informatika,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+36.4,40.2,61.7,60.9,56.1,40.1,62.9,ST0301,Laki-laki,FEB,Manajemen,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+28.4,41.8,37.2,47.8,70.8,40.4,43.4,ST0302,Laki-laki,FKS,Ilmu Komunikasi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+60.2,53.0,58.6,49.8,48.2,48.4,46.3,ST0303,Perempuan,FRI,Teknik Industri,2023,1,The Resilient & Adaptive,Baseline / Normatif
+53.7,81.0,52.1,54.8,31.3,66.0,40.2,ST0304,Perempuan,FRI,Teknik Industri,2023,1,The Resilient & Adaptive,Baseline / Normatif
+53.3,66.4,53.1,55.0,28.8,51.9,43.9,ST0305,Laki-laki,FIF,Sistem Komputer,2021,1,The Resilient & Adaptive,Baseline / Normatif
+64.2,57.7,53.3,46.5,47.3,58.8,59.4,ST0306,Perempuan,FKS,Ilmu Komunikasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+54.7,62.1,55.5,48.5,42.7,65.0,30.4,ST0307,Perempuan,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+74.0,56.6,61.7,53.4,44.3,53.8,48.3,ST0308,Laki-laki,FIF,Data Sains,2022,1,The Resilient & Adaptive,Baseline / Normatif
+20.0,50.0,28.0,39.8,73.1,41.8,49.3,ST0311,Perempuan,FTE,Teknik Elektro,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+25.3,35.6,44.0,35.8,77.1,46.6,49.2,ST0314,Perempuan,FEB,Akuntansi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+36.4,46.5,40.8,41.2,78.0,38.8,54.6,ST0315,Perempuan,FRI,Teknik Logistik,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+59.9,69.0,52.2,54.8,40.4,58.1,36.6,ST0316,Laki-laki,FRI,Teknik Industri,2023,1,The Resilient & Adaptive,Baseline / Normatif
+71.6,61.6,64.1,55.9,41.8,54.1,27.3,ST0317,Laki-laki,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+66.6,45.6,57.4,57.4,46.2,50.1,53.4,ST0318,Perempuan,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+51.5,76.7,48.0,47.9,40.2,59.0,28.4,ST0319,Perempuan,FIF,Data Sains,2022,1,The Resilient & Adaptive,Baseline / Normatif
+25.9,32.1,20.4,20.6,68.8,54.7,48.0,ST0320,Perempuan,FIF,Sistem Komputer,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+56.0,48.0,58.7,61.9,49.1,50.0,64.3,ST0323,Laki-laki,FRI,Sistem Informasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+58.5,64.6,42.6,56.4,44.5,67.7,29.2,ST0324,Perempuan,FRI,Teknik Industri,2021,1,The Resilient & Adaptive,Baseline / Normatif
+32.2,36.0,31.1,37.0,68.4,47.7,54.0,ST0329,Laki-laki,FIF,Data Sains,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+66.5,45.0,56.7,50.3,40.0,60.3,53.5,ST0331,Laki-laki,FTE,Teknik Elektro,2022,1,The Resilient & Adaptive,Baseline / Normatif
+56.2,90.0,50.1,64.2,40.6,61.6,47.3,ST0332,Laki-laki,FKS,Ilmu Komunikasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+41.5,45.3,64.5,43.0,54.9,39.1,67.8,ST0333,Perempuan,FTE,Teknik Elektro,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+70.4,65.9,59.7,53.7,38.3,62.3,54.4,ST0334,Laki-laki,FRI,Sistem Informasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+49.2,45.2,52.2,45.4,61.4,57.0,61.8,ST0335,Laki-laki,FRI,Teknik Industri,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+50.6,71.6,48.4,43.6,49.1,66.6,31.5,ST0336,Perempuan,FKS,Ilmu Komunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+29.5,47.2,27.4,47.9,66.8,57.7,35.3,ST0337,Laki-laki,FKS,Administrasi Bisnis,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+62.5,52.8,53.2,54.2,41.6,58.0,51.5,ST0338,Perempuan,FIF,Informatika,2023,1,The Resilient & Adaptive,Baseline / Normatif
+64.7,67.4,53.8,42.0,49.8,58.8,55.6,ST0339,Perempuan,FKS,Administrasi Bisnis,2021,1,The Resilient & Adaptive,Baseline / Normatif
+58.7,56.2,69.5,52.1,41.9,54.9,57.5,ST0341,Perempuan,FKS,Ilmu Komunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+20.0,45.6,41.5,39.6,71.6,45.9,48.4,ST0342,Laki-laki,FRI,Teknik Industri,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+41.5,46.7,57.0,55.5,56.9,30.3,60.3,ST0343,Perempuan,FIF,Sistem Komputer,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+35.1,43.5,32.4,23.4,65.6,43.5,42.5,ST0344,Laki-laki,FIF,Informatika,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+49.0,45.3,70.6,62.7,55.2,53.0,67.7,ST0346,Perempuan,FKS,Administrasi Bisnis,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+37.9,73.7,56.3,58.2,48.6,66.2,27.4,ST0347,Laki-laki,FTE,Teknik Telekomunikasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+65.7,62.5,72.4,46.5,43.4,61.0,47.4,ST0348,Laki-laki,FEB,Akuntansi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+49.6,85.1,44.4,55.9,29.2,44.8,24.1,ST0349,Perempuan,FTE,Teknik Elektro,2022,1,The Resilient & Adaptive,Baseline / Normatif
+27.2,58.1,27.4,40.7,80.3,38.9,42.4,ST0350,Perempuan,FIF,Sistem Komputer,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+63.8,87.7,46.1,57.3,32.8,52.6,39.5,ST0351,Perempuan,FEB,Manajemen,2022,1,The Resilient & Adaptive,Baseline / Normatif
+53.5,67.9,53.1,54.0,40.1,54.9,30.0,ST0352,Perempuan,FEB,Akuntansi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+55.9,80.2,56.0,56.8,39.1,61.6,30.3,ST0353,Laki-laki,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+41.6,45.4,37.2,49.7,61.6,51.5,49.8,ST0355,Laki-laki,FRI,Teknik Industri,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+43.9,34.7,42.1,38.6,67.4,41.0,58.4,ST0356,Perempuan,FIF,Data Sains,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+63.0,66.9,50.5,52.6,32.4,61.0,41.0,ST0357,Perempuan,FKS,Ilmu Komunikasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+56.8,69.8,54.9,59.4,38.3,55.1,43.4,ST0358,Perempuan,FEB,Akuntansi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+37.9,44.0,63.2,67.8,43.8,39.3,63.9,ST0359,Perempuan,FEB,Manajemen,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+37.7,48.3,40.2,43.1,66.5,53.1,30.2,ST0360,Perempuan,FEB,Akuntansi,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+42.2,37.0,29.7,48.1,64.3,48.3,49.7,ST0361,Perempuan,FIF,Sistem Komputer,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+51.8,42.0,62.0,58.4,54.7,57.5,72.5,ST0362,Perempuan,FRI,Sistem Informasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+59.8,71.9,48.7,45.3,45.9,62.0,33.8,ST0363,Perempuan,FRI,Sistem Informasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+57.7,64.2,56.9,48.6,37.0,55.9,47.1,ST0365,Perempuan,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+57.3,53.9,49.4,50.6,31.3,62.0,44.3,ST0366,Laki-laki,FIF,Data Sains,2022,1,The Resilient & Adaptive,Baseline / Normatif
+42.9,72.8,60.8,39.5,44.3,52.2,36.8,ST0367,Perempuan,FEB,Akuntansi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+61.4,56.1,43.1,61.1,41.9,57.7,36.5,ST0369,Laki-laki,FIF,Informatika,2021,1,The Resilient & Adaptive,Baseline / Normatif
+61.9,53.3,62.3,46.3,22.4,54.8,42.1,ST0370,Perempuan,FRI,Sistem Informasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+45.7,83.4,52.2,65.0,37.1,67.8,40.6,ST0371,Laki-laki,FEB,Akuntansi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+50.7,73.1,53.8,55.8,36.0,49.6,27.2,ST0372,Perempuan,FRI,Teknik Logistik,2022,1,The Resilient & Adaptive,Baseline / Normatif
+45.9,38.3,41.4,49.7,67.6,42.0,43.6,ST0373,Laki-laki,FEB,Manajemen,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+79.4,53.2,63.5,49.8,40.0,47.6,43.7,ST0374,Perempuan,FRI,Teknik Logistik,2023,1,The Resilient & Adaptive,Baseline / Normatif
+45.0,43.1,72.5,53.0,54.4,45.3,74.6,ST0375,Laki-laki,FRI,Teknik Industri,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+53.8,53.4,67.8,59.8,53.6,57.9,58.2,ST0376,Laki-laki,FKS,Ilmu Komunikasi,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+43.6,43.6,59.6,69.5,47.7,56.8,57.7,ST0377,Laki-laki,FRI,Teknik Industri,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+80.5,47.9,59.0,58.2,48.8,74.0,35.8,ST0378,Laki-laki,FTE,Teknik Elektro,2024,1,The Resilient & Adaptive,Baseline / Normatif
+47.6,71.5,66.8,60.4,31.6,46.1,37.8,ST0379,Perempuan,FKS,Administrasi Bisnis,2022,1,The Resilient & Adaptive,Baseline / Normatif
+45.9,67.1,54.1,48.8,46.3,57.9,36.5,ST0380,Perempuan,FRI,Sistem Informasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+39.4,43.6,80.5,64.5,49.4,42.9,76.8,ST0381,Perempuan,FRI,Teknik Industri,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+39.7,45.0,34.8,53.8,62.8,51.6,41.8,ST0383,Perempuan,FRI,Sistem Informasi,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+51.1,74.1,53.0,50.8,33.8,55.8,31.7,ST0384,Laki-laki,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+43.0,23.6,79.8,56.6,62.4,52.7,76.2,ST0385,Perempuan,FKS,Administrasi Bisnis,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+70.1,53.7,61.0,47.7,48.4,49.8,51.0,ST0386,Laki-laki,FEB,Akuntansi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+67.6,63.6,57.7,39.2,35.5,72.5,47.1,ST0387,Perempuan,FTE,Teknik Elektro,2024,1,The Resilient & Adaptive,Baseline / Normatif
+45.3,46.7,40.8,52.9,67.3,50.8,60.5,ST0388,Perempuan,FKS,Ilmu Komunikasi,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+65.7,60.3,58.4,44.4,35.9,54.4,59.8,ST0389,Laki-laki,FIF,Sistem Komputer,2024,1,The Resilient & Adaptive,Baseline / Normatif
+60.5,67.9,41.2,51.5,30.5,59.1,39.5,ST0390,Perempuan,FEB,Akuntansi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+74.7,53.4,60.1,53.6,44.1,50.2,49.4,ST0392,Perempuan,FRI,Teknik Logistik,2024,1,The Resilient & Adaptive,Baseline / Normatif
+51.6,48.9,77.5,73.8,54.3,51.0,58.8,ST0393,Perempuan,FIF,Informatika,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+27.4,41.7,33.1,45.9,68.3,41.9,54.5,ST0396,Perempuan,FTE,Teknik Elektro,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+76.2,65.6,51.0,52.8,34.0,59.0,47.1,ST0397,Laki-laki,FRI,Sistem Informasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+59.1,49.0,65.0,65.5,41.9,62.2,45.9,ST0398,Laki-laki,FIF,Sistem Komputer,2024,1,The Resilient & Adaptive,Baseline / Normatif
+36.6,49.5,30.1,46.9,69.0,52.2,29.0,ST0399,Laki-laki,FTE,Teknik Elektro,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+70.1,70.0,63.2,47.5,36.9,58.4,45.1,ST0400,Perempuan,FIF,Informatika,2024,1,The Resilient & Adaptive,Baseline / Normatif
+58.7,77.9,50.2,47.3,30.1,44.7,40.5,ST0401,Perempuan,FIF,Sistem Komputer,2021,1,The Resilient & Adaptive,Baseline / Normatif
+43.5,47.6,62.9,69.1,58.8,52.9,79.3,ST0403,Laki-laki,FKS,Administrasi Bisnis,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+61.5,46.3,66.0,42.4,31.6,65.9,53.3,ST0404,Perempuan,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+48.2,63.3,47.9,49.8,30.1,66.0,40.5,ST0405,Laki-laki,FRI,Teknik Logistik,2024,1,The Resilient & Adaptive,Baseline / Normatif
+50.9,63.3,38.5,53.7,37.1,49.3,28.2,ST0407,Perempuan,FEB,Akuntansi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+24.9,55.6,32.8,47.7,71.5,39.3,40.8,ST0408,Perempuan,FTE,Teknik Elektro,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+69.9,45.0,64.2,46.7,41.6,66.1,49.0,ST0412,Laki-laki,FTE,Teknik Elektro,2023,1,The Resilient & Adaptive,Baseline / Normatif
+49.9,38.7,64.2,71.3,40.3,38.7,74.2,ST0413,Perempuan,FIF,Informatika,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+43.3,77.8,65.8,43.2,42.5,60.6,32.4,ST0415,Perempuan,FIF,Data Sains,2023,1,The Resilient & Adaptive,Baseline / Normatif
+39.8,46.1,36.6,43.1,73.0,46.8,42.3,ST0416,Perempuan,FEB,Manajemen,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+47.9,47.5,31.6,53.4,53.9,38.9,59.6,ST0417,Laki-laki,FTE,Teknik Telekomunikasi,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+47.4,50.6,81.3,55.5,35.2,41.7,74.7,ST0418,Laki-laki,FKS,Administrasi Bisnis,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+64.0,59.0,51.9,51.1,37.7,53.7,48.7,ST0419,Perempuan,FTE,Teknik Elektro,2021,1,The Resilient & Adaptive,Baseline / Normatif
+74.2,53.6,59.6,44.9,32.5,55.0,49.0,ST0420,Perempuan,FKS,Ilmu Komunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+22.3,48.5,55.9,42.3,71.0,57.7,47.3,ST0421,Perempuan,FIF,Data Sains,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+68.3,61.6,58.5,51.1,44.7,61.7,46.0,ST0422,Perempuan,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+73.6,42.0,72.4,39.9,34.6,61.6,64.0,ST0423,Perempuan,FKS,Administrasi Bisnis,2022,1,The Resilient & Adaptive,Baseline / Normatif
+55.1,84.4,61.8,32.8,36.8,67.1,35.2,ST0426,Laki-laki,FRI,Sistem Informasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+67.7,47.3,57.1,37.8,36.5,60.3,34.4,ST0427,Perempuan,FKS,Ilmu Komunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+41.7,46.7,74.3,76.3,54.9,50.3,67.3,ST0429,Perempuan,FRI,Teknik Industri,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+37.1,46.8,46.5,26.7,69.4,49.6,54.4,ST0430,Perempuan,FRI,Sistem Informasi,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+54.0,44.4,63.1,65.4,53.6,43.5,61.1,ST0431,Perempuan,FKS,Ilmu Komunikasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+67.1,73.3,41.8,59.1,29.3,67.2,38.7,ST0432,Perempuan,FIF,Sistem Komputer,2024,1,The Resilient & Adaptive,Baseline / Normatif
+61.4,49.2,54.6,41.0,38.3,51.7,47.0,ST0433,Perempuan,FRI,Teknik Industri,2023,1,The Resilient & Adaptive,Baseline / Normatif
+56.9,59.8,61.1,38.0,23.7,65.9,46.1,ST0437,Laki-laki,FTE,Teknik Telekomunikasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+59.6,59.1,66.0,40.2,35.4,48.6,40.4,ST0438,Perempuan,FKS,Ilmu Komunikasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+53.7,69.4,55.0,55.7,35.8,54.7,33.4,ST0441,Laki-laki,FEB,Akuntansi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+45.5,42.4,59.1,66.4,24.6,26.9,68.7,ST0442,Perempuan,FRI,Sistem Informasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+72.5,51.7,62.5,38.0,29.9,52.6,49.0,ST0444,Laki-laki,FEB,Manajemen,2021,1,The Resilient & Adaptive,Baseline / Normatif
+41.8,43.6,68.6,68.5,39.8,47.9,62.5,ST0448,Perempuan,FKS,Ilmu Komunikasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+66.3,45.0,67.1,61.1,53.4,51.7,49.2,ST0449,Laki-laki,FKS,Ilmu Komunikasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+74.1,56.1,69.6,45.6,38.0,55.7,50.5,ST0450,Laki-laki,FRI,Teknik Logistik,2023,1,The Resilient & Adaptive,Baseline / Normatif
+57.8,54.1,60.2,34.3,40.9,56.5,56.6,ST0451,Laki-laki,FEB,Akuntansi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+48.4,48.8,45.5,59.5,67.7,50.6,49.8,ST0453,Laki-laki,FRI,Teknik Logistik,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+74.1,61.4,55.1,25.9,30.3,56.9,41.8,ST0454,Laki-laki,FRI,Teknik Logistik,2022,1,The Resilient & Adaptive,Baseline / Normatif
+62.3,69.2,43.7,44.3,35.0,51.3,27.2,ST0455,Perempuan,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+76.0,53.7,68.3,41.9,49.2,65.7,50.7,ST0456,Laki-laki,FIF,Informatika,2022,1,The Resilient & Adaptive,Baseline / Normatif
+41.0,57.3,59.1,54.8,41.6,45.1,71.4,ST0457,Laki-laki,FIF,Sistem Komputer,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+20.0,45.2,28.7,48.6,61.6,34.3,20.7,ST0458,Perempuan,FTE,Teknik Telekomunikasi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+45.2,75.5,44.1,59.3,26.1,62.1,30.6,ST0459,Laki-laki,FEB,Manajemen,2021,1,The Resilient & Adaptive,Baseline / Normatif
+47.8,46.3,37.1,24.4,65.0,47.8,40.7,ST0461,Perempuan,FEB,Manajemen,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+47.7,61.6,24.7,31.3,60.8,46.9,45.2,ST0464,Perempuan,FRI,Teknik Logistik,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+64.9,74.2,53.2,52.6,37.4,53.9,34.4,ST0466,Perempuan,FTE,Teknik Elektro,2024,1,The Resilient & Adaptive,Baseline / Normatif
+59.2,67.5,55.2,52.7,36.5,36.9,31.4,ST0467,Laki-laki,FRI,Sistem Informasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+39.6,36.5,76.9,69.0,52.5,38.3,66.2,ST0468,Laki-laki,FTE,Teknik Elektro,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+63.8,69.0,53.6,71.9,37.5,51.0,40.4,ST0469,Laki-laki,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+53.8,48.6,77.2,71.5,42.0,63.6,71.7,ST0470,Laki-laki,FEB,Manajemen,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+62.0,70.7,56.1,51.7,40.7,56.5,27.7,ST0471,Perempuan,FRI,Sistem Informasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+62.6,60.3,59.7,40.4,26.1,56.2,48.5,ST0472,Perempuan,FRI,Teknik Industri,2022,1,The Resilient & Adaptive,Baseline / Normatif
+60.2,70.0,49.6,56.2,45.5,65.6,31.4,ST0473,Laki-laki,FRI,Teknik Industri,2024,1,The Resilient & Adaptive,Baseline / Normatif
+51.5,59.0,51.6,49.5,39.0,64.5,42.2,ST0474,Laki-laki,FRI,Sistem Informasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+59.6,55.9,55.4,57.9,37.9,56.3,40.7,ST0475,Laki-laki,FRI,Teknik Logistik,2024,1,The Resilient & Adaptive,Baseline / Normatif
+60.0,71.1,51.6,48.2,27.9,61.9,47.5,ST0477,Laki-laki,FRI,Teknik Logistik,2024,1,The Resilient & Adaptive,Baseline / Normatif
+27.2,58.3,39.2,46.8,68.0,50.1,44.5,ST0478,Perempuan,FKS,Ilmu Komunikasi,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+34.4,47.7,39.4,45.9,62.3,40.4,51.1,ST0479,Perempuan,FIF,Data Sains,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+58.1,67.2,59.0,42.4,34.2,60.9,48.3,ST0480,Perempuan,FIF,Data Sains,2021,1,The Resilient & Adaptive,Baseline / Normatif
+58.7,66.9,39.1,39.7,43.3,63.9,30.2,ST0481,Perempuan,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+45.6,37.2,64.0,62.9,43.9,41.0,69.3,ST0483,Perempuan,FTE,Teknik Elektro,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+58.8,27.4,65.5,64.7,53.1,60.9,81.0,ST0484,Laki-laki,FRI,Teknik Logistik,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+39.9,32.1,20.0,24.0,66.2,55.3,44.6,ST0486,Laki-laki,FRI,Teknik Industri,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+68.7,68.4,67.8,43.0,33.1,65.8,44.9,ST0487,Laki-laki,FIF,Sistem Komputer,2021,1,The Resilient & Adaptive,Baseline / Normatif
+34.5,39.3,75.5,63.4,45.9,47.1,66.0,ST0488,Laki-laki,FKS,Ilmu Komunikasi,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+45.0,50.5,69.9,60.7,54.7,51.9,67.0,ST0490,Laki-laki,FKS,Administrasi Bisnis,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+52.1,65.3,60.2,36.7,35.7,67.3,35.0,ST0492,Laki-laki,FKS,Administrasi Bisnis,2022,1,The Resilient & Adaptive,Baseline / Normatif
+27.3,45.0,34.5,28.1,61.7,52.8,46.4,ST0493,Laki-laki,FIF,Informatika,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+39.0,44.7,36.3,53.3,75.1,48.4,53.9,ST0494,Perempuan,FIF,Informatika,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+46.0,45.3,58.9,66.6,49.6,36.3,61.4,ST0495,Perempuan,FIF,Sistem Komputer,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+59.9,66.2,38.4,46.6,63.6,67.4,40.2,ST0496,Laki-laki,FIF,Data Sains,2022,1,The Resilient & Adaptive,Baseline / Normatif
+74.8,62.3,55.2,40.2,38.0,62.6,38.4,ST0497,Perempuan,FRI,Teknik Industri,2023,1,The Resilient & Adaptive,Baseline / Normatif
+61.4,77.6,44.0,67.1,38.5,58.3,22.6,ST0499,Perempuan,FTE,Teknik Elektro,2024,1,The Resilient & Adaptive,Baseline / Normatif
+36.4,38.7,43.2,44.7,60.6,56.5,52.7,ST0500,Perempuan,FEB,Manajemen,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+55.3,47.9,62.5,58.5,44.0,47.1,71.4,ST0501,Perempuan,FRI,Sistem Informasi,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+59.3,56.1,55.2,45.1,47.4,52.3,51.6,ST0502,Perempuan,FEB,Akuntansi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+29.6,42.6,33.6,40.2,74.8,54.8,51.6,ST0503,Laki-laki,FTE,Teknik Elektro,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+39.3,58.7,63.7,61.4,45.0,66.6,65.8,ST0504,Laki-laki,FTE,Teknik Telekomunikasi,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+67.4,49.5,51.9,49.3,38.2,63.8,49.0,ST0505,Perempuan,FIF,Data Sains,2024,1,The Resilient & Adaptive,Baseline / Normatif
+30.3,44.4,36.0,53.4,73.8,58.2,55.0,ST0507,Perempuan,FIF,Informatika,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+54.5,51.9,68.9,42.1,46.8,59.6,43.9,ST0508,Perempuan,FEB,Akuntansi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+56.6,49.7,62.7,59.2,34.1,63.2,44.9,ST0509,Perempuan,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+65.3,69.1,48.7,55.5,40.2,57.3,34.0,ST0510,Laki-laki,FIF,Informatika,2023,1,The Resilient & Adaptive,Baseline / Normatif
+56.1,82.8,48.1,58.1,29.0,65.9,30.7,ST0511,Laki-laki,FEB,Manajemen,2022,1,The Resilient & Adaptive,Baseline / Normatif
+76.6,52.7,49.5,39.8,36.7,69.2,53.2,ST0512,Perempuan,FKS,Ilmu Komunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+33.2,34.4,22.8,49.8,68.2,51.7,51.2,ST0513,Perempuan,FKS,Administrasi Bisnis,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+48.6,46.2,68.9,65.5,46.4,45.7,65.5,ST0515,Perempuan,FEB,Manajemen,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+28.9,53.6,33.1,44.8,60.8,56.9,31.2,ST0516,Laki-laki,FEB,Manajemen,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+77.7,53.1,58.4,49.0,41.2,73.2,34.0,ST0517,Perempuan,FTE,Teknik Elektro,2024,1,The Resilient & Adaptive,Baseline / Normatif
+74.5,60.4,48.5,45.5,34.7,60.9,37.7,ST0518,Perempuan,FRI,Teknik Logistik,2023,1,The Resilient & Adaptive,Baseline / Normatif
+31.5,57.3,29.9,35.8,76.1,49.2,55.2,ST0519,Laki-laki,FTE,Teknik Telekomunikasi,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+66.6,70.5,53.1,53.0,33.0,62.0,50.2,ST0521,Laki-laki,FIF,Informatika,2022,1,The Resilient & Adaptive,Baseline / Normatif
+61.9,56.9,60.8,57.9,38.2,45.4,42.1,ST0522,Laki-laki,FKS,Ilmu Komunikasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+56.9,65.1,55.8,46.2,44.4,59.2,34.1,ST0524,Perempuan,FIF,Informatika,2021,1,The Resilient & Adaptive,Baseline / Normatif
+58.0,63.4,42.3,53.5,39.0,45.9,37.3,ST0526,Laki-laki,FKS,Ilmu Komunikasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+50.5,67.0,61.2,49.8,37.4,63.4,37.9,ST0527,Perempuan,FTE,Teknik Elektro,2022,1,The Resilient & Adaptive,Baseline / Normatif
+42.6,52.9,28.6,39.8,56.1,42.1,42.3,ST0528,Laki-laki,FEB,Akuntansi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+51.6,71.8,46.3,61.7,40.9,53.5,48.5,ST0529,Perempuan,FTE,Teknik Telekomunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+54.8,75.4,58.3,61.9,30.0,44.9,36.8,ST0530,Perempuan,FKS,Administrasi Bisnis,2024,1,The Resilient & Adaptive,Baseline / Normatif
+34.9,29.9,46.6,79.4,56.3,40.3,49.2,ST0532,Perempuan,FRI,Teknik Logistik,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+44.8,46.0,37.4,40.8,77.1,50.0,45.3,ST0533,Perempuan,FEB,Akuntansi,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+56.3,53.6,70.8,65.3,47.4,62.8,83.9,ST0085,Perempuan,FKS,Administrasi Bisnis,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+42.1,76.5,40.9,58.4,50.2,53.6,28.1,ST0536,Perempuan,FKS,Administrasi Bisnis,2021,1,The Resilient & Adaptive,Baseline / Normatif
+44.6,37.8,32.5,44.3,58.5,41.7,36.1,ST0537,Perempuan,FTE,Teknik Elektro,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+68.3,51.9,48.1,46.4,45.3,63.4,39.0,ST0538,Laki-laki,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+48.8,50.5,53.9,80.6,56.6,56.7,65.9,ST0539,Laki-laki,FKS,Ilmu Komunikasi,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+32.1,40.5,40.6,32.4,64.5,56.5,54.8,ST0540,Laki-laki,FRI,Teknik Industri,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+43.3,46.5,38.4,33.1,65.7,39.7,50.9,ST0541,Laki-laki,FRI,Teknik Logistik,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+45.5,68.0,33.2,27.1,73.8,50.6,49.8,ST0542,Laki-laki,FIF,Sistem Komputer,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+64.6,76.8,55.1,45.6,42.8,61.0,46.1,ST0543,Laki-laki,FIF,Informatika,2021,1,The Resilient & Adaptive,Baseline / Normatif
+61.0,44.4,68.3,69.9,43.7,58.0,68.5,ST0545,Laki-laki,FEB,Manajemen,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+46.7,46.5,59.6,65.9,46.8,44.4,63.7,ST0546,Laki-laki,FIF,Data Sains,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+75.8,66.0,50.8,55.7,29.9,52.3,34.3,ST0547,Perempuan,FKS,Ilmu Komunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+60.3,28.6,61.7,86.1,46.8,50.7,60.5,ST0551,Perempuan,FRI,Teknik Logistik,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+36.7,53.4,34.9,51.9,77.2,50.0,32.1,ST0552,Laki-laki,FEB,Akuntansi,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+51.2,42.7,30.1,46.2,78.4,39.5,45.6,ST0553,Laki-laki,FKS,Ilmu Komunikasi,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+45.0,37.4,67.6,61.0,57.4,44.9,69.2,ST0556,Laki-laki,FTE,Teknik Telekomunikasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+38.9,54.9,38.8,41.2,66.6,45.8,47.5,ST0557,Perempuan,FRI,Sistem Informasi,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+53.3,41.4,69.1,65.6,38.7,48.6,72.3,ST0558,Laki-laki,FEB,Manajemen,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+69.6,65.0,65.6,44.5,43.1,58.8,47.8,ST0560,Perempuan,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+68.3,62.6,55.8,62.6,45.0,63.7,45.2,ST0564,Laki-laki,FIF,Informatika,2024,1,The Resilient & Adaptive,Baseline / Normatif
+40.9,28.3,72.6,60.8,52.1,48.2,72.8,ST0565,Laki-laki,FTE,Teknik Elektro,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+46.5,42.9,58.3,67.0,52.5,60.8,60.9,ST0566,Laki-laki,FIF,Informatika,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+41.4,56.1,37.2,46.0,70.5,55.4,55.3,ST0567,Perempuan,FTE,Teknik Elektro,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+59.0,51.3,39.1,47.9,28.7,51.9,41.5,ST0568,Perempuan,FRI,Teknik Industri,2024,1,The Resilient & Adaptive,Baseline / Normatif
+54.7,67.9,61.6,63.9,34.8,56.5,41.6,ST0569,Perempuan,FIF,Informatika,2022,1,The Resilient & Adaptive,Baseline / Normatif
+35.5,33.1,33.2,58.8,69.0,53.9,43.4,ST0572,Laki-laki,FKS,Administrasi Bisnis,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+55.2,66.2,47.9,45.7,36.2,55.9,48.7,ST0573,Perempuan,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+67.5,55.8,65.4,33.8,46.7,67.8,48.1,ST0574,Laki-laki,FKS,Ilmu Komunikasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+40.4,37.7,70.4,68.3,49.0,44.2,66.3,ST0575,Perempuan,FEB,Akuntansi,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+68.0,53.8,51.0,45.6,20.0,59.9,36.7,ST0577,Perempuan,FRI,Teknik Industri,2023,1,The Resilient & Adaptive,Baseline / Normatif
+54.3,76.6,48.4,55.3,35.7,63.2,43.2,ST0580,Laki-laki,FIF,Sistem Komputer,2023,1,The Resilient & Adaptive,Baseline / Normatif
+49.8,72.2,57.2,66.1,26.5,60.5,28.0,ST0581,Perempuan,FEB,Manajemen,2023,1,The Resilient & Adaptive,Baseline / Normatif
+72.0,62.5,55.3,42.4,29.0,58.4,53.5,ST0582,Laki-laki,FRI,Sistem Informasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+30.7,37.4,27.7,53.8,60.1,47.4,52.0,ST0583,Perempuan,FEB,Akuntansi,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+33.0,51.1,44.3,66.1,72.8,56.3,51.7,ST0584,Laki-laki,FIF,Data Sains,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+66.2,71.0,47.7,45.6,46.2,54.4,23.6,ST0586,Perempuan,FIF,Sistem Komputer,2023,1,The Resilient & Adaptive,Baseline / Normatif
+62.6,45.9,55.7,40.2,29.5,63.4,42.9,ST0587,Perempuan,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+78.1,63.7,59.7,46.5,48.0,67.5,40.4,ST0588,Perempuan,FRI,Sistem Informasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+64.3,77.9,54.2,63.9,39.2,56.8,31.2,ST0589,Laki-laki,FEB,Manajemen,2022,1,The Resilient & Adaptive,Baseline / Normatif
+65.3,46.8,58.9,45.5,45.2,59.3,45.7,ST0590,Perempuan,FEB,Manajemen,2021,1,The Resilient & Adaptive,Baseline / Normatif
+49.6,61.2,51.1,63.9,37.4,56.2,27.4,ST0591,Laki-laki,FEB,Manajemen,2024,1,The Resilient & Adaptive,Baseline / Normatif
+39.7,41.1,62.7,59.2,58.3,57.0,72.5,ST0592,Laki-laki,FKS,Administrasi Bisnis,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+72.5,65.7,53.9,61.4,32.9,66.0,41.9,ST0593,Perempuan,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+55.3,78.9,52.7,44.7,38.4,70.7,32.9,ST0594,Laki-laki,FIF,Informatika,2022,1,The Resilient & Adaptive,Baseline / Normatif
+47.0,77.2,58.8,60.5,38.0,55.4,43.6,ST0596,Perempuan,FEB,Manajemen,2023,1,The Resilient & Adaptive,Baseline / Normatif
+46.1,43.5,84.7,70.0,54.6,50.7,66.6,ST0597,Perempuan,FRI,Teknik Industri,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+25.3,40.9,64.2,80.0,46.8,47.8,55.4,ST0598,Laki-laki,FIF,Sistem Komputer,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+56.2,83.2,45.1,51.2,38.3,54.9,40.8,ST0599,Laki-laki,FIF,Informatika,2022,1,The Resilient & Adaptive,Baseline / Normatif
+58.5,78.4,60.7,55.6,31.9,51.6,46.4,ST0600,Laki-laki,FEB,Manajemen,2023,1,The Resilient & Adaptive,Baseline / Normatif
+55.5,59.1,43.2,56.1,36.6,56.9,41.7,ST0601,Perempuan,FKS,Administrasi Bisnis,2024,1,The Resilient & Adaptive,Baseline / Normatif
+41.4,41.1,76.9,59.8,63.6,44.1,69.9,ST0602,Perempuan,FTE,Teknik Elektro,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+66.7,50.0,59.4,42.8,43.0,58.2,52.1,ST0603,Perempuan,FEB,Akuntansi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+46.2,77.4,51.4,63.9,35.3,56.4,42.0,ST0604,Laki-laki,FRI,Teknik Industri,2022,1,The Resilient & Adaptive,Baseline / Normatif
+45.0,80.3,53.4,57.8,29.8,51.4,30.6,ST0605,Laki-laki,FTE,Teknik Elektro,2023,1,The Resilient & Adaptive,Baseline / Normatif
+41.9,47.1,29.1,31.0,66.7,49.6,60.1,ST0606,Laki-laki,FEB,Akuntansi,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+46.2,70.1,51.3,48.2,32.7,55.3,44.6,ST0608,Perempuan,FIF,Sistem Komputer,2024,1,The Resilient & Adaptive,Baseline / Normatif
+49.7,48.1,36.0,47.5,70.1,50.7,46.3,ST0609,Perempuan,FIF,Data Sains,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+61.2,60.2,57.0,56.6,26.8,52.4,55.4,ST0610,Laki-laki,FKS,Ilmu Komunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+56.8,78.3,48.1,41.0,42.7,46.3,44.7,ST0611,Laki-laki,FKS,Ilmu Komunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+82.4,51.3,54.2,46.9,43.0,65.2,36.5,ST0612,Laki-laki,FEB,Manajemen,2024,1,The Resilient & Adaptive,Baseline / Normatif
+49.9,49.7,69.7,74.4,46.1,62.2,76.3,ST0613,Perempuan,FTE,Teknik Elektro,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+68.4,59.8,75.2,42.0,34.7,64.4,45.5,ST0616,Laki-laki,FEB,Akuntansi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+57.3,72.8,55.8,47.9,31.6,67.5,40.8,ST0617,Laki-laki,FKS,Ilmu Komunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+59.1,80.8,39.9,57.3,31.0,57.4,37.7,ST0618,Laki-laki,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+48.1,36.2,42.1,54.7,66.5,56.3,48.7,ST0621,Perempuan,FEB,Akuntansi,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+72.0,53.6,62.5,61.4,41.3,58.0,41.5,ST0622,Laki-laki,FIF,Sistem Komputer,2024,1,The Resilient & Adaptive,Baseline / Normatif
+42.8,36.9,43.4,36.6,80.5,47.3,45.8,ST0624,Perempuan,FRI,Teknik Logistik,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+60.1,64.3,58.9,58.6,39.0,44.7,37.7,ST0625,Perempuan,FTE,Teknik Elektro,2024,1,The Resilient & Adaptive,Baseline / Normatif
+54.7,71.8,65.9,52.9,40.5,47.2,36.7,ST0626,Perempuan,FIF,Sistem Komputer,2022,1,The Resilient & Adaptive,Baseline / Normatif
+56.4,65.4,46.5,55.0,35.2,52.3,27.4,ST0627,Perempuan,FKS,Ilmu Komunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+54.6,72.3,45.3,49.9,50.4,46.8,34.2,ST0632,Perempuan,FEB,Akuntansi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+23.4,49.4,46.4,33.5,79.2,64.1,52.8,ST0633,Perempuan,FEB,Manajemen,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+66.5,72.4,64.1,51.6,36.3,63.7,26.2,ST0634,Laki-laki,FEB,Manajemen,2023,1,The Resilient & Adaptive,Baseline / Normatif
+76.7,54.5,67.6,44.6,36.8,58.2,58.1,ST0635,Perempuan,FEB,Akuntansi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+64.7,52.5,49.8,57.2,38.1,71.3,43.5,ST0636,Laki-laki,FEB,Manajemen,2023,1,The Resilient & Adaptive,Baseline / Normatif
+36.4,45.5,83.9,61.3,46.2,55.7,60.9,ST0637,Laki-laki,FRI,Sistem Informasi,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+53.7,69.4,45.8,47.1,49.4,58.9,30.7,ST0638,Perempuan,FIF,Sistem Komputer,2022,1,The Resilient & Adaptive,Baseline / Normatif
+28.7,43.5,29.7,40.6,78.4,52.7,37.1,ST0639,Perempuan,FEB,Manajemen,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+49.7,50.0,77.8,73.6,56.5,40.6,67.9,ST0640,Perempuan,FIF,Informatika,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+49.0,74.6,46.5,50.4,34.6,54.5,37.2,ST0641,Perempuan,FKS,Administrasi Bisnis,2024,1,The Resilient & Adaptive,Baseline / Normatif
+34.3,47.7,55.2,56.9,41.7,52.9,73.2,ST0642,Perempuan,FEB,Akuntansi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+34.2,51.4,44.9,42.6,61.5,53.6,55.1,ST0643,Perempuan,FRI,Teknik Industri,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+39.6,35.2,23.1,26.5,53.0,45.0,41.4,ST0644,Perempuan,FTE,Teknik Elektro,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+60.3,68.7,49.6,48.5,52.9,42.9,42.5,ST0645,Perempuan,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+66.9,56.5,67.5,65.5,39.7,64.4,64.9,ST0647,Laki-laki,FKS,Ilmu Komunikasi,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+46.6,77.6,44.3,54.2,38.7,55.6,35.1,ST0648,Laki-laki,FEB,Akuntansi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+58.4,32.1,78.6,72.8,55.5,54.3,70.8,ST0649,Perempuan,FEB,Akuntansi,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+46.5,37.6,65.1,63.4,47.3,54.2,74.7,ST0650,Perempuan,FRI,Teknik Logistik,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+59.0,65.4,49.8,57.3,47.1,65.8,33.4,ST0652,Laki-laki,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+49.1,45.6,70.3,62.0,45.1,38.5,76.7,ST0653,Laki-laki,FEB,Akuntansi,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+31.2,43.7,38.6,42.5,70.8,49.1,39.1,ST0654,Laki-laki,FIF,Data Sains,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+25.4,47.4,32.5,47.9,75.1,45.2,55.7,ST0655,Perempuan,FRI,Teknik Industri,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+49.9,37.0,23.6,30.1,64.7,32.8,35.1,ST0656,Perempuan,FTE,Teknik Telekomunikasi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+31.5,36.5,35.6,51.6,60.5,40.6,58.1,ST0657,Perempuan,FTE,Teknik Elektro,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+54.6,70.1,55.6,50.4,46.4,53.4,38.4,ST0658,Perempuan,FKS,Administrasi Bisnis,2024,1,The Resilient & Adaptive,Baseline / Normatif
+55.5,36.9,60.3,71.4,51.8,66.1,61.7,ST0659,Laki-laki,FRI,Teknik Industri,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+68.5,50.6,50.3,45.2,25.8,63.5,38.9,ST0661,Laki-laki,FIF,Data Sains,2023,1,The Resilient & Adaptive,Baseline / Normatif
+58.9,60.2,44.8,43.1,31.9,72.8,54.4,ST0662,Perempuan,FIF,Informatika,2024,1,The Resilient & Adaptive,Baseline / Normatif
+45.1,64.1,44.4,49.0,39.8,68.1,33.7,ST0663,Perempuan,FIF,Informatika,2021,1,The Resilient & Adaptive,Baseline / Normatif
+62.7,53.2,68.1,46.7,38.0,58.3,50.2,ST0664,Laki-laki,FEB,Manajemen,2023,1,The Resilient & Adaptive,Baseline / Normatif
+31.8,45.2,28.9,48.7,60.9,55.6,46.7,ST0665,Laki-laki,FKS,Administrasi Bisnis,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+28.1,43.7,31.1,43.4,73.7,39.4,45.7,ST0666,Perempuan,FRI,Sistem Informasi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+48.0,48.2,35.6,41.7,70.3,53.5,42.4,ST0667,Laki-laki,FIF,Data Sains,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+70.7,58.0,58.2,48.5,43.8,56.1,43.6,ST0668,Perempuan,FIF,Sistem Komputer,2022,1,The Resilient & Adaptive,Baseline / Normatif
+68.8,52.6,53.5,46.4,32.8,64.3,47.4,ST0669,Laki-laki,FTE,Teknik Elektro,2022,1,The Resilient & Adaptive,Baseline / Normatif
+42.6,35.0,64.7,54.7,52.5,60.7,64.5,ST0671,Laki-laki,FEB,Akuntansi,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+75.9,48.1,55.3,41.8,48.8,46.5,39.0,ST0672,Laki-laki,FIF,Informatika,2023,1,The Resilient & Adaptive,Baseline / Normatif
+45.5,31.8,64.0,42.7,64.3,51.7,71.5,ST0673,Laki-laki,FTE,Teknik Telekomunikasi,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+75.2,56.0,64.2,63.9,49.9,66.7,56.5,ST0675,Laki-laki,FKS,Administrasi Bisnis,2024,1,The Resilient & Adaptive,Baseline / Normatif
+29.9,57.2,32.3,42.9,63.8,48.9,50.9,ST0676,Perempuan,FEB,Akuntansi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+47.6,48.5,40.1,30.4,68.3,52.4,57.3,ST0677,Laki-laki,FTE,Teknik Elektro,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+60.8,46.4,70.8,45.1,38.3,53.4,42.5,ST0678,Perempuan,FTE,Teknik Elektro,2024,1,The Resilient & Adaptive,Baseline / Normatif
+43.9,41.2,34.6,44.5,71.7,48.9,42.5,ST0679,Perempuan,FKS,Administrasi Bisnis,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+46.5,34.6,62.6,59.4,53.5,55.5,69.4,ST0680,Laki-laki,FKS,Administrasi Bisnis,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+60.8,53.9,73.8,56.9,40.6,61.0,55.5,ST0682,Laki-laki,FRI,Teknik Logistik,2022,1,The Resilient & Adaptive,Baseline / Normatif
+53.7,67.4,55.7,41.1,40.8,49.5,43.6,ST0683,Perempuan,FRI,Teknik Logistik,2021,1,The Resilient & Adaptive,Baseline / Normatif
+48.4,81.8,45.9,61.1,51.4,57.9,37.5,ST0684,Laki-laki,FTE,Teknik Elektro,2021,1,The Resilient & Adaptive,Baseline / Normatif
+38.1,45.4,27.2,47.7,54.5,51.3,45.9,ST0685,Laki-laki,FKS,Administrasi Bisnis,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+50.5,58.6,53.0,56.5,25.7,62.0,39.2,ST0686,Laki-laki,FEB,Akuntansi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+37.2,43.4,41.3,54.6,76.0,54.3,49.7,ST0687,Perempuan,FRI,Teknik Industri,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+34.7,55.0,41.7,36.4,67.5,39.4,43.8,ST0688,Laki-laki,FTE,Teknik Telekomunikasi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+37.0,40.0,24.6,58.4,70.7,48.8,53.9,ST0689,Laki-laki,FIF,Data Sains,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+34.3,44.1,21.9,47.6,71.5,60.2,34.0,ST0690,Laki-laki,FTE,Teknik Elektro,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+64.5,64.8,56.7,39.1,46.7,67.0,46.6,ST0691,Laki-laki,FRI,Teknik Logistik,2022,1,The Resilient & Adaptive,Baseline / Normatif
+56.7,29.2,74.3,70.7,44.4,55.1,66.9,ST0692,Perempuan,FEB,Akuntansi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+55.6,72.7,49.1,51.8,39.3,62.0,49.4,ST0693,Laki-laki,FRI,Teknik Industri,2022,1,The Resilient & Adaptive,Baseline / Normatif
+77.5,48.2,61.8,54.1,44.0,55.8,51.1,ST0694,Perempuan,FIF,Data Sains,2023,1,The Resilient & Adaptive,Baseline / Normatif
+73.5,64.3,50.0,41.5,47.2,73.0,56.8,ST0695,Perempuan,FEB,Akuntansi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+68.8,50.2,65.5,46.8,46.9,57.6,43.2,ST0696,Perempuan,FIF,Informatika,2021,1,The Resilient & Adaptive,Baseline / Normatif
+75.0,49.6,58.4,54.5,40.5,48.6,58.1,ST0697,Laki-laki,FEB,Akuntansi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+55.8,54.9,72.1,71.8,42.2,52.7,74.2,ST0698,Perempuan,FTE,Teknik Elektro,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+48.8,69.7,54.6,59.9,32.8,63.2,43.9,ST0699,Perempuan,FTE,Teknik Elektro,2022,1,The Resilient & Adaptive,Baseline / Normatif
+70.9,45.1,49.8,38.0,51.0,52.3,38.7,ST0702,Laki-laki,FTE,Teknik Telekomunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+48.2,32.3,60.3,65.2,37.4,56.0,59.5,ST0703,Laki-laki,FRI,Teknik Logistik,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+68.1,42.8,64.8,61.7,43.9,67.8,55.6,ST0704,Laki-laki,FRI,Teknik Logistik,2022,1,The Resilient & Adaptive,Baseline / Normatif
+57.0,63.2,51.3,59.0,31.1,42.3,37.7,ST0705,Laki-laki,FEB,Manajemen,2024,1,The Resilient & Adaptive,Baseline / Normatif
+57.4,69.7,64.6,61.4,33.8,66.2,39.3,ST0706,Perempuan,FKS,Ilmu Komunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+49.9,41.3,54.8,58.1,56.5,58.4,71.3,ST0707,Perempuan,FTE,Teknik Telekomunikasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+63.3,50.2,54.9,40.9,36.3,59.5,30.6,ST0708,Laki-laki,FRI,Sistem Informasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+34.0,81.1,59.9,59.6,28.3,49.3,31.1,ST0710,Perempuan,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+59.9,70.8,51.3,32.2,41.3,46.7,39.8,ST0714,Laki-laki,FIF,Informatika,2024,1,The Resilient & Adaptive,Baseline / Normatif
+77.3,62.2,48.3,30.0,33.1,58.5,43.3,ST0716,Laki-laki,FTE,Teknik Telekomunikasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+73.2,51.7,50.3,47.4,31.5,60.1,27.6,ST0719,Perempuan,FIF,Data Sains,2023,1,The Resilient & Adaptive,Baseline / Normatif
+46.7,40.0,87.6,56.5,39.6,50.6,69.4,ST0720,Laki-laki,FRI,Teknik Logistik,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+70.4,46.0,53.3,53.0,41.4,58.2,56.3,ST0721,Perempuan,FIF,Informatika,2021,1,The Resilient & Adaptive,Baseline / Normatif
+50.4,38.1,65.3,75.6,50.0,54.1,61.4,ST0723,Laki-laki,FRI,Teknik Logistik,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+65.8,62.2,48.7,54.8,36.1,56.3,39.9,ST0724,Laki-laki,FKS,Ilmu Komunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+51.9,40.3,66.7,60.9,50.0,43.6,62.0,ST0725,Laki-laki,FEB,Akuntansi,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+45.9,38.0,69.4,69.5,45.2,40.1,69.2,ST0726,Laki-laki,FKS,Administrasi Bisnis,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+36.0,48.5,42.4,45.8,64.4,49.4,68.9,ST0727,Laki-laki,FRI,Teknik Industri,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+59.0,52.3,42.4,54.3,43.5,59.9,50.4,ST0728,Perempuan,FTE,Teknik Telekomunikasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+58.9,57.4,49.0,44.5,42.6,58.4,37.1,ST0729,Perempuan,FRI,Teknik Industri,2023,1,The Resilient & Adaptive,Baseline / Normatif
+39.4,43.5,34.0,43.6,68.0,55.3,46.6,ST0730,Perempuan,FEB,Manajemen,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+43.1,84.6,38.6,39.5,30.5,62.5,36.4,ST0731,Perempuan,FEB,Manajemen,2022,1,The Resilient & Adaptive,Baseline / Normatif
+30.2,31.7,37.8,33.1,68.8,51.7,49.7,ST0732,Perempuan,FEB,Akuntansi,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+67.2,47.7,62.8,40.4,43.7,64.9,38.0,ST0734,Laki-laki,FEB,Manajemen,2023,1,The Resilient & Adaptive,Baseline / Normatif
+51.5,68.6,53.5,63.3,25.9,63.1,21.3,ST0735,Perempuan,FIF,Sistem Komputer,2023,1,The Resilient & Adaptive,Baseline / Normatif
+36.5,39.2,36.0,55.2,75.1,59.3,46.5,ST0736,Laki-laki,FEB,Akuntansi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+25.8,55.4,28.6,32.6,70.4,41.1,32.8,ST0737,Perempuan,FTE,Teknik Telekomunikasi,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+51.5,70.0,50.8,66.4,26.5,58.6,42.9,ST0738,Perempuan,FTE,Teknik Telekomunikasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+71.9,66.4,57.6,42.3,49.1,51.0,34.8,ST0739,Laki-laki,FEB,Manajemen,2022,1,The Resilient & Adaptive,Baseline / Normatif
+70.1,67.0,59.8,58.8,41.5,66.9,47.9,ST0740,Laki-laki,FEB,Manajemen,2022,1,The Resilient & Adaptive,Baseline / Normatif
+28.6,50.1,39.7,39.7,71.3,50.2,45.2,ST0741,Laki-laki,FEB,Akuntansi,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+70.8,45.5,54.0,47.9,34.1,57.6,48.2,ST0742,Perempuan,FIF,Data Sains,2022,1,The Resilient & Adaptive,Baseline / Normatif
+64.7,76.1,52.6,62.3,25.6,57.7,38.8,ST0743,Perempuan,FKS,Administrasi Bisnis,2022,1,The Resilient & Adaptive,Baseline / Normatif
+53.9,48.0,63.6,72.8,44.4,59.4,50.1,ST0745,Laki-laki,FRI,Teknik Logistik,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+48.6,80.7,54.2,59.1,33.9,60.1,50.7,ST0747,Perempuan,FEB,Manajemen,2022,1,The Resilient & Adaptive,Baseline / Normatif
+41.4,48.6,68.2,67.4,46.1,52.0,67.3,ST0748,Perempuan,FRI,Sistem Informasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+71.7,53.0,56.5,49.9,37.3,52.3,54.1,ST0749,Perempuan,FIF,Sistem Komputer,2021,1,The Resilient & Adaptive,Baseline / Normatif
+74.0,56.6,70.0,44.7,36.9,69.4,53.9,ST0750,Laki-laki,FEB,Manajemen,2024,1,The Resilient & Adaptive,Baseline / Normatif
+67.3,73.8,55.9,48.1,38.3,43.1,43.1,ST0751,Laki-laki,FRI,Teknik Industri,2024,1,The Resilient & Adaptive,Baseline / Normatif
+40.7,79.0,50.1,68.4,37.2,53.5,20.0,ST0752,Laki-laki,FEB,Manajemen,2024,1,The Resilient & Adaptive,Baseline / Normatif
+59.0,73.2,60.9,60.5,47.3,64.9,43.5,ST0754,Laki-laki,FEB,Akuntansi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+40.3,49.0,34.6,27.9,68.7,44.4,36.1,ST0755,Laki-laki,FIF,Informatika,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+73.7,60.3,57.2,37.3,38.9,66.9,54.2,ST0757,Perempuan,FTE,Teknik Telekomunikasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+57.2,63.2,50.9,52.1,37.5,61.4,36.6,ST0758,Laki-laki,FRI,Sistem Informasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+31.2,52.6,43.4,55.8,63.9,53.7,46.3,ST0759,Laki-laki,FKS,Ilmu Komunikasi,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+68.1,56.4,51.4,37.9,27.2,61.8,43.4,ST0760,Laki-laki,FRI,Teknik Logistik,2023,1,The Resilient & Adaptive,Baseline / Normatif
+60.9,66.3,62.3,38.1,48.7,57.2,44.2,ST0762,Laki-laki,FRI,Teknik Industri,2024,1,The Resilient & Adaptive,Baseline / Normatif
+69.0,49.3,57.3,49.7,26.2,62.6,41.1,ST0764,Perempuan,FEB,Manajemen,2023,1,The Resilient & Adaptive,Baseline / Normatif
+60.4,67.4,54.9,44.3,47.7,55.3,36.8,ST0765,Perempuan,FIF,Informatika,2022,1,The Resilient & Adaptive,Baseline / Normatif
+66.8,56.2,54.9,54.9,37.8,59.3,47.1,ST0766,Perempuan,FKS,Ilmu Komunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+61.1,56.9,51.3,42.7,28.0,55.5,44.3,ST0767,Perempuan,FTE,Teknik Elektro,2022,1,The Resilient & Adaptive,Baseline / Normatif
+32.2,37.4,35.6,32.1,65.2,50.8,58.2,ST0768,Laki-laki,FKS,Administrasi Bisnis,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+46.3,49.8,61.2,80.7,45.9,45.6,75.6,ST0770,Laki-laki,FKS,Ilmu Komunikasi,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+70.8,46.8,60.3,44.5,52.1,56.5,38.4,ST0771,Laki-laki,FKS,Administrasi Bisnis,2024,1,The Resilient & Adaptive,Baseline / Normatif
+51.5,38.7,60.1,60.9,35.9,73.3,52.6,ST0772,Laki-laki,FTE,Teknik Elektro,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+49.8,72.2,61.4,60.6,36.8,53.9,49.4,ST0773,Laki-laki,FTE,Teknik Telekomunikasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+40.7,40.7,67.1,72.5,48.8,53.8,60.4,ST0774,Laki-laki,FRI,Sistem Informasi,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+72.2,55.9,62.6,53.3,25.7,49.0,57.8,ST0775,Laki-laki,FEB,Manajemen,2023,1,The Resilient & Adaptive,Baseline / Normatif
+66.9,57.1,61.0,52.5,26.5,49.5,36.1,ST0776,Laki-laki,FRI,Teknik Industri,2021,1,The Resilient & Adaptive,Baseline / Normatif
+47.9,47.2,68.7,66.6,54.8,61.7,70.5,ST0777,Perempuan,FRI,Sistem Informasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+23.0,41.9,39.6,47.5,66.4,38.6,49.1,ST0778,Perempuan,FTE,Teknik Telekomunikasi,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+45.5,73.9,58.9,57.2,48.4,57.4,24.1,ST0780,Perempuan,FEB,Akuntansi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+75.9,61.6,62.6,52.9,41.1,59.4,51.0,ST0781,Perempuan,FKS,Administrasi Bisnis,2022,1,The Resilient & Adaptive,Baseline / Normatif
+71.7,58.7,59.9,49.2,30.6,62.4,44.0,ST0782,Perempuan,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+41.3,49.8,52.4,45.6,55.1,60.5,28.3,ST0783,Laki-laki,FTE,Teknik Elektro,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+55.7,59.4,62.0,52.2,36.9,68.1,57.5,ST0784,Perempuan,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+20.0,55.2,41.7,56.6,77.1,50.7,50.9,ST0785,Laki-laki,FTE,Teknik Telekomunikasi,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+40.6,48.9,37.6,43.2,72.5,53.7,38.4,ST0786,Perempuan,FKS,Administrasi Bisnis,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+67.7,55.6,69.2,35.6,44.3,60.1,42.7,ST0787,Laki-laki,FTE,Teknik Telekomunikasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+52.2,74.9,46.5,55.9,27.3,61.4,46.8,ST0789,Laki-laki,FTE,Teknik Elektro,2022,1,The Resilient & Adaptive,Baseline / Normatif
+77.5,48.1,54.3,45.8,36.0,45.5,54.0,ST0791,Perempuan,FRI,Teknik Logistik,2024,1,The Resilient & Adaptive,Baseline / Normatif
+44.7,50.1,61.9,68.3,44.7,47.7,77.3,ST0792,Laki-laki,FEB,Manajemen,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+66.8,62.2,61.4,38.4,23.8,68.0,46.6,ST0793,Perempuan,FIF,Informatika,2024,1,The Resilient & Adaptive,Baseline / Normatif
+75.7,60.1,54.7,40.8,37.3,47.1,52.5,ST0796,Perempuan,FTE,Teknik Elektro,2023,1,The Resilient & Adaptive,Baseline / Normatif
+31.7,54.2,33.9,44.5,57.1,40.5,46.1,ST0797,Laki-laki,FTE,Teknik Telekomunikasi,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+43.4,81.1,46.1,50.5,42.2,48.3,37.4,ST0800,Perempuan,FKS,Administrasi Bisnis,2024,1,The Resilient & Adaptive,Baseline / Normatif
+76.4,58.8,56.9,36.1,36.1,56.0,39.6,ST0801,Laki-laki,FKS,Ilmu Komunikasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+50.0,78.2,58.5,55.7,30.8,52.9,50.0,ST0802,Laki-laki,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+65.2,70.9,65.2,44.9,35.7,53.4,30.5,ST0803,Laki-laki,FTE,Teknik Telekomunikasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+44.3,68.3,42.9,66.0,31.1,45.2,38.2,ST0805,Laki-laki,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+47.2,47.1,31.9,47.5,75.2,48.2,45.4,ST0806,Perempuan,FTE,Teknik Telekomunikasi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+63.1,58.3,49.1,60.2,39.6,41.8,44.2,ST0807,Laki-laki,FIF,Informatika,2022,1,The Resilient & Adaptive,Baseline / Normatif
+71.9,74.4,55.7,45.9,41.1,49.4,55.4,ST0809,Perempuan,FRI,Teknik Logistik,2022,1,The Resilient & Adaptive,Baseline / Normatif
+82.4,50.5,54.6,63.8,32.5,67.5,29.8,ST0812,Laki-laki,FRI,Teknik Industri,2023,1,The Resilient & Adaptive,Baseline / Normatif
+63.4,60.4,43.5,62.4,43.9,65.2,38.6,ST0813,Perempuan,FRI,Sistem Informasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+63.5,67.2,56.7,49.7,38.6,77.8,35.3,ST0815,Laki-laki,FIF,Data Sains,2022,1,The Resilient & Adaptive,Baseline / Normatif
+53.8,81.8,43.6,51.4,42.0,59.9,42.5,ST0816,Perempuan,FTE,Teknik Elektro,2021,1,The Resilient & Adaptive,Baseline / Normatif
+37.9,40.6,35.7,38.5,65.7,53.3,36.4,ST0817,Perempuan,FTE,Teknik Telekomunikasi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+29.3,32.5,38.9,46.0,63.9,59.8,44.4,ST0818,Laki-laki,FKS,Administrasi Bisnis,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+53.2,38.4,69.4,66.7,48.2,45.6,68.5,ST0821,Laki-laki,FTE,Teknik Elektro,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+38.8,45.5,39.9,37.4,81.9,45.4,43.0,ST0823,Perempuan,FEB,Akuntansi,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+63.9,47.8,54.7,60.0,43.8,53.6,45.3,ST0824,Laki-laki,FKS,Ilmu Komunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+68.8,68.0,57.0,50.9,27.1,65.1,36.7,ST0825,Laki-laki,FIF,Informatika,2023,1,The Resilient & Adaptive,Baseline / Normatif
+65.8,42.1,58.3,52.3,45.4,64.8,55.6,ST0826,Perempuan,FTE,Teknik Elektro,2022,1,The Resilient & Adaptive,Baseline / Normatif
+45.2,46.7,35.4,40.7,62.6,49.9,39.2,ST0827,Laki-laki,FKS,Ilmu Komunikasi,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+34.2,39.0,43.6,41.3,66.3,50.7,44.0,ST0828,Perempuan,FKS,Ilmu Komunikasi,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+66.7,54.9,51.1,48.7,41.6,58.5,47.9,ST0829,Perempuan,FIF,Data Sains,2022,1,The Resilient & Adaptive,Baseline / Normatif
+62.2,57.6,66.8,46.7,44.4,49.0,46.4,ST0831,Laki-laki,FEB,Akuntansi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+65.1,49.9,65.9,50.2,43.0,50.2,51.6,ST0833,Laki-laki,FKS,Ilmu Komunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+62.9,72.7,49.2,54.6,29.1,65.9,30.6,ST0834,Laki-laki,FIF,Informatika,2023,1,The Resilient & Adaptive,Baseline / Normatif
+63.8,51.2,57.6,38.8,50.8,60.8,40.6,ST0835,Perempuan,FRI,Teknik Industri,2023,1,The Resilient & Adaptive,Baseline / Normatif
+66.2,61.3,51.7,39.6,28.6,55.4,45.9,ST0837,Laki-laki,FEB,Manajemen,2023,1,The Resilient & Adaptive,Baseline / Normatif
+68.9,54.7,59.6,34.2,38.0,65.3,51.9,ST0838,Perempuan,FRI,Teknik Logistik,2023,1,The Resilient & Adaptive,Baseline / Normatif
+49.6,68.8,42.0,37.5,37.3,60.6,44.3,ST0839,Laki-laki,FEB,Manajemen,2023,1,The Resilient & Adaptive,Baseline / Normatif
+74.0,52.0,58.4,40.2,30.0,67.9,37.0,ST0840,Perempuan,FEB,Akuntansi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+47.4,85.9,53.2,49.0,38.9,58.1,27.7,ST0841,Laki-laki,FTE,Teknik Elektro,2024,1,The Resilient & Adaptive,Baseline / Normatif
+63.0,61.4,63.5,46.6,44.6,50.9,49.2,ST0842,Laki-laki,FEB,Akuntansi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+65.4,62.8,70.4,51.7,34.7,65.2,50.8,ST0843,Perempuan,FTE,Teknik Elektro,2022,1,The Resilient & Adaptive,Baseline / Normatif
+56.6,49.5,76.4,64.4,46.2,52.0,71.7,ST0844,Perempuan,FIF,Informatika,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+46.3,41.5,60.1,76.8,52.8,56.3,62.9,ST0848,Laki-laki,FEB,Manajemen,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+52.5,64.3,59.8,48.2,37.3,47.5,32.1,ST0849,Perempuan,FTE,Teknik Elektro,2023,1,The Resilient & Adaptive,Baseline / Normatif
+50.6,84.1,54.2,64.7,24.8,43.9,37.1,ST0850,Perempuan,FEB,Akuntansi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+56.3,58.4,61.7,49.4,36.4,65.4,36.5,ST0851,Laki-laki,FIF,Data Sains,2023,1,The Resilient & Adaptive,Baseline / Normatif
+68.9,48.9,59.9,32.8,39.8,58.6,50.5,ST0852,Perempuan,FKS,Ilmu Komunikasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+54.3,33.6,60.5,60.9,52.2,37.4,77.8,ST0853,Laki-laki,FIF,Informatika,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+57.8,78.8,61.5,63.9,42.8,69.1,43.2,ST0854,Perempuan,FIF,Data Sains,2022,1,The Resilient & Adaptive,Baseline / Normatif
+60.4,83.4,55.9,48.2,31.8,50.0,36.3,ST0855,Laki-laki,FEB,Akuntansi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+50.9,56.7,59.1,59.2,47.1,54.1,78.1,ST0856,Perempuan,FRI,Teknik Logistik,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+58.1,65.2,56.1,31.5,34.7,69.6,49.6,ST0857,Laki-laki,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+48.5,42.8,67.3,74.8,53.2,35.5,65.1,ST0858,Perempuan,FTE,Teknik Telekomunikasi,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+69.4,47.7,58.5,43.8,42.1,55.5,58.3,ST0859,Perempuan,FEB,Akuntansi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+40.6,36.0,70.1,72.3,45.7,47.6,61.3,ST0860,Laki-laki,FKS,Administrasi Bisnis,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+39.8,89.4,56.9,51.2,31.7,42.0,31.8,ST0861,Perempuan,FIF,Sistem Komputer,2023,1,The Resilient & Adaptive,Baseline / Normatif
+62.2,64.3,47.7,44.0,34.3,58.0,50.6,ST0863,Laki-laki,FIF,Informatika,2023,1,The Resilient & Adaptive,Baseline / Normatif
+33.6,57.3,54.0,42.1,56.0,49.0,42.3,ST0864,Laki-laki,FEB,Akuntansi,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+61.9,47.0,60.1,41.4,37.8,57.4,46.4,ST0865,Perempuan,FRI,Teknik Industri,2021,1,The Resilient & Adaptive,Baseline / Normatif
+46.7,63.3,49.4,47.6,39.3,46.1,38.3,ST0867,Perempuan,FKS,Administrasi Bisnis,2024,1,The Resilient & Adaptive,Baseline / Normatif
+76.3,65.2,54.8,49.0,34.4,48.5,43.9,ST0868,Perempuan,FRI,Sistem Informasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+46.1,67.2,52.4,62.2,40.9,50.7,34.0,ST0870,Laki-laki,FRI,Teknik Logistik,2022,1,The Resilient & Adaptive,Baseline / Normatif
+61.9,57.8,57.6,51.9,42.2,67.1,46.4,ST0871,Laki-laki,FEB,Akuntansi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+43.8,71.7,47.5,53.8,34.5,59.0,43.5,ST0873,Laki-laki,FRI,Sistem Informasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+69.5,63.6,51.7,49.3,41.0,69.5,51.7,ST0874,Perempuan,FTE,Teknik Elektro,2024,1,The Resilient & Adaptive,Baseline / Normatif
+31.1,22.6,34.8,34.8,78.0,44.8,32.5,ST0875,Laki-laki,FKS,Administrasi Bisnis,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+46.6,46.1,47.8,64.5,46.1,42.1,76.6,ST0878,Perempuan,FRI,Sistem Informasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+44.3,41.9,55.3,64.2,40.9,53.4,69.4,ST0879,Laki-laki,FTE,Teknik Elektro,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+29.7,52.8,21.1,45.4,70.1,48.9,44.4,ST0881,Perempuan,FEB,Akuntansi,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+61.6,67.0,50.2,51.2,34.9,63.0,38.3,ST0883,Laki-laki,FTE,Teknik Telekomunikasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+55.9,70.5,46.4,48.2,24.1,63.5,40.7,ST0884,Laki-laki,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+32.0,46.2,41.7,48.3,70.7,35.2,36.7,ST0885,Laki-laki,FIF,Sistem Komputer,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+74.1,48.6,75.4,47.8,40.4,58.4,38.0,ST0886,Perempuan,FIF,Data Sains,2023,1,The Resilient & Adaptive,Baseline / Normatif
+81.0,47.7,49.1,31.6,37.2,46.0,48.3,ST0887,Laki-laki,FIF,Sistem Komputer,2022,1,The Resilient & Adaptive,Baseline / Normatif
+57.1,46.5,58.5,33.8,33.0,60.0,56.6,ST0888,Perempuan,FRI,Teknik Logistik,2024,1,The Resilient & Adaptive,Baseline / Normatif
+46.9,72.2,51.5,56.8,31.0,61.7,27.3,ST0889,Perempuan,FIF,Data Sains,2021,1,The Resilient & Adaptive,Baseline / Normatif
+76.0,61.1,57.3,43.0,37.7,63.7,51.5,ST0890,Laki-laki,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+55.0,77.1,48.7,62.3,47.3,60.5,30.8,ST0892,Laki-laki,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+65.6,75.7,55.5,59.3,36.8,54.2,31.2,ST0893,Perempuan,FIF,Sistem Komputer,2022,1,The Resilient & Adaptive,Baseline / Normatif
+66.0,58.9,69.6,51.2,44.0,81.9,38.6,ST0896,Perempuan,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+69.1,59.1,63.6,42.7,54.2,53.9,38.6,ST0898,Laki-laki,FTE,Teknik Elektro,2022,1,The Resilient & Adaptive,Baseline / Normatif
+60.3,74.3,55.8,50.3,33.1,48.5,30.2,ST0899,Laki-laki,FEB,Akuntansi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+29.2,41.5,31.5,41.3,64.2,39.3,52.3,ST0900,Laki-laki,FIF,Informatika,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+45.7,72.5,67.2,47.7,40.6,71.1,31.4,ST0901,Perempuan,FRI,Teknik Industri,2023,1,The Resilient & Adaptive,Baseline / Normatif
+50.3,32.2,61.4,61.8,44.0,55.2,75.5,ST0902,Perempuan,FRI,Teknik Logistik,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+37.5,60.6,63.5,73.3,44.2,47.4,80.3,ST0903,Perempuan,FTE,Teknik Telekomunikasi,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+42.2,45.2,58.2,62.1,59.3,43.2,75.0,ST0904,Laki-laki,FEB,Manajemen,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+75.3,56.3,53.5,47.5,28.2,49.1,46.0,ST0905,Laki-laki,FRI,Teknik Logistik,2023,1,The Resilient & Adaptive,Baseline / Normatif
+57.0,66.2,50.9,55.9,42.5,57.2,34.5,ST0906,Perempuan,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+82.0,48.5,71.6,38.7,45.6,60.4,57.8,ST0907,Perempuan,FRI,Teknik Logistik,2022,1,The Resilient & Adaptive,Baseline / Normatif
+72.4,56.9,53.9,39.6,36.0,71.5,33.3,ST0908,Laki-laki,FRI,Sistem Informasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+63.5,64.2,64.4,44.4,41.7,71.6,42.6,ST0909,Perempuan,FRI,Teknik Logistik,2023,1,The Resilient & Adaptive,Baseline / Normatif
+50.8,67.1,56.8,71.1,44.0,58.1,27.2,ST0910,Laki-laki,FEB,Akuntansi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+59.0,82.1,49.4,57.3,48.4,69.3,42.8,ST0911,Laki-laki,FRI,Teknik Logistik,2023,1,The Resilient & Adaptive,Baseline / Normatif
+61.9,59.6,62.9,43.8,37.1,65.5,43.4,ST0912,Laki-laki,FRI,Teknik Logistik,2022,1,The Resilient & Adaptive,Baseline / Normatif
+26.7,56.3,36.2,49.4,66.9,52.5,47.6,ST0914,Laki-laki,FKS,Ilmu Komunikasi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+29.0,50.9,29.4,24.7,85.4,53.7,50.9,ST0915,Perempuan,FEB,Manajemen,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+64.8,71.6,48.3,50.5,41.4,51.8,31.8,ST0916,Laki-laki,FEB,Akuntansi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+32.0,77.4,51.6,39.2,36.1,42.8,40.4,ST0918,Perempuan,FEB,Akuntansi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+48.7,40.3,63.9,49.8,34.1,51.5,59.7,ST0919,Laki-laki,FTE,Teknik Telekomunikasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+50.2,45.8,81.2,53.0,50.9,35.9,63.8,ST0920,Laki-laki,FIF,Data Sains,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+57.6,63.8,50.8,51.7,39.4,50.7,25.2,ST0921,Laki-laki,FIF,Sistem Komputer,2023,1,The Resilient & Adaptive,Baseline / Normatif
+46.9,39.9,54.0,68.2,48.6,53.5,68.0,ST0923,Laki-laki,FRI,Teknik Industri,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+67.4,59.7,53.2,39.8,50.7,45.9,46.6,ST0925,Laki-laki,FEB,Manajemen,2024,1,The Resilient & Adaptive,Baseline / Normatif
+38.0,48.8,76.3,49.7,53.1,64.5,60.0,ST0926,Laki-laki,FTE,Teknik Telekomunikasi,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+75.8,59.6,66.2,39.0,38.5,61.7,44.2,ST0927,Laki-laki,FRI,Teknik Logistik,2022,1,The Resilient & Adaptive,Baseline / Normatif
+52.4,39.0,67.4,51.5,49.5,55.6,79.4,ST0928,Perempuan,FRI,Sistem Informasi,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+64.2,44.2,61.4,38.7,52.7,63.1,49.9,ST0929,Perempuan,FIF,Sistem Komputer,2022,1,The Resilient & Adaptive,Baseline / Normatif
+64.4,60.6,57.4,49.2,45.9,67.0,50.1,ST0933,Perempuan,FEB,Manajemen,2022,1,The Resilient & Adaptive,Baseline / Normatif
+22.7,49.7,34.7,54.4,58.0,48.8,53.1,ST0935,Perempuan,FEB,Manajemen,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+35.7,41.2,57.8,65.2,43.9,55.0,71.8,ST0937,Perempuan,FIF,Data Sains,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+36.5,55.4,28.3,47.7,63.1,55.8,36.8,ST0939,Perempuan,FRI,Sistem Informasi,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+53.8,62.5,58.4,46.6,24.1,73.5,44.9,ST0941,Perempuan,FRI,Teknik Logistik,2023,1,The Resilient & Adaptive,Baseline / Normatif
+79.1,58.8,52.1,41.5,46.3,45.3,47.6,ST0942,Laki-laki,FIF,Informatika,2022,1,The Resilient & Adaptive,Baseline / Normatif
+47.2,71.7,46.0,52.2,34.2,59.6,28.0,ST0947,Perempuan,FIF,Sistem Komputer,2022,1,The Resilient & Adaptive,Baseline / Normatif
+43.6,39.2,43.8,50.6,57.9,43.7,51.2,ST0948,Laki-laki,FTE,Teknik Telekomunikasi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+45.9,69.4,50.6,54.7,29.9,60.8,34.3,ST0949,Perempuan,FIF,Sistem Komputer,2022,1,The Resilient & Adaptive,Baseline / Normatif
+51.1,64.0,71.2,58.1,50.6,49.4,40.8,ST0952,Perempuan,FIF,Data Sains,2024,1,The Resilient & Adaptive,Baseline / Normatif
+72.1,60.1,56.0,51.3,41.4,69.5,38.2,ST0954,Perempuan,FTE,Teknik Elektro,2021,1,The Resilient & Adaptive,Baseline / Normatif
+40.6,48.1,51.0,35.4,73.7,46.3,48.4,ST0956,Laki-laki,FKS,Administrasi Bisnis,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+56.1,80.0,53.6,45.7,39.9,51.9,33.9,ST0958,Laki-laki,FRI,Teknik Industri,2023,1,The Resilient & Adaptive,Baseline / Normatif
+51.1,46.6,61.3,77.7,49.3,45.1,62.7,ST0959,Perempuan,FTE,Teknik Elektro,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+45.2,69.5,46.1,51.5,38.6,66.6,35.7,ST0961,Perempuan,FKS,Administrasi Bisnis,2022,1,The Resilient & Adaptive,Baseline / Normatif
+77.3,60.8,56.6,50.2,33.1,55.2,33.9,ST0963,Laki-laki,FIF,Informatika,2021,1,The Resilient & Adaptive,Baseline / Normatif
+37.5,44.0,30.4,35.8,73.6,34.9,43.4,ST0964,Perempuan,FIF,Data Sains,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+65.9,71.3,51.4,47.4,26.5,51.6,32.8,ST0966,Perempuan,FTE,Teknik Elektro,2022,1,The Resilient & Adaptive,Baseline / Normatif
+47.1,69.3,54.1,46.8,24.0,55.5,20.0,ST0967,Perempuan,FEB,Akuntansi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+29.9,45.1,32.9,49.3,77.1,37.2,51.6,ST0969,Perempuan,FKS,Ilmu Komunikasi,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+39.8,29.2,45.2,34.7,86.7,56.0,61.4,ST0970,Perempuan,FEB,Akuntansi,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+24.0,49.5,28.1,34.2,75.4,46.8,38.7,ST0972,Perempuan,FEB,Akuntansi,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+29.0,57.5,30.6,45.0,59.7,66.2,53.6,ST0973,Laki-laki,FIF,Data Sains,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+76.3,47.7,47.0,50.9,41.3,45.3,49.0,ST0974,Perempuan,FEB,Akuntansi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+31.8,34.4,23.5,43.0,70.5,49.3,47.1,ST0975,Laki-laki,FRI,Sistem Informasi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+53.3,60.7,57.8,64.0,29.0,67.0,29.9,ST0976,Perempuan,FTE,Teknik Telekomunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+68.9,60.4,60.1,61.9,31.3,75.5,60.8,ST0977,Perempuan,FTE,Teknik Telekomunikasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+20.0,40.7,40.4,43.2,65.0,46.5,44.4,ST0978,Perempuan,FRI,Teknik Industri,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+61.4,70.9,51.1,36.5,34.9,57.8,28.9,ST0979,Laki-laki,FKS,Administrasi Bisnis,2021,1,The Resilient & Adaptive,Baseline / Normatif
+52.4,60.8,38.7,71.0,29.5,54.0,36.2,ST0980,Perempuan,FEB,Manajemen,2024,1,The Resilient & Adaptive,Baseline / Normatif
+56.4,72.7,31.9,67.2,45.9,55.8,35.4,ST0981,Laki-laki,FEB,Manajemen,2023,1,The Resilient & Adaptive,Baseline / Normatif
+60.5,57.8,66.8,42.2,40.7,75.4,46.8,ST0982,Perempuan,FEB,Manajemen,2022,1,The Resilient & Adaptive,Baseline / Normatif
+77.1,74.5,57.9,45.7,38.2,61.7,42.2,ST0985,Laki-laki,FTE,Teknik Elektro,2023,1,The Resilient & Adaptive,Baseline / Normatif
+77.4,57.6,57.6,48.2,38.1,63.3,36.3,ST0987,Laki-laki,FEB,Manajemen,2024,1,The Resilient & Adaptive,Baseline / Normatif
+84.2,71.5,54.6,42.0,29.5,54.7,52.6,ST0988,Perempuan,FRI,Teknik Industri,2022,1,The Resilient & Adaptive,Baseline / Normatif
+52.1,72.2,48.4,71.2,30.9,60.2,48.8,ST0991,Perempuan,FRI,Sistem Informasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+43.4,47.2,56.1,70.0,50.5,43.0,65.8,ST0992,Perempuan,FIF,Data Sains,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+50.9,79.2,51.5,52.5,34.3,54.7,32.5,ST0993,Perempuan,FRI,Sistem Informasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+56.9,48.5,65.3,56.6,44.3,59.8,60.0,ST0996,Laki-laki,FIF,Sistem Komputer,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+62.3,51.4,63.5,39.8,42.8,57.7,57.6,ST0997,Perempuan,FIF,Informatika,2023,1,The Resilient & Adaptive,Baseline / Normatif
+69.8,53.3,64.2,49.8,45.5,59.7,66.5,ST0998,Laki-laki,FIF,Sistem Komputer,2022,1,The Resilient & Adaptive,Baseline / Normatif
+54.8,49.8,66.0,54.9,52.7,50.9,47.6,ST0999,Laki-laki,FKS,Ilmu Komunikasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+56.7,40.6,71.0,69.6,48.8,38.6,72.9,ST1001,Perempuan,FIF,Sistem Komputer,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+29.7,34.1,64.6,66.4,52.7,44.1,63.1,ST1002,Laki-laki,FKS,Ilmu Komunikasi,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+47.6,64.6,50.2,53.4,40.0,56.6,36.6,ST1003,Perempuan,FRI,Sistem Informasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+33.6,42.0,29.2,53.7,65.5,43.1,57.0,ST1004,Perempuan,FTE,Teknik Telekomunikasi,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+46.5,43.8,65.5,66.4,41.3,46.0,66.6,ST1005,Laki-laki,FEB,Akuntansi,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+40.9,27.6,41.7,38.1,64.3,54.8,56.9,ST1006,Perempuan,FTE,Teknik Elektro,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+68.2,65.2,66.2,53.4,29.0,64.0,51.5,ST1007,Perempuan,FIF,Sistem Komputer,2021,1,The Resilient & Adaptive,Baseline / Normatif
+38.2,48.1,40.2,42.3,67.8,50.2,48.9,ST1008,Perempuan,FRI,Sistem Informasi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+57.4,77.0,45.7,64.2,29.9,74.7,35.7,ST1011,Laki-laki,FIF,Informatika,2022,1,The Resilient & Adaptive,Baseline / Normatif
+58.2,41.1,64.1,68.2,42.5,45.9,61.6,ST1013,Laki-laki,FIF,Informatika,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+80.0,52.7,67.2,47.1,41.5,49.2,43.3,ST1014,Perempuan,FRI,Sistem Informasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+45.5,76.4,47.3,27.0,36.0,56.4,44.6,ST1015,Laki-laki,FTE,Teknik Elektro,2024,1,The Resilient & Adaptive,Baseline / Normatif
+69.2,69.4,40.3,50.1,32.1,53.8,32.1,ST1017,Perempuan,FIF,Informatika,2022,1,The Resilient & Adaptive,Baseline / Normatif
+71.6,55.5,53.9,39.4,43.2,70.0,27.0,ST1018,Perempuan,FIF,Data Sains,2022,1,The Resilient & Adaptive,Baseline / Normatif
+63.1,67.8,46.3,56.5,40.5,61.1,39.3,ST1019,Laki-laki,FTE,Teknik Elektro,2021,1,The Resilient & Adaptive,Baseline / Normatif
+30.3,31.5,29.4,43.1,61.2,49.4,46.1,ST1020,Laki-laki,FTE,Teknik Telekomunikasi,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+59.9,56.9,58.2,51.0,40.5,48.8,53.6,ST1021,Laki-laki,FRI,Teknik Industri,2023,1,The Resilient & Adaptive,Baseline / Normatif
+57.1,54.2,62.8,43.8,43.1,54.2,39.5,ST1023,Laki-laki,FIF,Informatika,2023,1,The Resilient & Adaptive,Baseline / Normatif
+58.6,86.7,48.2,59.5,38.1,69.1,44.7,ST1024,Laki-laki,FIF,Informatika,2022,1,The Resilient & Adaptive,Baseline / Normatif
+45.2,44.8,74.3,68.2,56.3,65.4,71.0,ST1025,Laki-laki,FTE,Teknik Telekomunikasi,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+58.6,73.6,62.5,65.6,39.5,69.5,44.9,ST1026,Perempuan,FRI,Teknik Industri,2024,1,The Resilient & Adaptive,Baseline / Normatif
+68.6,62.1,60.3,44.0,40.6,50.8,48.2,ST1027,Laki-laki,FIF,Sistem Komputer,2024,1,The Resilient & Adaptive,Baseline / Normatif
+48.6,74.3,57.3,48.7,41.3,66.1,34.5,ST1029,Perempuan,FIF,Sistem Komputer,2024,1,The Resilient & Adaptive,Baseline / Normatif
+63.5,53.3,61.0,56.3,34.4,47.0,56.0,ST1030,Laki-laki,FIF,Data Sains,2024,1,The Resilient & Adaptive,Baseline / Normatif
+59.0,82.4,49.4,57.2,40.5,55.7,42.7,ST1031,Laki-laki,FTE,Teknik Telekomunikasi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+44.9,46.0,66.4,55.8,47.5,68.5,74.2,ST1033,Perempuan,FEB,Akuntansi,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+37.1,42.3,20.8,36.3,64.9,50.8,44.2,ST1035,Laki-laki,FRI,Teknik Industri,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+42.0,58.5,25.8,54.2,71.9,40.2,39.5,ST1036,Laki-laki,FRI,Teknik Industri,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+79.1,55.5,74.8,60.0,23.5,63.8,38.5,ST1037,Laki-laki,FRI,Sistem Informasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+72.5,50.4,61.3,63.4,39.9,63.6,45.6,ST1038,Laki-laki,FIF,Data Sains,2024,1,The Resilient & Adaptive,Baseline / Normatif
+57.0,68.4,55.4,55.1,29.7,52.5,30.0,ST1039,Perempuan,FEB,Akuntansi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+50.6,52.1,52.8,60.5,40.7,51.2,32.6,ST1041,Laki-laki,FTE,Teknik Elektro,2024,1,The Resilient & Adaptive,Baseline / Normatif
+47.2,38.3,80.3,69.8,45.0,39.0,71.9,ST1043,Laki-laki,FKS,Ilmu Komunikasi,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+45.0,51.5,58.0,54.2,55.6,49.3,60.2,ST1045,Perempuan,FIF,Informatika,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+38.0,53.1,31.6,28.7,56.4,51.3,31.7,ST1047,Perempuan,FEB,Manajemen,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+67.6,49.8,48.6,48.3,30.6,59.2,45.5,ST1049,Laki-laki,FEB,Akuntansi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+45.3,71.8,50.8,64.4,44.0,37.5,40.7,ST1050,Laki-laki,FTE,Teknik Telekomunikasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+46.2,82.5,63.2,47.2,42.8,53.0,48.9,ST1052,Laki-laki,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+76.0,55.8,57.7,54.9,36.2,57.6,61.7,ST1053,Perempuan,FTE,Teknik Telekomunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+64.2,63.7,61.9,42.5,36.0,50.5,46.9,ST1054,Laki-laki,FKS,Ilmu Komunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+35.9,51.2,40.0,44.8,64.3,53.0,45.8,ST1055,Laki-laki,FKS,Administrasi Bisnis,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+67.3,58.9,71.6,53.0,41.7,58.5,40.1,ST1056,Perempuan,FKS,Ilmu Komunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+50.3,73.5,53.8,65.0,36.5,66.6,34.0,ST1058,Laki-laki,FIF,Data Sains,2024,1,The Resilient & Adaptive,Baseline / Normatif
+76.7,37.4,53.3,36.0,29.4,64.7,54.0,ST1059,Perempuan,FTE,Teknik Elektro,2024,1,The Resilient & Adaptive,Baseline / Normatif
+70.3,64.3,56.3,39.8,31.9,60.0,47.8,ST1060,Laki-laki,FEB,Akuntansi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+25.3,48.6,45.8,55.6,75.9,51.8,48.7,ST1061,Laki-laki,FRI,Sistem Informasi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+35.2,42.7,27.1,35.4,70.8,49.2,54.8,ST1062,Perempuan,FIF,Data Sains,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+54.7,56.4,53.8,77.5,38.8,53.3,40.2,ST1063,Perempuan,FIF,Data Sains,2024,1,The Resilient & Adaptive,Baseline / Normatif
+58.9,47.1,57.2,54.4,42.8,56.0,38.2,ST1064,Laki-laki,FIF,Sistem Komputer,2021,1,The Resilient & Adaptive,Baseline / Normatif
+61.7,42.9,61.2,55.7,44.1,64.2,45.0,ST1065,Perempuan,FEB,Manajemen,2021,1,The Resilient & Adaptive,Baseline / Normatif
+69.3,57.4,50.6,56.9,48.8,75.2,41.8,ST1066,Laki-laki,FRI,Teknik Industri,2023,1,The Resilient & Adaptive,Baseline / Normatif
+55.3,60.2,59.5,50.6,31.2,55.0,35.0,ST1068,Laki-laki,FRI,Teknik Logistik,2022,1,The Resilient & Adaptive,Baseline / Normatif
+58.0,70.4,55.8,61.6,43.4,50.2,34.2,ST1069,Perempuan,FIF,Informatika,2024,1,The Resilient & Adaptive,Baseline / Normatif
+38.0,60.1,41.0,45.9,73.2,47.8,47.9,ST1071,Perempuan,FIF,Data Sains,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+56.8,64.0,56.6,55.5,28.2,69.4,37.6,ST1072,Perempuan,FKS,Ilmu Komunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+61.9,73.3,55.2,62.0,31.0,63.5,39.0,ST1073,Laki-laki,FIF,Informatika,2022,1,The Resilient & Adaptive,Baseline / Normatif
+69.5,55.8,66.9,43.2,43.0,63.8,44.4,ST1074,Laki-laki,FTE,Teknik Elektro,2022,1,The Resilient & Adaptive,Baseline / Normatif
+27.1,37.4,40.6,35.8,61.9,49.7,42.3,ST1075,Perempuan,FKS,Ilmu Komunikasi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+65.1,71.9,49.7,67.2,32.3,67.2,39.0,ST1076,Perempuan,FKS,Administrasi Bisnis,2021,1,The Resilient & Adaptive,Baseline / Normatif
+39.5,48.2,62.6,68.4,54.9,54.2,59.5,ST1077,Laki-laki,FTE,Teknik Elektro,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+41.4,38.5,29.2,27.1,63.9,51.7,38.3,ST1079,Laki-laki,FEB,Akuntansi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+39.1,47.4,76.2,70.3,45.0,57.2,66.7,ST1080,Laki-laki,FKS,Ilmu Komunikasi,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+71.5,60.0,51.7,46.6,43.8,35.0,48.3,ST1081,Perempuan,FEB,Akuntansi,2021,1,The Resilient & Adaptive,Baseline / Normatif
+42.2,45.0,25.9,39.2,88.3,49.6,42.4,ST1082,Laki-laki,FIF,Data Sains,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+62.3,50.5,64.1,45.1,34.8,57.5,49.2,ST1083,Laki-laki,FEB,Akuntansi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+49.7,65.7,57.4,60.4,46.6,72.5,34.7,ST1084,Laki-laki,FEB,Manajemen,2022,1,The Resilient & Adaptive,Baseline / Normatif
+51.2,77.9,59.6,39.3,43.8,60.0,30.1,ST1085,Perempuan,FEB,Akuntansi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+62.4,70.0,54.1,52.4,46.3,64.0,42.2,ST1087,Laki-laki,FRI,Teknik Industri,2023,1,The Resilient & Adaptive,Baseline / Normatif
+45.3,27.5,41.9,43.1,83.1,54.5,62.3,ST1088,Laki-laki,FTE,Teknik Elektro,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+76.0,51.7,68.8,47.4,32.0,61.2,57.5,ST1089,Laki-laki,FIF,Sistem Komputer,2024,1,The Resilient & Adaptive,Baseline / Normatif
+56.6,61.0,53.1,67.2,35.9,62.9,41.0,ST1090,Perempuan,FEB,Akuntansi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+40.1,72.3,51.0,66.9,32.5,42.3,31.2,ST1091,Perempuan,FIF,Data Sains,2023,1,The Resilient & Adaptive,Baseline / Normatif
+68.6,54.9,55.1,48.8,40.2,56.9,59.2,ST1092,Laki-laki,FEB,Manajemen,2022,1,The Resilient & Adaptive,Baseline / Normatif
+56.3,76.1,56.6,61.9,31.5,48.2,37.3,ST1094,Perempuan,FEB,Manajemen,2023,1,The Resilient & Adaptive,Baseline / Normatif
+53.7,68.1,48.0,54.6,40.9,42.2,41.5,ST1095,Perempuan,FEB,Manajemen,2024,1,The Resilient & Adaptive,Baseline / Normatif
+51.4,38.8,63.8,70.7,52.2,35.3,54.4,ST1096,Perempuan,FTE,Teknik Telekomunikasi,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+36.5,51.2,42.2,51.9,55.5,46.5,46.1,ST1097,Perempuan,FEB,Akuntansi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+73.3,62.9,67.9,48.1,36.5,65.5,51.7,ST1099,Laki-laki,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+33.0,44.3,48.4,41.3,75.3,58.1,46.1,ST1100,Laki-laki,FKS,Administrasi Bisnis,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+49.5,50.0,53.3,64.9,47.9,48.3,60.1,ST1101,Laki-laki,FRI,Teknik Industri,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+47.1,90.0,42.8,51.5,32.8,57.5,25.0,ST1102,Perempuan,FTE,Teknik Elektro,2021,1,The Resilient & Adaptive,Baseline / Normatif
+37.2,47.3,32.0,34.8,58.9,56.3,42.7,ST1104,Laki-laki,FTE,Teknik Telekomunikasi,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+43.3,41.3,34.9,69.4,57.5,51.6,49.5,ST1106,Perempuan,FRI,Teknik Industri,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+44.5,71.3,57.5,56.9,46.8,48.9,37.6,ST1107,Laki-laki,FRI,Sistem Informasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+59.3,46.8,55.6,59.6,40.4,59.7,52.8,ST1108,Perempuan,FEB,Akuntansi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+54.8,70.3,51.3,51.3,40.4,63.8,43.2,ST1109,Perempuan,FTE,Teknik Elektro,2024,1,The Resilient & Adaptive,Baseline / Normatif
+48.6,69.4,50.8,60.8,48.6,54.0,41.4,ST1112,Laki-laki,FIF,Informatika,2023,1,The Resilient & Adaptive,Baseline / Normatif
+73.5,52.1,52.2,50.7,33.6,61.4,49.5,ST1113,Perempuan,FEB,Akuntansi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+32.2,41.1,26.2,47.7,60.4,54.7,39.4,ST1114,Perempuan,FEB,Akuntansi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+81.9,49.3,65.7,65.9,39.4,58.0,57.5,ST1115,Perempuan,FTE,Teknik Elektro,2022,1,The Resilient & Adaptive,Baseline / Normatif
+61.0,37.4,69.1,56.9,48.5,42.1,74.7,ST1116,Perempuan,FEB,Manajemen,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+35.2,45.2,43.2,42.6,64.1,47.3,44.6,ST1118,Perempuan,FRI,Sistem Informasi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+41.3,43.4,49.6,70.4,64.1,46.5,69.7,ST1120,Laki-laki,FRI,Sistem Informasi,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+33.4,57.8,51.0,38.9,64.7,43.3,46.8,ST1123,Laki-laki,FTE,Teknik Elektro,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+70.8,62.0,65.9,51.4,40.4,62.9,45.4,ST1124,Perempuan,FIF,Sistem Komputer,2024,1,The Resilient & Adaptive,Baseline / Normatif
+44.2,49.5,76.0,62.0,50.2,44.4,58.4,ST1125,Laki-laki,FKS,Ilmu Komunikasi,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+61.3,46.6,66.5,76.9,45.0,60.1,68.7,ST1126,Laki-laki,FRI,Teknik Industri,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+47.7,76.4,57.2,47.6,43.5,60.8,35.2,ST1128,Perempuan,FIF,Sistem Komputer,2024,1,The Resilient & Adaptive,Baseline / Normatif
+70.0,42.4,61.2,57.9,40.2,51.3,53.1,ST1129,Laki-laki,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+67.3,68.5,57.4,52.8,26.6,65.2,34.4,ST1131,Perempuan,FRI,Teknik Logistik,2024,1,The Resilient & Adaptive,Baseline / Normatif
+49.7,77.2,44.2,61.7,41.2,56.7,33.4,ST1132,Perempuan,FEB,Akuntansi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+58.0,66.5,62.3,58.3,34.4,60.9,36.8,ST1133,Laki-laki,FKS,Ilmu Komunikasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+50.8,42.9,46.9,62.7,48.9,61.4,71.8,ST1134,Laki-laki,FKS,Ilmu Komunikasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+47.1,35.6,35.4,51.3,60.2,38.3,56.4,ST1137,Laki-laki,FEB,Akuntansi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+44.6,77.6,58.7,67.4,21.9,48.5,34.5,ST1138,Laki-laki,FRI,Teknik Logistik,2022,1,The Resilient & Adaptive,Baseline / Normatif
+51.6,72.0,58.5,58.5,34.6,49.3,27.3,ST1139,Perempuan,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+42.7,40.4,72.9,64.4,45.3,56.2,64.0,ST1141,Perempuan,FKS,Ilmu Komunikasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+51.7,53.9,42.4,39.3,70.5,48.1,52.3,ST1142,Perempuan,FRI,Teknik Logistik,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+57.7,51.1,66.5,53.3,33.3,54.2,59.8,ST1143,Perempuan,FIF,Informatika,2022,1,The Resilient & Adaptive,Baseline / Normatif
+63.4,75.3,66.5,54.2,33.9,63.3,49.2,ST1144,Perempuan,FEB,Akuntansi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+68.3,61.3,58.3,47.9,40.3,73.0,51.3,ST1145,Perempuan,FRI,Teknik Logistik,2024,1,The Resilient & Adaptive,Baseline / Normatif
+53.1,41.3,72.7,74.8,42.3,49.1,66.4,ST1146,Perempuan,FRI,Teknik Logistik,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+60.8,47.4,53.2,45.3,37.8,59.0,37.3,ST1147,Perempuan,FEB,Manajemen,2023,1,The Resilient & Adaptive,Baseline / Normatif
+45.5,62.0,51.4,49.8,23.1,61.1,45.1,ST1153,Perempuan,FTE,Teknik Elektro,2022,1,The Resilient & Adaptive,Baseline / Normatif
+50.8,67.8,51.9,54.5,35.4,56.6,22.2,ST1154,Laki-laki,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+52.1,77.7,49.5,47.4,42.1,55.4,37.8,ST1155,Laki-laki,FEB,Akuntansi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+49.2,69.3,55.0,51.8,30.0,50.1,30.2,ST1156,Perempuan,FKS,Administrasi Bisnis,2022,1,The Resilient & Adaptive,Baseline / Normatif
+43.1,62.3,56.3,48.6,38.6,66.2,35.0,ST1158,Laki-laki,FEB,Manajemen,2022,1,The Resilient & Adaptive,Baseline / Normatif
+58.8,75.6,47.3,61.9,40.4,60.1,35.6,ST1160,Laki-laki,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+70.5,69.7,77.5,47.2,30.8,68.6,52.5,ST1161,Perempuan,FRI,Teknik Logistik,2023,1,The Resilient & Adaptive,Baseline / Normatif
+74.2,52.2,59.5,57.0,40.8,75.7,41.7,ST1162,Laki-laki,FKS,Administrasi Bisnis,2022,1,The Resilient & Adaptive,Baseline / Normatif
+52.8,73.1,53.5,60.6,40.8,53.2,43.9,ST1163,Perempuan,FIF,Informatika,2023,1,The Resilient & Adaptive,Baseline / Normatif
+53.1,71.9,53.6,46.2,26.0,56.2,20.0,ST1165,Laki-laki,FRI,Sistem Informasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+47.0,46.9,69.6,69.7,41.8,47.7,71.9,ST1167,Perempuan,FEB,Manajemen,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+46.8,74.9,52.2,63.5,40.5,52.2,30.9,ST1169,Laki-laki,FIF,Data Sains,2022,1,The Resilient & Adaptive,Baseline / Normatif
+49.0,37.9,60.2,64.4,58.6,48.6,65.4,ST1170,Laki-laki,FKS,Administrasi Bisnis,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+67.1,56.0,64.7,50.5,43.5,59.8,62.1,ST1172,Perempuan,FRI,Teknik Logistik,2021,1,The Resilient & Adaptive,Baseline / Normatif
+51.6,73.2,33.3,56.0,25.4,59.6,36.5,ST1173,Laki-laki,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+52.1,66.4,47.3,55.4,44.5,67.7,30.6,ST1174,Laki-laki,FIF,Data Sains,2023,1,The Resilient & Adaptive,Baseline / Normatif
+77.2,54.1,48.8,45.3,48.6,53.2,42.5,ST1175,Perempuan,FIF,Data Sains,2024,1,The Resilient & Adaptive,Baseline / Normatif
+21.0,55.9,31.4,55.6,82.3,33.7,44.7,ST1176,Perempuan,FRI,Teknik Logistik,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+56.9,75.4,56.0,46.3,38.7,46.8,30.7,ST1177,Perempuan,FEB,Manajemen,2024,1,The Resilient & Adaptive,Baseline / Normatif
+73.1,49.5,60.2,47.0,43.6,66.2,52.2,ST1180,Perempuan,FRI,Teknik Logistik,2023,1,The Resilient & Adaptive,Baseline / Normatif
+56.5,37.2,73.4,69.7,55.3,58.3,68.4,ST1181,Perempuan,FKS,Administrasi Bisnis,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+52.0,45.8,59.9,54.8,35.0,43.7,45.8,ST1182,Perempuan,FEB,Akuntansi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+59.8,70.1,48.2,57.5,40.2,56.9,31.4,ST1183,Perempuan,FIF,Data Sains,2022,1,The Resilient & Adaptive,Baseline / Normatif
+70.0,55.4,68.5,42.6,36.8,57.4,45.0,ST1184,Perempuan,FEB,Manajemen,2022,1,The Resilient & Adaptive,Baseline / Normatif
+35.8,34.4,68.8,66.2,46.8,50.9,71.9,ST1185,Laki-laki,FRI,Sistem Informasi,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+47.3,30.5,68.9,44.2,58.3,59.5,70.3,ST1188,Perempuan,FEB,Manajemen,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+61.3,43.7,54.9,63.3,45.5,41.9,62.4,ST1190,Perempuan,FIF,Sistem Komputer,2022,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+65.1,51.6,58.8,32.0,37.3,55.2,44.3,ST1191,Laki-laki,FRI,Teknik Industri,2021,1,The Resilient & Adaptive,Baseline / Normatif
+31.3,41.8,39.6,33.2,75.5,61.7,54.7,ST1192,Perempuan,FTE,Teknik Elektro,2021,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+56.9,42.9,75.3,69.3,43.6,43.5,74.6,ST1193,Perempuan,FRI,Teknik Industri,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+64.4,75.6,55.7,57.2,49.7,52.9,32.7,ST1194,Laki-laki,FTE,Teknik Elektro,2024,1,The Resilient & Adaptive,Baseline / Normatif
+56.0,41.0,55.2,48.6,48.8,50.7,59.1,ST1195,Laki-laki,FKS,Administrasi Bisnis,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+55.7,83.4,56.0,62.9,38.8,52.1,38.0,ST1196,Laki-laki,FEB,Akuntansi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+53.8,76.5,44.1,53.3,36.5,55.4,27.3,ST1197,Perempuan,FIF,Informatika,2023,1,The Resilient & Adaptive,Baseline / Normatif
+47.5,65.0,54.4,60.3,37.0,55.3,39.0,ST1199,Perempuan,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+52.3,59.5,57.2,38.0,29.9,65.7,51.4,ST1200,Perempuan,FRI,Teknik Industri,2023,1,The Resilient & Adaptive,Baseline / Normatif
+41.0,43.8,33.2,49.2,75.1,45.5,47.9,ST1201,Perempuan,FKS,Administrasi Bisnis,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+49.6,60.4,44.8,47.9,44.5,47.0,35.0,ST1202,Perempuan,FTE,Teknik Telekomunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+58.1,42.8,58.1,31.0,36.0,69.0,38.2,ST1203,Perempuan,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+45.8,32.7,47.8,60.3,46.4,46.4,56.1,ST1205,Laki-laki,FKS,Administrasi Bisnis,2021,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+35.7,37.9,31.1,47.7,78.4,47.6,46.7,ST1206,Laki-laki,FTE,Teknik Elektro,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+50.1,29.7,59.5,68.5,44.9,49.0,69.2,ST1207,Perempuan,FRI,Teknik Industri,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+69.3,70.6,47.6,49.8,40.9,66.7,46.7,ST1208,Perempuan,FKS,Ilmu Komunikasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+52.4,78.3,49.3,51.8,32.6,58.7,33.1,ST1209,Laki-laki,FRI,Sistem Informasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+37.7,60.0,45.4,49.9,64.3,54.1,61.7,ST1210,Perempuan,FKS,Ilmu Komunikasi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+65.7,54.3,66.2,48.5,41.8,62.1,40.9,ST1213,Laki-laki,FEB,Akuntansi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+54.2,75.6,49.1,49.9,38.3,64.1,41.8,ST1214,Perempuan,FRI,Teknik Industri,2023,1,The Resilient & Adaptive,Baseline / Normatif
+40.0,49.6,30.5,41.3,78.0,30.4,24.3,ST1215,Laki-laki,FKS,Administrasi Bisnis,2022,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+55.9,54.8,53.8,67.6,35.8,48.4,35.3,ST1216,Perempuan,FRI,Teknik Industri,2022,1,The Resilient & Adaptive,Baseline / Normatif
+48.6,71.6,41.8,58.0,43.0,46.9,36.9,ST1217,Perempuan,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+34.9,54.7,37.1,39.5,65.8,52.6,41.3,ST1218,Laki-laki,FEB,Manajemen,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+47.0,34.8,65.2,80.2,52.2,52.5,73.5,ST1219,Perempuan,FIF,Informatika,2024,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+75.9,66.4,45.7,42.3,49.6,54.5,28.2,ST1220,Perempuan,FRI,Sistem Informasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+74.9,51.2,65.5,48.0,45.6,52.6,42.0,ST1221,Laki-laki,FTE,Teknik Telekomunikasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+53.9,58.3,51.9,33.9,31.6,51.2,36.8,ST1222,Laki-laki,FRI,Sistem Informasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+67.5,59.0,42.8,40.5,35.5,54.9,41.9,ST1223,Laki-laki,FTE,Teknik Telekomunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+37.0,37.7,30.4,39.5,71.0,47.0,46.7,ST1224,Perempuan,FKS,Administrasi Bisnis,2024,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+66.2,47.3,52.1,59.9,44.3,56.1,48.4,ST1226,Laki-laki,FIF,Informatika,2024,1,The Resilient & Adaptive,Baseline / Normatif
+57.7,73.6,52.2,39.3,30.1,49.8,46.8,ST1229,Perempuan,FKS,Administrasi Bisnis,2023,1,The Resilient & Adaptive,Baseline / Normatif
+69.0,52.5,60.6,51.3,35.6,59.4,54.6,ST1230,Perempuan,FIF,Data Sains,2024,1,The Resilient & Adaptive,Baseline / Normatif
+61.4,81.0,58.3,55.7,44.0,53.9,34.5,ST1231,Perempuan,FKS,Administrasi Bisnis,2022,1,The Resilient & Adaptive,Baseline / Normatif
+86.5,51.8,49.2,48.9,42.7,57.6,41.3,ST1232,Laki-laki,FTE,Teknik Telekomunikasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+41.9,79.7,58.4,59.9,35.8,51.1,34.0,ST1233,Perempuan,FRI,Teknik Logistik,2024,1,The Resilient & Adaptive,Baseline / Normatif
+61.9,57.2,69.1,51.9,29.6,57.3,46.4,ST1236,Perempuan,FIF,Data Sains,2024,1,The Resilient & Adaptive,Baseline / Normatif
+74.7,54.0,62.4,45.9,28.1,61.8,46.4,ST1237,Perempuan,FTE,Teknik Telekomunikasi,2022,1,The Resilient & Adaptive,Baseline / Normatif
+76.0,47.8,58.0,50.6,53.6,64.3,37.0,ST1239,Laki-laki,FIF,Sistem Komputer,2022,1,The Resilient & Adaptive,Baseline / Normatif
+60.4,75.9,53.7,43.5,45.3,48.9,25.7,ST1242,Perempuan,FKS,Administrasi Bisnis,2022,1,The Resilient & Adaptive,Baseline / Normatif
+51.9,81.5,46.4,45.7,44.9,50.0,32.0,ST1243,Laki-laki,FIF,Data Sains,2023,1,The Resilient & Adaptive,Baseline / Normatif
+50.8,70.1,52.4,53.3,41.4,58.7,33.2,ST1244,Laki-laki,FTE,Teknik Telekomunikasi,2023,1,The Resilient & Adaptive,Baseline / Normatif
+31.6,40.2,26.8,31.2,60.3,59.3,40.7,ST1246,Laki-laki,FRI,Sistem Informasi,2023,2,The Vulnerable / At-Risk,Kelompok Risiko Tinggi
+34.7,28.7,61.2,67.9,52.7,57.4,59.8,ST1248,Laki-laki,FEB,Manajemen,2023,0,The Energetic & Socially Active,Intervensi Pengembangan Diri
+47.9,82.1,56.8,48.3,28.4,52.3,36.1,ST1249,Laki-laki,FKS,Ilmu Komunikasi,2024,1,The Resilient & Adaptive,Baseline / Normatif
+77.2,55.6,66.8,55.4,37.7,54.8,70.3,ST1250,Perempuan,FIF,Data Sains,2024,1,The Resilient & Adaptive,Baseline / Normatif
